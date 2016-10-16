@@ -1,10 +1,9 @@
+@import "new-age";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "chatrooms";
 @import "messages";
 @import "users";
-
-
-.github-fork-ribbon.right-bottom:before {
-    background-color: black;
-}
+@import "font-awesome";
+@import "device-mockups";
+@import "device-mockups2";

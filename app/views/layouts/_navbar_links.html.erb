@@ -1,22 +1,15 @@
-<ul class="nav navbar-nav">
-  <% if current_user %>
-   <li>
-    <%= link_to "new chatroom", new_chatroom_path%>
-   </li>
-  <% end %>
-  
-  <li>
-    <%= link_to "chatrooms", chatrooms_path %>
-  </li> 
-</ul>
-
 <ul class="nav navbar-nav navbar-right">
-  <% if current_user %>
-    <li>
-      <%= link_to "Log Out", logout_path, method: "delete" %>
-    </li>
+  <% if user_signed_in? %>
+  <li><%= link_to "Mentors", users_path %></li>
+    <li><%= link_to "Chatrooms", chatrooms_path %></li>
+    <li><%= link_to "Messages", chatrooms_path %></li>
+    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+    <li><%= link_to('Settings', edit_user_registration_path) %></li>
   <% else %>
-    <li><%= link_to "Sign Up", signup_path %></li>
-    <li><%= link_to "Log In", login_path %></li>
+    <li><a class="page-scroll" href="#download">Download</a></li>
+    <li><a class="page-scroll" href="#features">Features</a></li>
+    <li><a class="page-scroll" href="#contact">Contact</a></li>
+    <li><%= link_to('Login', new_user_session_path)  %></li>
+    <li><%= link_to('Register', new_user_registration_path)  %></li>
   <% end %>
 </ul>

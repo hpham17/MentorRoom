@@ -1,0 +1,18 @@
+<div class="container">
+  <table class="table" style="margin-top:90px;">
+    <tr>
+      <th>ID</th>
+      <th>EMAIL</th>
+      <th>Name</th>
+    </tr>
+
+    <% @users.each do |u| %>
+    <tr>
+      <td><%= u.id %></td>
+      <td><%= u.email %></td>
+      <td><%= u.name %></td>
+    </tr>
+    <% end %>
+
+  </table>
+</div>

@@ -13,7 +13,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-
+gem 'devise'
+gem 'cancan'
+gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5.x'
@@ -21,13 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'
 
-
-
-
-group :production do 
+group :production do
   gem 'rails_12factor'
 end
-
 
 group :development, :test do
   gem 'byebug'
