@@ -11,6 +11,7 @@
       <td><%= u.id %></td>
       <td><%= u.email %></td>
       <td><%= u.name %></td>
+      <td><%= link_to "Message", "/direct_messages/#{current_user.id}_to_#{u.id}", method: :post %></td>
     </tr>
     <% end %>
 

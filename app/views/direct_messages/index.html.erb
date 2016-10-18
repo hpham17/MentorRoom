@@ -1,0 +1,8 @@
+<div class="container" style="margin-top: 100px;">
+<% @senders.each do |s| %>
+    <%= link_to s.chatroom.topic, chatroom_path(s.chatroom.slug) %>
+  <% end %>
+<% @convos.each do |c| %>
+  <%= link_to c.topic, chatroom_path(c.slug) %>
+<% end %>
+</div>
