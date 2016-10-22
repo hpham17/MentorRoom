@@ -1,1 +1,1 @@
-<li><%= link_to chatroom.topic, chatroom_path(chatroom) %></li>
+<li><%= link_to chatroom.other_user(current_user.id), chatroom_path(chatroom) %></li>

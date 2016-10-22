@@ -1,10 +1,27 @@
+# == Schema Information
+#
+# Table name: chatrooms
+#
+#  id         :integer          not null, primary key
+#  topic      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  slug       :string
+#
+
 class Chatroom < ApplicationRecord
   has_many :messages, dependent: :destroy
-  has_many :users, through: :messages
-  belongs_to :direct_message
-  validates :topic, presence: true, uniqueness: true, case_sensitive: false
+  has_many :users, -> { distinct }, through: :messages
+  validates :topic, presence: true, uniqueness: true
   before_validation :sanitize, :slugify
 
+  def other_user(id)
+    self.users.each do |u|
+      if u.id != id
+        return User.find(u.id).name
+      end
+    end
+  end
 
   def to_param
     self.slug

@@ -10,8 +10,8 @@
     <tr>
       <td><%= u.id %></td>
       <td><%= u.email %></td>
-      <td><%= u.name %></td>
-      <td><%= link_to "Message", "/direct_messages/#{current_user.id}_to_#{u.id}", method: :post %></td>
+      <td><%= u.name %> <% if u.current_sign_in_at != nil %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i><% end %></td>
+      <td><%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %></td>
     </tr>
     <% end %>
 
