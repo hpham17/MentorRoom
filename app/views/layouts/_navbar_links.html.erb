@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
-  <li><%= link_to "Mentors", users_path %></li>
+  <li><%= link_to "Mentors", users_path, method: :get %></li>
     <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
       <% if new_messages? %>
         <span class="button_badge"><%= new_messages? %></span>
