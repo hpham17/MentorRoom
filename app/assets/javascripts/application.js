@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require google-instant-hangouts
 //= require bootstrap-sprockets
 //= require_tree ./channels
 //= require chatrooms

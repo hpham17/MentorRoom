@@ -22,6 +22,7 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'
+gem 'google-instant-hangouts'#,github: 'ankit8898/google-instant-hangouts'
 
 group :production do
   gem 'rails_12factor'

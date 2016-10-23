@@ -23,6 +23,19 @@ class Chatroom < ApplicationRecord
     end
   end
 
+  def count_new_messages(current_user)
+    count = 0
+    @all_messages = self.messages.order(:created_at).dup.to_a
+    @user = @all_messages.last.user_id
+    if @user != current_user
+      while @all_messages.last.user_id == @user
+        count += 1
+        @all_messages.pop
+      end
+    end
+    count
+  end
+
   def to_param
     self.slug
   end

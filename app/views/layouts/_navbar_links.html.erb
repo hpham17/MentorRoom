@@ -1,7 +1,11 @@
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
   <li><%= link_to "Mentors", users_path %></li>
-    <li><%= link_to "Messages", chatrooms_path %></li>
+    <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
+      <% if new_messages? %>
+        <span class="button_badge"><%= new_messages? %></span>
+      <% end %>
+    </li>
     <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
     <li><%= link_to("Welcome, #{current_user.name}", edit_user_registration_path) %></li>
   <% else %>

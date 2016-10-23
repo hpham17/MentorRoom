@@ -1,1 +1,6 @@
-<li><%= link_to chatroom.other_user(current_user.id), chatroom_path(chatroom) %></li>
+<li style="position:relative;"><%= link_to chatroom.other_user(current_user.id), chatroom_path(chatroom) %>
+<% if chatroom.count_new_messages(current_user.id) > 0 %>
+  <span class="button_badge"><%= chatroom.count_new_messages(current_user.id) %></span></li>
+<% end %>
+
+</li>

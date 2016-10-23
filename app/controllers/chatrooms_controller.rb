@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = current_user.chatrooms.uniq
+    @chatrooms = current_user.chatrooms.uniq.reverse
   end
 
   def new
@@ -16,6 +16,8 @@ class ChatroomsController < ApplicationController
       create
     end
   end
+
+
 
   def create
     @chatroom = Chatroom.new chatroom_params
