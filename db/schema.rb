@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022212724) do
+ActiveRecord::Schema.define(version: 20161028232529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20161022212724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+  end
+
+  create_table "mentorships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "mentor_id"
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -54,6 +62,7 @@ ActiveRecord::Schema.define(version: 20161022212724) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.datetime "remember_created_at"
+    t.integer  "limit"
   end
 
   add_foreign_key "messages", "chatrooms"

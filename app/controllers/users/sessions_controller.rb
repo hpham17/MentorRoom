@@ -2,6 +2,9 @@ class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!
 
   def index
-    @users = User.all.order(:id).where(:role => "Mentor")
+    if current_user.role == "Mentee"
+      @users = User.all.order(:id).where(:role => "Mentor")
+    else
+    end
   end
 end

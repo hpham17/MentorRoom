@@ -9,7 +9,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string
-#  role                   :string
+#  role                   :string           default("Mentee")
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  sign_in_count          :integer          default(0), not null
@@ -22,6 +22,8 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  remember_created_at    :datetime
+#  block                  :boolean
+#  limit                  :integer
 #
 
 require 'test_helper'

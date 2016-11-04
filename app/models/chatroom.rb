@@ -15,6 +15,7 @@ class Chatroom < ApplicationRecord
   validates :topic, presence: true, uniqueness: true
   before_validation :sanitize, :slugify
 
+
   def other_user(id)
     self.users.each do |u|
       if u.id != id

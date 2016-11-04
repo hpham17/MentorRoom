@@ -9,7 +9,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string
-#  role                   :string
+#  role                   :string           default("Mentee")
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  sign_in_count          :integer          default(0), not null
@@ -22,6 +22,8 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  remember_created_at    :datetime
+#  block                  :boolean
+#  limit                  :integer
 #
 
 class User < ApplicationRecord
@@ -31,4 +33,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :messages
   has_many :chatrooms, through: :messages
+  has_many :mentorships, -> { where accepted: true }
+  has_many :mentors, through: :mentorships
+  has_many :inverse_mentorships, :class_name => "Mentorship", :foreign_key => "mentor_id"
+  has_many :mentees, :through => :inverse_mentorships, :source => :user
+
+  def check_limit
+    if self.mentees.count == limit
+      return "block"
+    end
+  end
 end

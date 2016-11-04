@@ -12,7 +12,17 @@
       <td><%= u.email %></td>
       <td><%= u.name %> <% if u.current_sign_in_at != nil %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
         <% end %>
-      <td><%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %></td>
+
+
+        <% if current_user.mentors.include? u %>
+        <td><%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %></td>
+        <% elsif u.check_limit != "block" %>
+        <td><%= link_to "Request Mentor", mentorships_path(:mentor_id => u.id), :method => :post %></td>
+        <% else %>
+        <td>  Mentee Limit Reached! Try again next week.</td>
+
+        <% end %>
+
     </tr>
     <% end %>
   </table>
