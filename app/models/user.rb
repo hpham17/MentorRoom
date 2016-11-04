@@ -29,18 +29,27 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  ROLES = %w[Admin Mentor Mentee].freeze
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :messages
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
   has_many :mentors, through: :mentorships
-  has_many :inverse_mentorships, :class_name => "Mentorship", :foreign_key => "mentor_id"
+  has_many :inverse_mentorships, -> { where accepted: true }, :class_name => "Mentorship", :foreign_key => "mentor_id"
   has_many :mentees, :through => :inverse_mentorships, :source => :user
+
+  def is?(role)
+    self.role == role.to_s
+  end
 
   def check_limit
     if self.mentees.count == limit
       return "block"
     end
+  end
+
+  def requested_mentor?(id)
+    a = Mentorship.where(mentor_id: id, user_id: self.id, accepted: false)
   end
 end

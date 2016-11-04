@@ -13,4 +13,6 @@
 class Mentorship < ApplicationRecord
   belongs_to :user
   belongs_to :mentor, :class_name => 'User'
+  validates :mentor_id, presence: true
+  validates :user_id, presence: true
 end

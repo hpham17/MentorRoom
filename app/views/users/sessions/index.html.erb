@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table" style="margin-top:90px;">
+  <table class="table">
     <tr>
       <th>ID</th>
       <th>EMAIL</th>
@@ -15,17 +15,17 @@
 
 
         <% if current_user.mentors.include? u %>
-        <td><%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %></td>
+          <td><%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %></td>
+        <% elsif !current_user.requested_mentor?(u).empty? %>
+          <td> Request Sent </td>
         <% elsif u.check_limit != "block" %>
-        <td><%= link_to "Request Mentor", mentorships_path(:mentor_id => u.id), :method => :post %></td>
+          <td><%= link_to "Request Mentor", mentorships_path(:mentor_id => u.id), :method => :post %></td>
         <% else %>
-        <td>  Mentee Limit Reached! Try again next week.</td>
-
+          <td>  Mentee Limit Reached! Try again next week.</td>
         <% end %>
 
     </tr>
     <% end %>
   </table>
-  <%= instant_hangout hangout_type: 'onair' %>
   <%= instant_hangout widget_size: 175  %>
 </div>

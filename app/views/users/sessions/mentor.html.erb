@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Hello, Mentor!</h1>
+  <table class="table">
+
+
+    <% @mentees.each do |m| %>
+    <tr>
+      <td><%= m[0].name %></td>
+      <td><%= m[0].email %></td>
+      <td><%= m[0].role %> <%= link_to "Accept Mentee", mentorship_path(id: m[1]), method: :patch %></td>
+
+    </tr>
+    <% end %>
+  </table>

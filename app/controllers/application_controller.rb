@@ -3,8 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :new_messages?
-  def after_sign_in_path_for(resource)
-    users_path
+
+  def after_sign_in_path_for(user)
+    if user.is? :Mentee
+      users_path
+    elsif user.is? :Mentor
+      mentor_path
+    else
+      admin_path
+    end
   end
 
   def new_messages?
