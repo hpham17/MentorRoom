@@ -1,13 +1,17 @@
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
-  <li><%= link_to "Mentors", users_path, method: :get %></li>
-    <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
-      <% if new_messages? %>
-        <span class="button_badge"><%= new_messages? %></span>
-      <% end %>
-    </li>
-    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-    <li><%= link_to("Welcome, #{current_user.name}", edit_user_registration_path) %></li>
+    <% if current_user.is? :Mentee %>
+      <li><%= link_to "Mentors", users_path, method: :get %></li>
+    <% elsif current_user.is? :Mentor %>
+      <li><%= link_to "Mentees", users_path, method: :get %></li>
+    <% end %>
+      <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
+        <% if new_messages? %>
+          <span class="button_badge"><%= new_messages? %></span>
+        <% end %>
+      </li>
+      <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+      <li><%= link_to("Welcome, #{current_user.name}", edit_user_registration_path) %></li>
   <% else %>
     <li><a class="page-scroll" href="#download">Download</a></li>
     <li><a class="page-scroll" href="#features">Features</a></li>
