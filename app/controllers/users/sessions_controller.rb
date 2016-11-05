@@ -3,6 +3,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def index
     @users = User.all.order(:id).where(:role => "Mentor")
+    @mentorship = Mentorship.new
   end
   def admin
     @users = User.all.order(:id)

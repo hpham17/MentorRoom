@@ -1,3 +1,4 @@
+
 <div class="container">
   <table class="table">
     <tr>
@@ -19,13 +20,55 @@
         <% elsif !current_user.requested_mentor?(u).empty? %>
           <td> Request Sent </td>
         <% elsif u.check_limit != "block" %>
-          <td><%= link_to "Request Mentor", mentorships_path(:mentor_id => u.id), :method => :post %></td>
+          <td><a class="item2" href="<%= u.id %>">Request Mentor</a></td>
         <% else %>
           <td>  Mentee Limit Reached! Try again next week.</td>
         <% end %>
 
     </tr>
     <% end %>
+
   </table>
   <%= instant_hangout widget_size: 175  %>
+  <!-- MODAL ABOUTME -->
+  <div class="container">
+  <div class="modal fade mymodal" id="modal-2" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"> <i class='fa fa-times'></i> </button>
+
+
+          <h4 class="modal-title" id="myModalLabel">Request a Mentor</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for @mentorship do |m| %>
+            Include a personal note:<br>
+            <div style="width: 100%">
+              <%= hidden_field_tag(:user_id, current_user.id) %>
+              <%= hidden_field_tag(:mentor_id) %>
+              <%= text_area_tag(:body, "Hi, I would like to be your mentee.", size: "24x6") %><br>
+            <%= m.submit "Request Mentor" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="minmaxCon"></div>
+  <!-- END MODEL ABOUTME -->
 </div>
+
+
+
+<script>
+id = 0;
+$(document).ready(function(){
+  $('.item2').click(function(e){
+    elem = $( this );
+    e.preventDefault();
+    id = elem.attr("href")
+    $('#mentor_id').val(id)
+    $('#modal-2').modal({backdrop: false, keyboard: false});
+  });
+});
+</script>
