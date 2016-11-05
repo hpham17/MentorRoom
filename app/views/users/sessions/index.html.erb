@@ -1,34 +1,53 @@
 
+<style>
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+  margin: 22px;
+  float: left;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: #46B6AC;
+}
+a {
+  text-decoration: none !important;
+}
+</style>
 <div class="container">
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>EMAIL</th>
-      <th>Name</th>
-    </tr>
+
+
+
 
     <% @users.each do |u| %>
-    <tr>
-      <td><%= u.id %></td>
-      <td><%= u.email %></td>
-      <td><%= u.name %> <% if u.current_sign_in_at != nil %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
-        <% end %>
 
 
-        <% if current_user.mentors.include? u %>
-          <td><%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %></td>
-        <% elsif !current_user.requested_mentor?(u).empty? %>
-          <td> Request Sent </td>
-        <% elsif u.check_limit != "block" %>
-          <td><a class="item2" href="<%= u.id %>">Request Mentor</a></td>
-        <% else %>
-          <td>  Mentee Limit Reached! Try again next week.</td>
-        <% end %>
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Mentor</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <%= u.name %> <% if u.current_sign_in_at != nil %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
+      <% end %>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <div class="mdl-button mdl-button--colored">
+      <% if current_user.mentors.include? u %>
+        <%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %>
+      <% elsif !current_user.requested_mentor?(u).empty? %>
+        Request Sent
+      <% elsif u.check_limit != "block" %>
+        <a class="item2" href="<%= u.id %>">Request Mentor</a>
+      <% else %>
+        Mentee Limit Reached! Try again next week.
+      <% end %>
+    </div>
+  </div>
+</div>
 
-    </tr>
+
     <% end %>
 
-  </table>
   <%= instant_hangout widget_size: 175  %>
   <!-- MODAL ABOUTME -->
   <div class="container">
