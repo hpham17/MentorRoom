@@ -774,3 +774,22 @@ body {
 .device-mockup[data-device="samsung_tv"][data-orientation="landscape"] > .device > .screen {
     top: 2.148803%; bottom: 12.817127%; left: 1.261956%; right: 1.361956%;
 }
+
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+  margin: 22px;
+  float: left;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: #46B6AC;
+}
+.hubert {
+	height: 90%;
+    width: 70%;
+    border-radius: 50%;
+}
+a {
+  text-decoration: none !important;
+}
