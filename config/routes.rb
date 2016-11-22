@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     post '/help' => 'users/sessions#help'
     delete '/skill' => 'users/sessions#destroy_skill'
   end
-  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks' }
   root "home#index"
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   get '/direct_messages' => 'direct_messages#index'
   post '/direct_messages/:id' => 'direct_messages#create'
   resources :mentorships, only: [:create, :update]

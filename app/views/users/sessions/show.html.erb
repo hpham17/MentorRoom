@@ -9,15 +9,18 @@
     <%= @user.profile.role %><br>
     <%= @user.profile.location %><br>
     <%= @user.profile.school %><br>
+    <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
   <% end %>
-  <% if current_user.mentors.include? @user %>
-    <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
-  <% elsif !current_user.requested_mentor?(@user).empty? %>
-    Request Sent
-  <% elsif @user.check_limit != "block" %>
-    <a class="item2" href="<%= @user.id %>">Request Mentor</a>
-  <% else %>
-    Mentee Limit Reached! Try again next week.
+  <% if current_user.is? :Mentee && @user != current_user %>
+    <% if current_user.mentors.include? @user %>
+      <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
+    <% elsif !current_user.requested_mentor?(@user).empty? %>
+      Request Sent
+    <% elsif @user.check_limit != "block" %>
+      <a class="item2" href="<%= @user.id %>">Request Mentor</a>
+    <% else %>
+      Mentee Limit Reached! Try again next week.
+    <% end %>
   <% end %>
 </div>
 </div>

@@ -4,7 +4,6 @@
       <li><%= link_to "Mentors", users_path, method: :get %></li>
     <% elsif current_user.is? :Mentor %>
       <li><%= link_to "Mentees", users_path, method: :get %></li>
-      <li><%= link_to "Profile", user_path(current_user) %></li>
     <% end %>
       <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
         <% if new_messages? %>
@@ -13,6 +12,7 @@
       </li>
       <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       <li><%= link_to("Welcome, #{current_user.name}", edit_user_registration_path) %></li>
+      <li><% if current_user.picture %><li><%= link_to image_tag(current_user.picture, class:'circle'), user_path(current_user) %></li><% end %>
   <% else %>
     <li><a class="page-scroll" href="#download">Download</a></li>
     <li><a class="page-scroll" href="#features">Features</a></li>
