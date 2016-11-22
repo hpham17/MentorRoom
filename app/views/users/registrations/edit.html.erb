@@ -38,6 +38,33 @@
           <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
           <%= f.password_field :current_password, autocomplete: "off" %>
         </div>
+        <br>
+    <% if (current_user.is? :Mentor) || (current_user.is? :Admin) %>
+        <%= f.label :skill_list %>
+        <%= f.text_field :skill_list, placeholder: 'Software Engineering, ...' %>
+        <br>
+        <%= f.label :help_list %>
+        <%= f.text_field :help_list, placeholder: 'Resume Building, Job Hunting..' %>
+
+        <div class="field">
+          <%= f.fields_for :profile do |p| %>
+            <%= p.label :role %>
+            <%= p.text_field :role %>
+            <br>
+            <%= p.label :bio %>
+            <%= p.text_field :bio %>
+            <br>
+            <%= p.label :location %>
+            <%= p.text_field :location %>
+            <br>
+            <%= p.label :linkedin %>
+            <%= p.text_field :linkedin %>
+            <br>
+
+
+          <% end %>
+        </div>
+    <% end %>
 
         <div class="actions">
           <%= f.submit "Update" %>

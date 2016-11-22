@@ -1,7 +1,9 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+html {
+  font-size: 14px !important;
+}
 
 .auth-form {
   margin: 5%;
@@ -27,4 +29,33 @@
 
 #log-in-title {
   text-align: center;
+}
+
+.profile {
+  width: 100%;
+  position: relative;
+  height: 300px;
+  color: #fff;
+  overflow: hidden;
+  background: #3f51b5;
+}
+.profile-pic {
+  height: 100%;
+  float: left;
+  width: 300px;
+  overflow: hidden;
+}
+.profile-image {
+  height: 79%;
+  width: 81%;
+  margin: 30px;
+  border-radius: 50%;
+}
+.profile-details {
+  width: 250px;
+  float: left;
+  overflow: auto;
+  margin-top: 30px;
+  height: 100%;
+  font-size: 20px;
 }

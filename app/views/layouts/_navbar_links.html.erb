@@ -4,6 +4,7 @@
       <li><%= link_to "Mentors", users_path, method: :get %></li>
     <% elsif current_user.is? :Mentor %>
       <li><%= link_to "Mentees", users_path, method: :get %></li>
+      <li><%= link_to "Profile", user_path(current_user) %></li>
     <% end %>
       <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
         <% if new_messages? %>

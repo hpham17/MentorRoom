@@ -4,15 +4,14 @@
     <title>MentorRoom</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" media="screen,projection">
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script> -->
     <%= favicon_link_tag 'favicon.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
-
   <body>
     <%= render partial: 'layouts/flash' %>
   <%= render partial: 'layouts/navbar' %>

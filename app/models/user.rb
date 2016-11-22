@@ -32,12 +32,15 @@ class User < ApplicationRecord
   ROLES = %w[Admin Mentor Mentee].freeze
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_one :profile
   has_many :messages
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
   has_many :mentors, through: :mentorships
   has_many :inverse_mentorships, -> { where accepted: true }, :class_name => "Mentorship", :foreign_key => "mentor_id"
   has_many :mentees, :through => :inverse_mentorships, :source => :user
+  acts_as_taggable_on :skills, :help
+  accepts_nested_attributes_for :profile
 
   def is?(role)
     self.role == role.to_s
@@ -47,6 +50,16 @@ class User < ApplicationRecord
     if self.mentees.count == limit
       return "block"
     end
+  end
+
+  def add_skill(skill)
+    self.skill_list.add(skill)
+    self.save
+  end
+
+  def add_help(help)
+    self.help_list.add(help)
+    self.save
   end
 
   def requested_mentor?(id)

@@ -1,0 +1,83 @@
+<style>
+  .breadcrumb {
+    background-color: transparent;
+  }
+  .breadcrumb:last-child {
+      color: rgba(255,255,255,0.7);
+    }
+  .fieldset:not(:first-of-type) {
+	display: none;
+}
+.caret {
+  border-color: transparent !important;
+}
+.active {
+  color: #fff;
+}
+
+</style>
+
+<div class="container">
+  <h3>Before we get started:</h3>
+
+  <nav>
+     <div class="nav-wrapper">
+       <div class="col s12" id="progressbar">
+         <a href="#!" class="breadcrumb active">First</a>
+        <a href="#!" class="breadcrumb">Second</a>
+        <a> </a>
+       </div>
+     </div>
+   </nav>
+   <div class="row">
+     <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Let's Build Your Profile</span>
+              <%= form_for @user do |u| %>
+                <%= fields_for @profile do |p| %>
+                <div class="fieldset">
+                  <div class="input-field">
+                    <%= p.text_field :role %>
+                    <%= p.label :role, "Job Title" %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :bio %>
+                    <%= p.label :bio %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :location %>
+                    <%= p.label :location %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :school %>
+                    <%= p.label :school %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :linkedin %>
+                    <%= p.label :linkedin %>
+                  </div>
+                  <input type="button" name="next" class="next" value="Next" />
+                </div>
+
+
+
+                <div class="fieldset">
+
+                 <input type="button" class="prev" value="Prev" />
+                 <% end %>
+                <%= u.submit %>
+                </div>
+
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+    </div>
+ </div>
+
+
+<script>
+$('select').material_select();
+</script>

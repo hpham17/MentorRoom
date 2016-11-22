@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   devise_scope :user do
     get '/users' => 'users/sessions#index', as: 'users'
+    get '/user/:id' => 'users/sessions#show', as: 'user'
     get '/admin' => 'users/sessions#admin', as: 'admin'
     get '/mentor' => 'users/sessions#mentor', as: 'mentor'
+    get '/setup' => 'users/registrations#setup'
+    patch '/update' => 'users/registrations#update'
+    post '/skill' => 'users/sessions#skill'
+    post '/help' => 'users/sessions#help'
+    delete '/skill' => 'users/sessions#destroy_skill'
   end
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   root "home#index"

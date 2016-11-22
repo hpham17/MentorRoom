@@ -1,16 +1,22 @@
 
 <div class="container">
-
-
-
+  <input type="date" class="datepicker">
+  <h2>Engineers:</h2>
+<% @engineers.each do |e| %>
+    <p><%= e.email %></p>
+<% end %>
+<h2>Business:</h2>
+<% @business.each do |e| %>
+  <p><%= e.email %></p>
+<% end %>
 
     <% @users.each do |u| %>
 
 
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
-    <%= image_tag('hubert.png', :class => 'hubert') %>
-    <h2 class="mdl-card__title-text"><%= u.name %> <% if u.current_sign_in_at != nil %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
+    <%= image_tag('hubert.png', :class => 'profile-img') %>
+    <h2 class="mdl-card__title-text"><%= link_to "#{u.name}", user_path(u.id) %> <% if u.current_sign_in_at != nil %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
       <% end %></h2>
   </div>
   <div class="mdl-card__supporting-text">

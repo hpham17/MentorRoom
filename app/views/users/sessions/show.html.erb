@@ -1,0 +1,50 @@
+<div class="profile">
+  <div class="profile-pic">
+    <%= image_tag("hubert.png", :class => "profile-image") %>
+  </div>
+
+<div class="profile-details">
+  <%= @user.name %><br>
+  <% if @user.profile %>
+    <%= @user.profile.role %><br>
+    <%= @user.profile.location %><br>
+    <%= @user.profile.school %><br>
+  <% end %>
+  <% if current_user.mentors.include? @user %>
+    <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
+  <% elsif !current_user.requested_mentor?(@user).empty? %>
+    Request Sent
+  <% elsif @user.check_limit != "block" %>
+    <a class="item2" href="<%= @user.id %>">Request Mentor</a>
+  <% else %>
+    Mentee Limit Reached! Try again next week.
+  <% end %>
+</div>
+</div>
+<% if @user.profile %>
+  <%= @user.profile.bio %>
+<% end %>
+  <h3>Skills:</h3>
+  <% @user.skill_list.each do |s| %>
+  <div class="chip">
+    <%= s %>
+  </div>
+  <% end %>
+  <% if @user == current_user %>
+   <div class="chips chips-initial chips-placeholder skill_list"></div>
+  <% end %>
+
+
+  <h3>How I Can Help:</h3>
+  <% @user.help_list.each do |s| %>
+
+  <div class="chip">
+    <%= s %>
+  </div>
+  <% end %>
+  <% if @user == current_user %>
+   <div class="chips chips-initial chips-placeholder help_list"></div>
+  <% end %>
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
