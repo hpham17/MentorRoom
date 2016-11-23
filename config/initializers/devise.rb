@@ -17,7 +17,6 @@ Devise.setup do |config|
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
   config.omniauth :facebook, "1173517652724821", "ac687be23316dd27b05626396b37ce88", :client_options => { :ssl => { :verify => !Rails.env.development? } }
-  config.omniauth :twitter, "KEY", "SECRET"
   config.omniauth :linkedin, "86ke08mci0rb5d", "JBjdRPvmQOG06lir"
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

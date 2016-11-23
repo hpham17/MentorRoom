@@ -120,4 +120,7 @@ class User < ApplicationRecord
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
+  def role_picked?
+    self.role
+  end
 end
