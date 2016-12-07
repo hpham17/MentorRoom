@@ -16,10 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def new_messages?
-    count = 0
-    current_user.chatrooms.uniq.each do |c|
-      count += c.count_new_messages(current_user.id)
-    end
+    count = current_user.notification ? current_user.notification.count : 0
     count > 0 ? count : false
   end
 
@@ -29,7 +26,7 @@ class ApplicationController < ActionController::Base
 
     # Redirect to the 'finish_signup' page if the user
     # email hasn't been verified yet
-    if current_user && (!current_user.role? || !current_user.role_picked?)
+    if current_user && (!current_user.email_verified? || current_user.role.nil?)
       redirect_to finish_signup_path(current_user)
     end
   end

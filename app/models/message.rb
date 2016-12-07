@@ -11,6 +11,7 @@
 #
 
 class Message < ApplicationRecord
-  belongs_to :chatroom
+  belongs_to :chatroom, touch: true
   belongs_to :user
+  belongs_to :notification
 end

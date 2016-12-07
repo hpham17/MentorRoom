@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require materialize
 //= require jquery_ujs
+//= require jquery-ui
+//= require materialize
 //= require google-instant-hangouts
 //= require bootstrap-sprockets
 //= require_tree ./channels

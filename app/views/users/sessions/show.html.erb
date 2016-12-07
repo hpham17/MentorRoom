@@ -1,6 +1,6 @@
 <div class="profile">
   <div class="profile-pic">
-    <%= image_tag("hubert.png", :class => "profile-image") %>
+    <%= image_tag(@user.picture, :class => "profile-image") %>
   </div>
 
 <div class="profile-details">
@@ -49,5 +49,13 @@
    <div class="chips chips-initial chips-placeholder help_list"></div>
   <% end %>
 
+<div class="row">
+  <div class="col s12 m7">
+    <div id="calendar"></div>
+  </div>
+  <div class="col s12 m3">
+    <h3>When are you available?</h3>
+  </div>
+</div>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

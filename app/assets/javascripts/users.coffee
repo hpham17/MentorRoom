@@ -24,6 +24,24 @@ $ ->
     selectMonths: true,
     selectYears: 15
   });
+  $.get '/events', {}, (data) ->
+    $('#calendar').fullCalendar
+      header:
+        left: 'prev,next today'
+        center: 'title'
+        right: 'month,agendaWeek,agendaDay,listWeek'
+      navLinks: true
+      editable: true
+      eventLimit: true
+      events: data
+      eventClick: (calEvent) ->
+        $toastContent = $("<span>#{calEvent.title}<br>#{calEvent.start.toString()}</span>");
+        Materialize.toast($toastContent, 5000, 'rounded');
+        return
+
+
+
+
 
   $('a.page-scroll').bind 'click', (event) ->
     $anchor = $(this)

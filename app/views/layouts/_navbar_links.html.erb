@@ -12,7 +12,38 @@
       </li>
       <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       <li><%= link_to("Welcome, #{current_user.name}", edit_user_registration_path) %></li>
-      <li><% if current_user.picture %><li><%= link_to image_tag(current_user.picture, class:'circle'), user_path(current_user) %></li><% end %>
+      <li class="dropdown">
+            <a data-toggle="dropdown" href="" aria-expanded="false">
+              <i id="notify-icon" class="material-icons">announcement</i></a>
+                                  <div class="dropdown-menu dropdown-menu-lg pull-right">
+                                      <div class="list-group him-notification">
+                                          <div class="lg-header">
+                                              Notification
+                                              <a href="" id="clear-all">
+                                                  <i class="material-icons tooltipped" data-position="right" data-tooltip="Clear All">clear_all</i>
+                                              </a>
+                                          </div>
+                                          <div class="lg-body">
+                                          <% if current_user.notification.messages? %>
+                                            <% current_user.notification.messages.each do |message| %>
+                                            <%= content_tag :a, href: "/chatrooms/#{message.chatroom.topic}", class: "list-group-item media notifications", data: {message_id: message.id} do %>
+                                                    <div class="pull-left">
+                                                      <% if message.user.picture %>
+                                                      <%= image_tag(message.user.picture, class: '') %>
+                                                      <% end %>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="lgi-heading"><%= message.user.name %></div>
+                                                        <small class="lgi-text"><%= message.content %></small>
+                                                    </div>
+                                                <% end %>
+                                              <% end %>
+                                          <% end %>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </li>
+      <li><% if current_user.picture %><li><%= link_to image_tag(current_user.picture, class:'img-icon circle'), user_path(current_user), class: 'icon-container' %></li><% end %>
   <% else %>
     <li><a class="page-scroll" href="#download">Download</a></li>
     <li><a class="page-scroll" href="#features">Features</a></li>
@@ -21,3 +52,9 @@
     <li><%= link_to('Register', new_user_registration_path)  %></li>
   <% end %>
 </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>

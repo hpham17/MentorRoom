@@ -14,12 +14,29 @@ class Chatroom < ApplicationRecord
   has_many :users, -> { distinct }, through: :messages
   validates :topic, presence: true, uniqueness: true
   before_validation :sanitize, :slugify
+  after_touch do |chatroom|
+    create_notification chatroom
+  end
 
+  def create_notification(chatroom)
+    last_message = chatroom.messages.last
+    user = last_message.user
+    other_user = chatroom.other_user user.id
+    n = other_user.notification || Notification.create(user_id: other_user.id)
+    n.count += 1
+    n.save
+    last_message.notification_id = n.id
+    last_message.save
+  end
 
-  def other_user(id)
+  def other_user(id, name = false)
     self.users.each do |u|
       if u.id != id
-        return User.find(u.id).name
+        if name
+          return User.find(u.id).name
+        else
+          return User.find(u.id)
+        end
       end
     end
   end

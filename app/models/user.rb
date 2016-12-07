@@ -1,31 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer          not null, primary key
-#  username               :string
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  name                   :string
-#  role                   :string           default("Mentee")
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  sign_in_count          :integer          default(0), not null
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :inet
-#  last_sign_in_ip        :inet
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
-#  remember_created_at    :datetime
-#  block                  :boolean
-#  limit                  :integer
-#
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -36,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :linkedin]
   has_one :profile
   has_many :messages
+  has_one :notification
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
   has_many :mentors, through: :mentorships
@@ -44,6 +17,7 @@ class User < ApplicationRecord
   acts_as_taggable_on :skills, :help
   accepts_nested_attributes_for :profile
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  after_save { Notification.create! user_id: self.id }
 
   def is?(role)
     self.role == role.to_s
@@ -96,16 +70,22 @@ class User < ApplicationRecord
       if user.nil?
         user = User.new(
           name: auth.info.name,
-          picture: auth.info.image ? auth.info.image : "",
+          picture: auth.extra.raw_info.to_json,
           #username: auth.info.nickname || auth.uid,
           email: auth.info.email ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        if auth.info.urls
-          user.build_profile(linkedin: auth.info.urls.public_profile, location: auth.info.location)
+        if auth.provider == "linkedin"
+          user.build_profile(linkedin: auth.info.urls.public_profile, location: auth.info.location, role: auth.info.description)
         end
         #user.skip_confirmation!
         user.save!
+      end
+    end
+
+    def self.from_omniauth(auth)
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.picture = auth.info.image # assuming the user model has an image
       end
     end
 
@@ -119,8 +99,5 @@ class User < ApplicationRecord
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
-  end
-  def role_picked?
-    self.role
   end
 end

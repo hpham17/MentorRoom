@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123005754) do
+ActiveRecord::Schema.define(version: 20161206212505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20161123005754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "identities", force: :cascade do |t|
@@ -46,12 +54,21 @@ ActiveRecord::Schema.define(version: 20161123005754) do
     t.string   "content"
     t.integer  "user_id"
     t.integer  "chatroom_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "notification_id"
   end
 
   add_index "messages", ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "seen",       default: false
+    t.integer  "count",      default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -93,15 +110,15 @@ ActiveRecord::Schema.define(version: 20161123005754) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "email",                  default: "",          null: false
+    t.string   "encrypted_password",     default: "",          null: false
     t.string   "name"
     t.string   "role"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,           null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -112,7 +129,7 @@ ActiveRecord::Schema.define(version: 20161123005754) do
     t.string   "unconfirmed_email"
     t.datetime "remember_created_at"
     t.integer  "limit"
-    t.string   "picture"
+    t.string   "picture",                default: "blank.png"
   end
 
   add_foreign_key "identities", "users"

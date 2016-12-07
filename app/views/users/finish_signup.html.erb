@@ -1,5 +1,7 @@
+
+
 <div id="add-email" class="container">
-  <h1>Add Email</h1>
+  <h1>Account Setup</h1>
   <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
     <% if @show_errors && current_user.errors.any? %>
       <div id="error_explanation">
@@ -9,21 +11,42 @@
       </div>
     <% end %>
     <div class="form-group">
+      <div class="controls">
+          <%= f.label :name %>
+        <%= f.text_field :name, :autofocus => true, class: 'input-lg', placeholder: 'Name' %>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
       <%= f.label :email %>
       <div class="controls">
-        <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: email@me.com' %>
+        <%= f.text_field :email, :autofocus => true, :value => '', class:(@user.errors[:email].present? ? "form-control input-lg hilite" : "form-control input-lg"),  placeholder: 'Example: email@gmail.com' %>
+        <%= @user.errors[:email].first if @user.errors[:email].present? %>
         <p class="help-block">Please confirm your email address. No spam.</p>
       </div>
     </div>
-    <div class="form-group">
-      <%= f.label :role %>
-      <div class="controls">
-      <%= f.select :role, options_for_select([["Mentee", "Mentee"], ["Mentor", "Mentor"]], "Mentee") %>
-        <p class="help-block">Please confirm your email address. No spam.</p>
-      </div>
-    </div>
+
+      <br>
+
+
+
+
+          <div class="input-field s6">
+                        <%= f.select :role, options_for_select([["Mentee", "Mentee"], ["Mentor", "Mentor"]], "Mentee") %>
+            <%= f.label :role %><br>
+          </div>
+
+
     <div class="actions">
       <%= f.submit 'Continue', :class => 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
+
+<!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script>
+$(document).ready(function() {
+ $('select').material_select();
+});
+</script>

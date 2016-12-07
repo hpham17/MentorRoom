@@ -1,14 +1,27 @@
 
 <div class="container">
-  <input type="date" class="datepicker">
-  <h2>Engineers:</h2>
+
+  <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <%= form_tag users_path, :method => "get", :id => "community_search" do %>
+            <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
+          <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <!-- <h2>Engineers:</h2>
 <% @engineers.each do |e| %>
     <p><%= e.email %></p>
 <% end %>
 <h2>Business:</h2>
 <% @business.each do |e| %>
   <p><%= e.email %></p>
-<% end %>
+<% end %> -->
 
     <% @users.each do |u| %>
 
