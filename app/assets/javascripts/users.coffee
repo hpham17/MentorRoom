@@ -39,7 +39,10 @@ $ ->
         Materialize.toast($toastContent, 5000, 'rounded');
         return
 
-
+  $('.timepicker').pickatime({
+    autoclose: true,
+    twelvehour: true
+  });
 
 
 

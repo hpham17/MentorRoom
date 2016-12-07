@@ -10,6 +10,7 @@ class Users::SessionsController < Devise::SessionsController
   end
   def show
     @user = User.find(params[:id])
+    @event = Event.new
   end
   def admin
     @users = User.all.order(:id)

@@ -53,9 +53,27 @@
   <div class="col s12 m7">
     <div id="calendar"></div>
   </div>
-  <div class="col s12 m3">
-    <h3>When are you available?</h3>
-  </div>
+  <% if @user == current_user %>
+    <div class="col s12 m3">
+      <h3>When are you available?</h3>
+      <%= form_for @event do |e| %>
+      <%= e.label :title %>
+      <%= e.text_field :title, :value => 'Available' %>
+
+      <div class="input-field col s12">
+        <label for="timepicker">From</label>
+        <input class="timepicker" name="event[start]" type="time">
+      </div>
+
+      <div class="input-field col s12">
+        <label for="timepicker">To</label>
+        <input class="timepicker" class="timepicker" name="event[end]" type="time">
+      </div>
+
+      <%= e.submit %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

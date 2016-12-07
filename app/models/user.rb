@@ -70,7 +70,7 @@ class User < ApplicationRecord
       if user.nil?
         user = User.new(
           name: auth.info.name,
-          picture: auth.extra.raw_info.to_json,
+          picture: auth.info.image,
           #username: auth.info.nickname || auth.uid,
           email: auth.info.email ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]

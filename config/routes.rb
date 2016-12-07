@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks' }
   root "home#index"
   get '/calendar', to: 'home#calendar'
-  get '/events', to: 'events#index'
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   get '/direct_messages' => 'direct_messages#index'
   post '/direct_messages/:id' => 'direct_messages#create'
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
   resources :chatrooms, param: :slug
   resources :messages
   post '/notifications/clear' => 'notifications#clear'
+  resources :events
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
