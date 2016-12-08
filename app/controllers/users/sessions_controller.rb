@@ -20,9 +20,17 @@ class Users::SessionsController < Devise::SessionsController
     @mentees = extract_mentees(@requests)
   end
   def skill
-    current_user.skill_list.add(params["chip"]["tag"])
-    current_user.save
-    redirect_to user_path(current_user)
+    @skill = params["chip"]["tag"]
+    if Tag.is_skill?(@skill)
+      current_user.skill_list.add(@skill)
+      current_user.save
+      flash[:notice] = "Skill saved."
+    else
+      flash[:error] = "Not one of the presets."
+    end
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
   def help
     current_user.help_list.add(params["chip"]["tag"])

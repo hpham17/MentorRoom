@@ -14,7 +14,7 @@ class EventsController < ApplicationController
       flash[:notice] = "Event saved."
       redirect_to current_user
     else
-      flash[:danger] = "Failed to save."
+      flash[:error] = "Failed to save."
       redirect_to :back
     end
   end

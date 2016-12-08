@@ -1,4 +1,5 @@
 class MentorshipsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @mentorship = Mentorship.new mentorship_params
     @mentorship.user_id = current_user.id

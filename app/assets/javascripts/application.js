@@ -15,7 +15,11 @@
 //= require jquery-ui
 //= require materialize
 //= require google-instant-hangouts
-//= require bootstrap-sprockets
+//= require moment
+//= require bootstrap/transition
+//= require bootstrap/collapse
+//= require bootstrap/bootstrap.min
+//= require bootstrap-datetimepicker
 //= require_tree ./channels
 //= require chatrooms
 //= require_tree .

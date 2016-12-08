@@ -20,9 +20,13 @@ $ ->
     placeholder: 'Enter a tag',
     secondaryPlaceholder: '+Tag',
   });
-  $('.datepicker').pickadate({
-    selectMonths: true,
-    selectYears: 15
+  $('.skill_list input').autocomplete({
+    data: {
+      "Software Engineering": null,
+      "Data Science": null,
+      "Finance": null,
+      "BioTechnology": null
+    }
   });
   $.get '/events', {}, (data) ->
     $('#calendar').fullCalendar
@@ -43,8 +47,9 @@ $ ->
     autoclose: true,
     twelvehour: true
   });
-
-
+  $('select').material_select();
+  $ ->
+    $('.date').datetimepicker();
 
   $('a.page-scroll').bind 'click', (event) ->
     $anchor = $(this)

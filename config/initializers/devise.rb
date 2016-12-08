@@ -16,7 +16,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-  config.omniauth :facebook, "1173517652724821", "ac687be23316dd27b05626396b37ce88", :client_options => { :ssl => { :verify => !Rails.env.development? } }
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET'], :client_options => { :ssl => { :verify => !Rails.env.development? } }
   config.omniauth :linkedin, "86ke08mci0rb5d", "JBjdRPvmQOG06lir", scope: 'r_fullprofile r_emailaddress', fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url', "picture-urls::(original)"]
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

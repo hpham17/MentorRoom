@@ -33,7 +33,12 @@
       <% end %></h2>
   </div>
   <div class="mdl-card__supporting-text">
-    Works @ Google
+    Works @ Google <br>
+    <% u.skill_list.each do |s| %>
+    <div class="chip">
+      <%= s %>
+    </div>
+    <% end %>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <div class="mdl-button mdl-button--colored">

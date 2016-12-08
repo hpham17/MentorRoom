@@ -60,20 +60,29 @@
       <%= e.label :title %>
       <%= e.text_field :title, :value => 'Available' %>
 
-      <div class="input-field col s12">
-        <label for="timepicker">From</label>
-        <input class="timepicker" name="event[start]" type="time">
+      <div class='col-sm-12'>
+          <div class="form-group">
+            <div class='input-group date'>
+            <label>From</label>
+            <%= e.datetime_select :start %>
+          </div>
+          </div>
       </div>
 
-      <div class="input-field col s12">
-        <label for="timepicker">To</label>
-        <input class="timepicker" class="timepicker" name="event[end]" type="time">
+      <div class='col-sm-12'>
+          <div class="form-group">
+            <div class='input-group date'>
+            <label>To</label>
+            <%= e.datetime_select :end %>
+          </div>
+          </div>
       </div>
+
+
+
 
       <%= e.submit %>
       <% end %>
     </div>
   <% end %>
 </div>
-
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>

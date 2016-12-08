@@ -18,6 +18,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   after_save { Notification.create! user_id: self.id }
+  obfuscate_id
 
   def is?(role)
     self.role == role.to_s

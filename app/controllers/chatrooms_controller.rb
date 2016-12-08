@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @chatrooms = current_user.chatrooms.uniq.reverse
   end
