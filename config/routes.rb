@@ -6,9 +6,8 @@ Rails.application.routes.draw do
     get '/mentor' => 'users/sessions#mentor', as: 'mentor'
     get '/setup' => 'users/registrations#setup'
     patch '/update' => 'users/registrations#update'
-    post '/skill' => 'users/sessions#skill'
-    post '/help' => 'users/sessions#help'
-    delete '/skill' => 'users/sessions#destroy_skill'
+    post '/tag' => 'users/sessions#tag'
+    delete '/tag' => 'users/sessions#destroy_tag'
   end
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks' }
   root "home#index"

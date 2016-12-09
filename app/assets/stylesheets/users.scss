@@ -75,3 +75,14 @@ html {
 .icon-container {
   padding: 0 !important;
 }
+
+#pick-skill {
+  width: 500px !important;
+}
+
+.checkbox-skill, .checkbox-help {
+  width: 150px;
+  min-height: 67px;
+  float: left;
+  padding: 9px;
+}

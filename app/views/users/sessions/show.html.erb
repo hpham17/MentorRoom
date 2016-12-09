@@ -27,24 +27,90 @@
 <% if @user.profile %>
   <%= @user.profile.bio %>
 <% end %>
-  <h3>Skills:</h3>
-  <% @user.skill_list.each do |s| %>
-  <div class="chip">
-    <%= s %>
+
+
+<div class="row">
+  <div class="col s12 m6">
+    <h3>Skills:</h3>
+    <div class="skill-list">
+      <% @user.skill_list.each do |s| %>
+      <div class="chip">
+        <%= s %>
+        <i class='close material-icons'>close</i>
+      </div>
+      <% end %>
+    </div>
+
+    <% if @user == current_user %>
+    <a class="dropdown-button btn" data-activates="pick-skill">Add skill</a>
+    <div id="pick-skill" class="dropdown-content">
+    <form action="#">
+      <p class="checkbox-skill">
+        <input type="checkbox" id="software" value="Software Engineering" />
+        <label for="software">Software Engineering</label>
+      </p>
+      <p class="checkbox-skill">
+        <input type="checkbox" id="finance" value="Finance" />
+        <label for="finance">Finance</label>
+      </p>
+      <p class="checkbox-skill">
+        <input type="checkbox" id="accounting" value="Accounting" />
+        <label for="accounting">Accounting</label>
+      </p>
+      <p class="checkbox-skill">
+        <input type="checkbox" id="biotech" value="BioTechnology" />
+        <label for="biotech">BioTechnology</label>
+      </p>
+      <p class="checkbox-skill">
+        <input type="checkbox" id="invest" value="Investment Banking"/>
+        <label for="invest">Investment Banking</label>
+      </p>
+      <p class="checkbox-skill">
+        <input type="checkbox" id="politics" value="Politics" />
+        <label for="politics">Politics</label>
+      </p>
+    </form>
   </div>
-  <% end %>
-  <% if @user == current_user %>
-   <div class="chips chips-initial chips-placeholder skill_list"></div>
-  <% end %>
-
-
-  <h3>How I Can Help:</h3>
-  <% @user.help_list.each do |s| %>
-
-  <div class="chip">
-    <%= s %>
   </div>
-  <% end %>
+
+  <div class="col s12 m6">
+    <h3>How I Can Help:</h3>
+    <div class="help-list">
+      <% @user.help_list.each do |s| %>
+      <div class="chip">
+        <%= s %>
+        <i class='close material-icons'>close</i>
+      </div>
+      <% end %>
+    </div>
+    <% if @user == current_user %>
+    <a class="dropdown-button btn" data-activates="pick-help">Add help</a>
+    <div id="pick-help" class="dropdown-content">
+      <form action="#">
+        <p class="checkbox-help">
+          <input type="checkbox" id="resume", value="Resume building" />
+          <label for="resume">Resume building</label>
+        </p>
+        <p class="checkbox-help">
+          <input type="checkbox" id="career" value="Career Planning" />
+          <label for="career">Career Planning</label>
+        </p>
+      </form>
+    </div>
+      <% end %>
+  </div>
+</div>
+    <!-- <div id="skill_list">
+
+        </p>
+
+      <% end %>
+    </div> -->
+   <!-- <div class="chips chips-initial chips-placeholder skill_list"></div> -->
+
+
+
+
   <% if @user == current_user %>
    <div class="chips chips-initial chips-placeholder help_list"></div>
   <% end %>

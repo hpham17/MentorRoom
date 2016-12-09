@@ -10,24 +10,10 @@ $ ->
     $('input#user_role').val('Mentee')
 
   $('.chips').material_chip();
-  $('.skill_list').on('chip.add', (e, chip) ->
-    $.post '/skill', {chip}
-  );
-  $('.help_list').on('chip.add', (e, chip) ->
-    $.post '/help', {chip}
-  );
-  $('.chips-placeholder').material_chip({
-    placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag',
-  });
-  $('.skill_list input').autocomplete({
-    data: {
-      "Software Engineering": null,
-      "Data Science": null,
-      "Finance": null,
-      "BioTechnology": null
-    }
-  });
+
+
+
+
   $.get '/events', {}, (data) ->
     $('#calendar').fullCalendar
       header:
@@ -50,6 +36,40 @@ $ ->
   $('select').material_select();
   $ ->
     $('.date').datetimepicker();
+
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false,
+      gutter: 0,
+      belowOrigin: false,
+      alignment: 'left'
+    }
+  );
+
+  $(".checkbox-skill input[type=checkbox]").click ->
+    $.post '/tag', {skill: $(this).val()}, (data) ->
+      $(data).appendTo($('.skill-list'))
+
+  $('.skill-list .chip .close').click ->
+    data= $($(this).closest('.chip').contents()[0]).text();
+    $.ajax
+      url: '/tag'
+      type: 'DELETE',
+      data:
+        skill: data
+
+  $(".checkbox-help input[type=checkbox]").click ->
+    $.post '/tag', {help: $(this).val()}, (data) ->
+      $(data).appendTo($('.help-list'))
+
+  $('.help-list .chip .close').click ->
+    data= $($(this).closest('.chip').contents()[0]).text();
+    $.ajax
+      url: '/tag'
+      type: 'DELETE',
+      data:
+        help: data
 
   $('a.page-scroll').bind 'click', (event) ->
     $anchor = $(this)

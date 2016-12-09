@@ -19,28 +19,42 @@ class Users::SessionsController < Devise::SessionsController
     @requests = Mentorship.where(mentor_id: current_user.id, accepted: false)
     @mentees = extract_mentees(@requests)
   end
-  def skill
-    @skill = params["chip"]["tag"]
-    if Tag.is_skill?(@skill)
-      current_user.skill_list.add(@skill)
-      current_user.save
-      flash[:notice] = "Skill saved."
+  def tag
+    if params["skill"]
+      @skill = params["skill"]
+      if Tag.is_skill?(@skill) && !current_user.skill_list.include?(@skill)
+        current_user.skill_list.add(@skill)
+        current_user.save
+        flash[:notice] = "Skill saved."
+        render html: "<div class='chip'>
+          #{@skill}
+          <i class='close material-icons'>close</i>
+        </div>".html_safe
+      end
     else
-      flash[:error] = "Not one of the presets."
-    end
-    respond_to do |format|
-      format.js {render inline: "location.reload();" }
+      @help = params["help"]
+      if Tag.is_help?(@help) && !current_user.help_list.include?(@help)
+        current_user.help_list.add(@help)
+        current_user.save
+        flash[:notice] = "Help saved."
+        render html: "<div class='chip'>
+          #{@help}
+          <i class='close material-icons'>close</i>
+        </div>".html_safe
+      end
     end
   end
-  def help
-    current_user.help_list.add(params["chip"]["tag"])
+
+  def destroy_tag
+    if params["skill"]
+      @skill = params["skill"]
+      current_user.skill_list.remove(@skill.strip)
+    else
+      @help = params["help"]
+      current_user.help_list.remove(@help.strip)
+    end
     current_user.save
-    redirect_to user_path(current_user)
-  end
-  def destroy_skill
-    current_user.skill_list.remove(params["chip"]["tag"])
-    current_user.save
-    redirect_to user_path(current_user)
+    head :ok
   end
 
   private
