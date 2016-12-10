@@ -20,6 +20,7 @@
 //= require bootstrap/collapse
 //= require bootstrap/bootstrap.min
 //= require bootstrap-datetimepicker
-//= require_tree ./channels
+
 //= require chatrooms
 //= require_tree .
+//= require_tree ./channels

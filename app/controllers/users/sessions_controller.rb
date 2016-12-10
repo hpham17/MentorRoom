@@ -19,6 +19,11 @@ class Users::SessionsController < Devise::SessionsController
     @requests = Mentorship.where(mentor_id: current_user.id, accepted: false)
     @mentees = extract_mentees(@requests)
   end
+  def status
+    current_user.online = params[:online]
+    current_user.save
+    head :ok
+  end
   def tag
     if params["skill"]
       @skill = params["skill"]

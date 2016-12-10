@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     patch '/update' => 'users/registrations#update'
     post '/tag' => 'users/sessions#tag'
     delete '/tag' => 'users/sessions#destroy_tag'
+    post '/status' => 'users/sessions#status'
   end
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks' }
   root "home#index"

@@ -11,9 +11,6 @@ $ ->
 
   $('.chips').material_chip();
 
-
-
-
   $.get '/events', {}, (data) ->
     $('#calendar').fullCalendar
       header:
@@ -50,6 +47,7 @@ $ ->
   $(".checkbox-skill input[type=checkbox]").click ->
     $.post '/tag', {skill: $(this).val()}, (data) ->
       $(data).appendTo($('.skill-list'))
+      $(this).prop('checked', false);
 
   $('.skill-list .chip .close').click ->
     data= $($(this).closest('.chip').contents()[0]).text();
@@ -62,6 +60,7 @@ $ ->
   $(".checkbox-help input[type=checkbox]").click ->
     $.post '/tag', {help: $(this).val()}, (data) ->
       $(data).appendTo($('.help-list'))
+      $(this).prop('checked', false);
 
   $('.help-list .chip .close').click ->
     data= $($(this).closest('.chip').contents()[0]).text();
