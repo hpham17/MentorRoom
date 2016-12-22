@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :profile
   has_many :messages
   has_one :notification
+  has_many :flash_sessions
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
   has_many :mentors, through: :mentorships

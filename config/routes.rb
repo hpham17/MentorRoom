@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :messages
   post '/notifications/clear' => 'notifications#clear'
   resources :events
+  resources :flash_sessions
+  
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'

@@ -24,20 +24,10 @@
                                               </a>
                                           </div>
                                           <div class="lg-body">
-                                          <% if current_user.notification.messages? %>
+                                          <% if current_user.notification && current_user.notification.messages? %>
                                             <% current_user.notification.messages.each do |message| %>
-                                            <%= content_tag :a, href: "/chatrooms/#{message.chatroom.topic}", class: "list-group-item media notifications", data: {message_id: message.id} do %>
-                                                    <div class="pull-left">
-                                                      <% if message.user.picture %>
-                                                      <%= image_tag(message.user.picture, class: '') %>
-                                                      <% end %>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="lgi-heading"><%= message.user.name %></div>
-                                                        <small class="lgi-text"><%= message.content %></small>
-                                                    </div>
-                                                <% end %>
-                                              <% end %>
+                                              <%= render partial: "/layouts/message", object: message %>
+                                            <% end %>
                                           <% end %>
                                         </div>
                                       </div>
@@ -52,7 +42,6 @@
     <li><%= link_to('Register', new_user_registration_path)  %></li>
   <% end %>
 </ul>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <script>
 $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});

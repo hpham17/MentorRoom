@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-12-21 01:08:48
+  user_id: 1
+  agent_id: 1
+  description: MyString
+  length: 1
+
+two:
+  date: 2016-12-21 01:08:48
+  user_id: 1
+  agent_id: 1
+  description: MyString
+  length: 1

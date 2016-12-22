@@ -15,7 +15,9 @@ class Chatroom < ApplicationRecord
   validates :topic, presence: true, uniqueness: true
   before_validation :sanitize, :slugify
   after_touch do |chatroom|
-    create_notification chatroom
+    if messages.count >= 2
+      create_notification chatroom
+    end
   end
 
   def create_notification(chatroom)
@@ -27,6 +29,12 @@ class Chatroom < ApplicationRecord
     n.save
     last_message.notification_id = n.id
     last_message.save
+    NotificationsChannel.broadcast_to other_user,
+        user: last_message.user.name,
+        content: last_message.content,
+        picture: last_message.user.picture,
+        topic: self.topic,
+        id: last_message.id
   end
 
   def other_user(id, name = false)

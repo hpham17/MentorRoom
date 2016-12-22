@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210064039) do
+ActiveRecord::Schema.define(version: 20161221090848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20161210064039) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "flash_sessions", force: :cascade do |t|
+    t.datetime "date"
+    t.integer  "user_id"
+    t.integer  "agent_id"
+    t.string   "description"
+    t.integer  "length"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "identities", force: :cascade do |t|

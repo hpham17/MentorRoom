@@ -23,6 +23,7 @@
     <% end %>
   <% end %>
 </div>
+
 </div>
 <% if @user.profile %>
   <%= @user.profile.bio %>
@@ -151,4 +152,40 @@
       <% end %>
     </div>
   <% end %>
+</div>
+
+<div class="row">
+  <div class="col s4">
+ <h2 class="header">Schedule a session</h2>
+ <div class="card horizontal">
+   <div class="card-image">
+     <i class="material-icons">schedule</i>
+   </div>
+   <div class="card-stacked">
+     <div class="card-content">
+        <% if current_user.flash_sessions.empty? %>
+           <%= form_for @session do |s| %>
+           <div class='col-sm-12'>
+               <div class="form-group">
+                 <div class='input-group date'>
+                 <label>On</label>
+                 <%= s.datetime_select :date %>
+               </div>
+               </div>
+           </div>
+           <%= s.label :description %>
+           <%= s.text_field :description, :value => 'Describe your reason.' %>
+           <%= s.hidden_field :user_id, :value => current_user.id %>
+         </div>
+         <div class="card-action">
+           <%= s.submit 'Schedule', :class => 'btn' %>
+         </div>
+         <% end %>
+      <% else  %>
+        Your next session is
+        <%= current_user.flash_sessions.first.date %>
+      <% end %>
+   </div>
+ </div>
+</div>
 </div>

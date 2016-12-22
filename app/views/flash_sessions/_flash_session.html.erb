@@ -1,0 +1,9 @@
+<p>
+<%= flash_session.user.name %>
+<%= flash_session.date %>
+<%= flash_session.description %>
+<%= form_for flash_session, method: :put do %>
+  <%= hidden_field_tag :id, flash_session.id %>
+  <%= submit_tag 'Claim' %>
+<% end %>
+</p>

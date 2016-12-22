@@ -46,24 +46,28 @@
                     <%= p.label :bio %>
                   </div>
                   <div class="input-field">
-                    <%= p.text_field :location %>
-                    <%= p.label :location %>
+                    <%= p.text_field %>
+                    <%= p.label :linkedin %>
                   </div>
                   <div class="input-field">
                     <%= p.text_field :school %>
                     <%= p.label :school %>
                   </div>
-                  <div class="input-field">
-                    <%= p.text_field :linkedin %>
-                    <%= p.label :linkedin %>
-                  </div>
+
                   <input type="button" name="next" class="next" value="Next" />
                 </div>
 
 
 
                 <div class="fieldset">
-
+                  <div class="input-field">
+                    <%= p.text_field :location %>
+                    <%= p.label :location %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :linkedin %>
+                    <%= p.label :linkedin %>
+                  </div>
                  <input type="button" class="prev" value="Prev" />
                  <% end %>
                 <%= u.submit %>

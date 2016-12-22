@@ -30,9 +30,10 @@ $ ->
     autoclose: true,
     twelvehour: true
   });
-  $('select').material_select();
+
   $ ->
     $('.date').datetimepicker();
+    $('select').material_select();
 
   $('.dropdown-button').dropdown({
       inDuration: 300,

@@ -38,32 +38,56 @@
                 <%= f.fields_for :profile do |p| %>
                 <div class="fieldset">
                   <div class="input-field">
-                    <%= p.text_field :role %>
-                    <%= p.label :role, "Job Title" %>
-                  </div>
-                  <div class="input-field">
-                    <%= p.text_field :bio %>
-                    <%= p.label :bio %>
-                  </div>
-                  <div class="input-field">
                     <%= p.text_field :location %>
                     <%= p.label :location %>
                   </div>
                   <div class="input-field">
+                    <select multiple>
+                      <option value="" disabled selected>Select all that apply</option>
+                      <option value="1">High School Diploma</option>
+                      <option value="2">Community College</option>
+                      <option value="3">B.A.</option>
+                      <option value="3">B.S.</option>
+                      <option value="3">Master's</option>
+                      <option value="3">MBA</option>
+                      <option value="3">Ph.D</option>
+                    </select>
+                    <label>Degrees Completed</label>
+                  </div>
+
+                  <div class="input-field">
                     <%= p.text_field :school %>
                     <%= p.label :school %>
                   </div>
-                  <div class="input-field">
-                    <%= p.text_field :linkedin %>
-                    <%= p.label :linkedin %>
-                  </div>
+
                   <a class="waves-effect waves-teal btn-flat next">Next</a>
                 </div>
 
 
 
                 <div class="fieldset">
-
+                  <div class="input-field">
+                    <%= p.text_field :role %>
+                    <%= p.label :role, "Job Title" %>
+                  </div>
+                  <div class="input-field">
+                    <select>
+                      <option value="" disabled selected>Select</option>
+                      <option value="1">Private Industry</option>
+                      <option value="2">Government Agency/Lab</option>
+                      <option value="3">Military/Defense Contractor</option>
+                      <option value="3">R&D</option>
+                      <option value="3">Self-employed</option>
+                      <option value="3">Non-profit</option>
+                      <option value="3">Academic Institution</option>
+                      <option value="3">Other</option>
+                    </select>
+                    <label>Sector in which you work (or have most experience)</label>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :linkedin %>
+                    <%= p.label :linkedin %>
+                  </div>
 
                   <!-- <div class="input-field">
                       <select multiple>
