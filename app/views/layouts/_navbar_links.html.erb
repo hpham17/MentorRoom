@@ -1,5 +1,6 @@
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
+    <!-- <li><%= link_to "FlashSession", flash_sessions_path, method: :get %></li> -->
     <% if current_user.is? :Mentee %>
       <li><%= link_to "Mentors", users_path, method: :get %></li>
     <% elsif current_user.is? :Mentor %>
@@ -11,10 +12,10 @@
         <% end %>
       </li>
       <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-      <li><%= link_to("Welcome, #{current_user.name}", edit_user_registration_path) %></li>
+      <li><%= link_to("Settings", edit_user_registration_path) %></li>
       <li class="dropdown">
             <a data-toggle="dropdown" href="" aria-expanded="false">
-              <i id="notify-icon" class="material-icons">announcement</i></a>
+              <i id="notify-icon" class="material-icons">notifications</i></a>
                                   <div class="dropdown-menu notify-dropdown pull-right">
                                       <div class="list-group him-notification">
                                           <div class="lg-header">

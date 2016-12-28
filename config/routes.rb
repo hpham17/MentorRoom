@@ -22,8 +22,10 @@ Rails.application.routes.draw do
   post '/notifications/clear' => 'notifications#clear'
   resources :events
   resources :flash_sessions
-  
+
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

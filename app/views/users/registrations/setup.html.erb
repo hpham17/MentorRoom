@@ -36,33 +36,44 @@
                 <%= form_for @user, url: update_path do |f| %>
 
                 <%= f.fields_for :profile do |p| %>
+
                 <div class="fieldset">
+                  <div class="input-field">
+                    <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
+                    <%= p.label :bio, 'Brief Bio' %>
+                  </div>
                   <div class="input-field">
                     <%= p.text_field :location %>
                     <%= p.label :location %>
                   </div>
-                  <div class="input-field">
-                    <select multiple>
-                      <option value="" disabled selected>Select all that apply</option>
-                      <option value="1">High School Diploma</option>
-                      <option value="2">Community College</option>
-                      <option value="3">B.A.</option>
-                      <option value="3">B.S.</option>
-                      <option value="3">Master's</option>
-                      <option value="3">MBA</option>
-                      <option value="3">Ph.D</option>
-                    </select>
-                    <label>Degrees Completed</label>
-                  </div>
+                <a class="waves-effect waves-teal btn-flat next active">Next</a>
+                </div>
 
+                <div class="fieldset">
+                  <div class="input-field">
+                    <%= p.text_field :major %>
+                    <%= p.label :major %>
+                  </div>
                   <div class="input-field">
                     <%= p.text_field :school %>
                     <%= p.label :school %>
                   </div>
+                  <div class="input-field">
+                    <%= p.select :gradyear, (Time.now.year).downto(Time.now.year - 40).to_a %>
+                    <%= p.label :gradyear, 'Graduation Year' %>
+                  </div>
+                  <div class="input-field">
+                      <%= select_tag 'user[profile_attributes][degrees]', options_for_select(["High School Diploma", "Community College", "B.A.", "B.S.", "M.A.", "M.S.", "MBA", "Ph.D"]), multiple: true, include_blank: "Select all that apply" %>
+                    <label>Degrees Completed</label>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :clubs %>
+                    <%= p.label :clubs, 'List all clubs/organizations (optional)' %>
+                  </div>
 
+                  <a class="waves-effect waves-teal btn-flat prev">Prev</a>
                   <a class="waves-effect waves-teal btn-flat next">Next</a>
                 </div>
-
 
 
                 <div class="fieldset">
@@ -71,33 +82,21 @@
                     <%= p.label :role, "Job Title" %>
                   </div>
                   <div class="input-field">
-                    <select>
-                      <option value="" disabled selected>Select</option>
-                      <option value="1">Private Industry</option>
-                      <option value="2">Government Agency/Lab</option>
-                      <option value="3">Military/Defense Contractor</option>
-                      <option value="3">R&D</option>
-                      <option value="3">Self-employed</option>
-                      <option value="3">Non-profit</option>
-                      <option value="3">Academic Institution</option>
-                      <option value="3">Other</option>
-                    </select>
+                    <%= select_tag 'user[profile_attributes][sector]', options_for_select(["Private Industry", "Government Agency", "Military/Defense Contractor", "R&D", "Self-employed", "Non-profit", "Academic Institution", "Other"]), include_blank: "Pick one" %>
                     <label>Sector in which you work (or have most experience)</label>
                   </div>
                   <div class="input-field">
                     <%= p.text_field :linkedin %>
-                    <%= p.label :linkedin %>
+                    <%= p.label :linkedin, 'LinkedIn URL' %>
                   </div>
-
-                  <!-- <div class="input-field">
-                      <select multiple>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="Software Engineering">Software Engineering</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Graphic Design">Graphic Design</option>
-                      </select>
-                      <label>Skills</label>
-                    </div> -->
+                  <div class="input-field">
+                    <%= p.text_field :twitter %>
+                    <%= p.label :twitter, 'Twitter URL (optional)' %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_field :website %>
+                    <%= p.label :website, 'Personal Website URL (optional)' %>
+                  </div>
                  <a class="waves-effect waves-teal btn-flat prev">Prev</a>
                  <% end %>
                  <button class="btn waves-effect waves-light" type="submit" name="commit" value="Update Profile">Submit<i class="material-icons right">send</i></button>
@@ -110,8 +109,3 @@
           </div>
     </div>
  </div>
-
-
-<script>
-$('select').material_select();
-</script>

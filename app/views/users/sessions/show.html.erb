@@ -30,162 +30,169 @@
 <% end %>
 
 
-<div class="row">
-  <div class="col s12 m6">
-    <h3>Skills:</h3>
-    <div class="skill-list">
-      <% @user.skill_list.each do |s| %>
-      <div class="chip">
-        <%= s %>
-        <i class='close material-icons'>close</i>
-      </div>
-      <% end %>
-    </div>
-
-    <% if @user == current_user %>
-    <a class="dropdown-button btn" data-activates="pick-skill">Add skill</a>
-    <div id="pick-skill" class="dropdown-content">
-    <form action="#">
-      <p class="checkbox-skill">
-        <input type="checkbox" id="software" value="Software Engineering" />
-        <label for="software">Software Engineering</label>
-      </p>
-      <p class="checkbox-skill">
-        <input type="checkbox" id="finance" value="Finance" />
-        <label for="finance">Finance</label>
-      </p>
-      <p class="checkbox-skill">
-        <input type="checkbox" id="accounting" value="Accounting" />
-        <label for="accounting">Accounting</label>
-      </p>
-      <p class="checkbox-skill">
-        <input type="checkbox" id="biotech" value="BioTechnology" />
-        <label for="biotech">BioTechnology</label>
-      </p>
-      <p class="checkbox-skill">
-        <input type="checkbox" id="invest" value="Investment Banking"/>
-        <label for="invest">Investment Banking</label>
-      </p>
-      <p class="checkbox-skill">
-        <input type="checkbox" id="politics" value="Politics" />
-        <label for="politics">Politics</label>
-      </p>
-    </form>
-  </div>
-  </div>
-
-  <div class="col s12 m6">
-    <h3>How I Can Help:</h3>
-    <div class="help-list">
-      <% @user.help_list.each do |s| %>
-      <div class="chip">
-        <%= s %>
-        <i class='close material-icons'>close</i>
-      </div>
-      <% end %>
-    </div>
-    <% if @user == current_user %>
-    <a class="dropdown-button btn" data-activates="pick-help">Add help</a>
-    <div id="pick-help" class="dropdown-content">
-      <form action="#">
-        <p class="checkbox-help">
-          <input type="checkbox" id="resume", value="Resume building" />
-          <label for="resume">Resume building</label>
-        </p>
-        <p class="checkbox-help">
-          <input type="checkbox" id="career" value="Career Planning" />
-          <label for="career">Career Planning</label>
-        </p>
-      </form>
-    </div>
-      <% end %>
-  </div>
-</div>
-    <!-- <div id="skill_list">
-
-        </p>
-
-      <% end %>
-    </div> -->
-   <!-- <div class="chips chips-initial chips-placeholder skill_list"></div> -->
 
 
 
 
-  <% if @user == current_user %>
-   <div class="chips chips-initial chips-placeholder help_list"></div>
-  <% end %>
-
-<div class="row">
-  <div class="col s12 m7">
-    <div id="calendar"></div>
-  </div>
-  <% if @user == current_user %>
-    <div class="col s12 m3">
-      <h3>When are you available?</h3>
-      <%= form_for @event do |e| %>
-      <%= e.label :title %>
-      <%= e.text_field :title, :value => 'Available' %>
-
-      <div class='col-sm-12'>
-          <div class="form-group">
-            <div class='input-group date'>
-            <label>From</label>
-            <%= e.datetime_select :start %>
-          </div>
-          </div>
-      </div>
-
-      <div class='col-sm-12'>
-          <div class="form-group">
-            <div class='input-group date'>
-            <label>To</label>
-            <%= e.datetime_select :end %>
-          </div>
-          </div>
-      </div>
-
-
-
-
-      <%= e.submit %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
 
 <div class="row">
-  <div class="col s4">
- <h2 class="header">Schedule a session</h2>
- <div class="card horizontal">
-   <div class="card-image">
-     <i class="material-icons">schedule</i>
-   </div>
-   <div class="card-stacked">
-     <div class="card-content">
-        <% if current_user.flash_sessions.empty? %>
-           <%= form_for @session do |s| %>
-           <div class='col-sm-12'>
-               <div class="form-group">
-                 <div class='input-group date'>
-                 <label>On</label>
-                 <%= s.datetime_select :date %>
-               </div>
-               </div>
-           </div>
-           <%= s.label :description %>
-           <%= s.text_field :description, :value => 'Describe your reason.' %>
-           <%= s.hidden_field :user_id, :value => current_user.id %>
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#skills-tab">Skills and Help</a></li>
+        <li class="tab col s3"><a class="active" href="#calendar-tab">Calendar</a></li>
+        <li class="tab col s3"><a href="#flash-tab">Schedule a Flash Session</a></li>
+      </ul>
+    </div>
+    <div id="skills-tab" class="col s12">
+      <div class="row">
+        <div class="col s12 m6">
+          <h3>Skills:</h3>
+          <div class="skill-list">
+            <% @user.skill_list.each do |s| %>
+            <div class="chip">
+              <%= s %>
+              <i class='close material-icons'>close</i>
+            </div>
+            <% end %>
+          </div>
+
+          <% if @user == current_user %>
+          <a class="dropdown-button btn" data-activates="pick-skill">Add skill</a>
+          <div id="pick-skill" class="dropdown-content">
+          <form action="#">
+            <p class="checkbox-skill">
+              <input type="checkbox" id="software" value="Software Engineering" />
+              <label for="software">Software Engineering</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="finance" value="Finance" />
+              <label for="finance">Finance</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="accounting" value="Accounting" />
+              <label for="accounting">Accounting</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="biotech" value="BioTechnology" />
+              <label for="biotech">BioTechnology</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="invest" value="Investment Banking"/>
+              <label for="invest">Investment Banking</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="politics" value="Politics" />
+              <label for="politics">Politics</label>
+            </p>
+          </form>
+          <% end %>
+        </div>
+        </div>
+
+        <div class="col s12 m6">
+          <h3>How I Can Help:</h3>
+          <div class="help-list">
+            <% @user.help_list.each do |s| %>
+            <div class="chip">
+              <%= s %>
+              <i class='close material-icons'>close</i>
+            </div>
+            <% end %>
+          </div>
+          <% if @user == current_user %>
+          <a class="dropdown-button btn" data-activates="pick-help">Add help</a>
+          <div id="pick-help" class="dropdown-content">
+            <form action="#">
+              <p class="checkbox-help">
+                <input type="checkbox" id="resume", value="Resume building" />
+                <label for="resume">Resume building</label>
+              </p>
+              <p class="checkbox-help">
+                <input type="checkbox" id="career" value="Career Planning" />
+                <label for="career">Career Planning</label>
+              </p>
+            </form>
+          </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="calendar-tab" class="col s12">
+      <div class="row">
+        <div class="col s12 m7">
+          <div id="calendar"></div>
+        </div>
+        <% if @user == current_user %>
+          <div class="col s12 m3">
+            <h3>When are you available?</h3>
+            <%= form_for @event do |e| %>
+            <%= e.label :title %>
+            <%= e.text_field :title, :value => 'Available' %>
+
+            <div class='col-sm-12'>
+                <div class="form-group">
+                  <div class='input-group date'>
+                  <label>From</label>
+                  <%= e.datetime_select :start %>
+                </div>
+                </div>
+            </div>
+
+            <div class='col-sm-12'>
+                <div class="form-group">
+                  <div class='input-group date'>
+                  <label>To</label>
+                  <%= e.datetime_select :end %>
+                </div>
+                </div>
+            </div>
+
+
+
+
+            <%= e.submit %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+    <div id="flash-tab" class="col s12">
+      <div class="row">
+        <div class="col s4">
+       <h2 class="header">Schedule a session</h2>
+       <div class="card horizontal">
+         <div class="card-image">
+           <i class="material-icons">schedule</i>
          </div>
-         <div class="card-action">
-           <%= s.submit 'Schedule', :class => 'btn' %>
+         <div class="card-stacked">
+           <div class="card-content">
+              <% if current_user.flash_sessions.empty? %>
+                 <%= form_for @session do |s| %>
+                 <div class='col-sm-12'>
+                     <div class="form-group">
+                       <div class='input-group date'>
+                       <label>On</label>
+                       <%= s.datetime_select :date %>
+                     </div>
+                     </div>
+                 </div>
+                 <%= s.label :description %>
+                 <%= s.text_field :description, :value => 'Describe your reason.' %>
+                 <%= s.hidden_field :user_id, :value => current_user.id %>
+               </div>
+               <div class="card-action">
+                 <%= s.submit 'Schedule', :class => 'btn' %>
+               </div>
+               <% end %>
+            <% else  %>
+              Your next session is
+              <%= current_user.flash_sessions.first.date %>
+            <% end %>
          </div>
-         <% end %>
-      <% else  %>
-        Your next session is
-        <%= current_user.flash_sessions.first.date %>
-      <% end %>
-   </div>
- </div>
-</div>
-</div>
+       </div>
+      </div>
+      </div>
+
+    </div>
+  </div>

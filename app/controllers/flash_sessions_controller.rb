@@ -14,7 +14,7 @@ class FlashSessionsController < ApplicationController
     @session = FlashSession.find(params[:id])
     if @session.update_attributes(:agent_id => current_user.id)
       flash[:notice] = "Flash session claimed."
-      FlashSessionJob.perform_later(current_user.id, @session.user_id)
+      FlashSessionJob.set(wait: Time.parse(@session.date.strftime("%H:%M:%S")) - Time.parse(Time.now.strftime("%H:%M:%S"))).perform_later(current_user.id, @session.user_id)
       redirect_to @current_user
     else
       flash[:error] = "Error"

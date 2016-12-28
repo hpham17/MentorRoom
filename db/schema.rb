@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221090848) do
+ActiveRecord::Schema.define(version: 20161224020822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161221090848) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "body"
+    t.boolean  "temp",       default: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -87,6 +88,18 @@ ActiveRecord::Schema.define(version: 20161221090848) do
     t.string   "school"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "company"
+    t.string   "major"
+    t.string   "degrees"
+    t.string   "clubs"
+    t.integer  "gradyear"
+    t.string   "sports"
+    t.string   "languages"
+    t.string   "ethnicity"
+    t.string   "hobbies"
+    t.string   "website"
+    t.string   "twitter"
+    t.string   "sector"
   end
 
   create_table "taggings", force: :cascade do |t|

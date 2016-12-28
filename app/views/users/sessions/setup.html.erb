@@ -38,12 +38,12 @@
                 <%= fields_for @profile do |p| %>
                 <div class="fieldset">
                   <div class="input-field">
-                    <%= p.text_field :role %>
-                    <%= p.label :role, "Job Title" %>
+                    <%= p.text_area :bio, class: 'materialize-textarea' %>
+                    <%= p.label :bio %>
                   </div>
                   <div class="input-field">
-                    <%= p.text_field :bio %>
-                    <%= p.label :bio %>
+                    <%= p.text_field :role %>
+                    <%= p.label :role, "Job Title" %>
                   </div>
                   <div class="input-field">
                     <%= p.text_field %>

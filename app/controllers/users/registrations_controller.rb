@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :skill_list, :help_list, profile_attributes: [:user_id, :role, :bio, :linkedin, :location, :school]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :skill_list, :help_list, profile_attributes: [:user_id, :role, :bio, :linkedin, :location, :school, :degrees, :gradyear, :sports, :languages, :twitter, :website, :hobbies, :ethnicity, :clubs, :major, :company, :sector]])
   end
 
   def after_sign_up_path_for(resource)
@@ -37,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   private
   def user_params
-    params.require(:user).permit(profile_attributes: [:user_id, :role, :bio, :linkedin, :location, :school])
+    params.require(:user).permit(profile_attributes: [:role, :bio, :linkedin, :location, :school, :degrees, :gradyear, :sports, :languages, :twitter, :website, :hobbies, :ethnicity, :clubs, :major, :company, :sector])
   end
 
 end

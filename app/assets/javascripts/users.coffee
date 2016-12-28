@@ -10,6 +10,7 @@ $ ->
     $('input#user_role').val('Mentee')
 
   $('.chips').material_chip();
+  $('ul.tabs').tabs();
 
   $.get '/events', {}, (data) ->
     $('#calendar').fullCalendar
