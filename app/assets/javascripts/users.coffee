@@ -46,6 +46,13 @@ $ ->
     }
   );
 
+  $('.button-collapse').sideNav({
+    menuWidth: 300,
+    edge: 'left',
+    closeOnClick: true,
+    draggable: true
+  });
+
   $(".checkbox-skill input[type=checkbox]").click ->
     $.post '/tag', {skill: $(this).val()}, (data) ->
       $(data).appendTo($('.skill-list'))
@@ -161,9 +168,9 @@ $ ->
       easing: 'easeInOutBack'
     return
 
-$(document).on 'keypress', 'form', (e) ->
-  code = e.keyCode or e.which
-  if code == 13
-    e.preventDefault()
-    return false
-  return
+# $(document).on 'keypress', 'form', (e) ->
+#   code = e.keyCode or e.which
+#   if code == 13
+#     e.preventDefault()
+#     return false
+#   return

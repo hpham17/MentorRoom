@@ -1,21 +1,56 @@
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand page-scroll" href="/"><%= image_tag('mentorroom.png', width: '140', style: 'position: absolute;top: 5px;') %></a>
+<div>
+      <nav class="">
 
-        </div>
+        <div class="nav-wrapper">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        
+                <form style="display: inline-block;width: 50%;margin-left: 12%;">
+                  <div class="input-field">
+                    <%= form_tag users_path, :method => "get", :id => "community_search" do %>
+                      <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
+                    <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
+                    <% end %>
+                  </div>
+                </form>
 
-          <%= render 'layouts/navbar_links' %>
-        </div>
-        <!-- /.navbar-collapse -->
+
+
+            <ul class="right">
+          <li class="dropdown">
+                <a data-toggle="dropdown" aria-expanded="false">
+                  <i style="display:flex; align-items:center;" id="notify-icon" class="material-icons">notifications</i></a>
+                                      <div class="dropdown-menu notify-dropdown pull-right">
+                                          <div class="list-group him-notification">
+                                              <div class="lg-header">
+                                                  Notification
+                                                  <a href="" id="clear-all">
+                                                      <i class="material-icons tooltipped" data-position="right" data-tooltip="Clear All">clear_all</i>
+                                                  </a>
+                                              </div>
+                                              <div class="lg-body">
+                                              <% if current_user.notification && current_user.notification.messages? %>
+                                                <% current_user.notification.messages.each do |message| %>
+                                                  <%= render partial: "/layouts/message", object: message %>
+                                                <% end %>
+                                              <% end %>
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </li>
+
+
+                                  </ul></div>
+      </nav>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="side-nav">
+        <li class="logo"><a id="logo-container" class="brand-logo"><%= image_tag('mentorroom.png', width: '140', style: 'position: absolute;top: 5px;') %>
+            </a></li>
+        <!-- <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li> -->
+
+        <%= render 'layouts/navbar_links' %>
+      </ul>
     </div>
-    <!-- /.container-fluid -->
-</nav>

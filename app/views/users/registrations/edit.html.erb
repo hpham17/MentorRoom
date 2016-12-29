@@ -34,35 +34,61 @@
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         </div>
 
-        <div class="field">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "off" %>
-        </div>
+        
         <br>
-    <% if (current_user.is? :Mentor) || (current_user.is? :Admin) %>
-        <%= f.label :skill_list %>
-        <%= f.text_field :skill_list, placeholder: 'Software Engineering, ...' %>
-        <br>
-        <%= f.label :help_list %>
-        <%= f.text_field :help_list, placeholder: 'Resume Building, Job Hunting..' %>
 
         <div class="field">
           <%= f.fields_for :profile do |p| %>
-            <%= p.label :role %>
-            <%= p.text_field :role %>
-            <br>
-            <%= p.label :bio %>
-            <%= p.text_field :bio %>
-            <br>
-            <%= p.label :location %>
-            <%= p.text_field :location %>
-            <br>
-            <%= p.label :linkedin %>
-            <%= p.text_field :linkedin %>
-            <br>
+              <div class="input-field">
+                <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
+                <%= p.label :bio, 'Brief Bio' %>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :location %>
+                <%= p.label :location %>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :major %>
+                <%= p.label :major %>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :school %>
+                <%= p.label :school %>
+              </div>
+              <div class="input-field">
+                <%= p.select :gradyear, (Time.now.year).downto(Time.now.year - 40).to_a %>
+                <%= p.label :gradyear, 'Graduation Year' %>
+              </div>
+              <div class="input-field">
+                  <%= select_tag 'user[profile_attributes][degrees]', options_for_select(["High School Diploma", "Community College", "B.A.", "B.S.", "M.A.", "M.S.", "MBA", "Ph.D"], selected: p.object.degrees), multiple: true %>
+                <label>Degrees Completed</label>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :clubs %>
+                <%= p.label :clubs, 'List all clubs/organizations (optional)' %>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :role %>
+                <%= p.label :role, "Job Title" %>
+              </div>
+              <div class="input-field">
+                <%= p.select 'sector', options_for_select(["Private Industry", "Government Agency", "Military/Defense Contractor", "R&D", "Self-employed", "Non-profit", "Academic Institution", "Other"], selected: p.object.sector) %>
+                <label>Sector in which you work (or have most experience)</label>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :linkedin %>
+                <%= p.label :linkedin, 'LinkedIn URL' %>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :twitter %>
+                <%= p.label :twitter, 'Twitter URL (optional)' %>
+              </div>
+              <div class="input-field">
+                <%= p.text_field :website %>
+                <%= p.label :website, 'Personal Website URL (optional)' %>
+              </div>
 
 
-          <% end %>
         </div>
     <% end %>
 

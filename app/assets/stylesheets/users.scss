@@ -70,10 +70,11 @@ html {
 }
 
 .img-icon {
-  width: 50px;
+  width: 150px;
 }
-.icon-container {
-  padding: 0 !important;
+.side-nav a.icon-container {
+  padding: 0;
+  display: inline;
 }
 
 #pick-skill {
