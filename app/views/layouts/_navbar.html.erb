@@ -1,6 +1,6 @@
 <div>
-      <nav class="">
-
+      <nav style="background-color: #d2b66e">
+<% if current_user %>
         <div class="nav-wrapper">
 
                 <form style="display: inline-block;width: 50%;margin-left: 12%;">
@@ -13,11 +13,10 @@
                 </form>
 
 
-
             <ul class="right">
           <li class="dropdown">
                 <a data-toggle="dropdown" aria-expanded="false">
-                  <i style="display:flex; align-items:center;" id="notify-icon" class="material-icons">notifications</i></a>
+                  <i id="notify-icon" class="material-icons">notifications</i></a>
                                       <div class="dropdown-menu notify-dropdown pull-right">
                                           <div class="list-group him-notification">
                                               <div class="lg-header">
@@ -35,12 +34,12 @@
                                             </div>
                                           </div>
                                       </div>
-                                    </li>
+                  </li>
+              </ul>
+          </div>
 
-
-                                  </ul></div>
       </nav>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="color: white;position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
       <ul id="nav-mobile" class="side-nav">
         <li class="logo"><a id="logo-container" class="brand-logo"><%= image_tag('mentorroom.png', width: '140', style: 'position: absolute;top: 5px;') %>
             </a></li>
@@ -53,4 +52,9 @@
 
         <%= render 'layouts/navbar_links' %>
       </ul>
-    </div>
+<% else %>
+    <a style="left:0;right:0;" id="logo-container" class="brand-logo center-align">
+      <%= image_tag('mentorroom.png', width: '140') %>
+    </a>
+<% end %>
+</div>

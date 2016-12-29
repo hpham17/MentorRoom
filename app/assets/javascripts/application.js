@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require materialize
 //= require google-instant-hangouts
 //= require moment
 //= require bootstrap/transition
