@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :messages
   has_one :notification
   has_many :flash_sessions
+  has_many :stars
+  has_many :starred, through: :stars
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
   has_many :mentors, through: :mentorships
@@ -38,6 +40,20 @@ class User < ApplicationRecord
   def add_help(help)
     self.help_list.add(help)
     self.save
+  end
+  def star!(starred)
+    self.stars.create!(starred_id: starred.id)
+  end
+
+  # destroys a heart with matching post_id and user_id
+  def unstar!(starred)
+    star = self.stars.find_by_starred_id(starred.id)
+    star.destroy!
+  end
+
+  # returns true of false if a user is starred by user
+  def star?(starred)
+    self.stars.find_by_starred_id(starred.id)
   end
 
   def requested_mentor?(id)

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post '/notifications/clear' => 'notifications#clear'
   resources :events
   resources :flash_sessions
+  post '/star', to: 'stars#star'
+  delete '/unstar', to: 'stars#unstar'
 
 
   # Serve websocket cable requests in-process
