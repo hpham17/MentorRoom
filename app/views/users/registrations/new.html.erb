@@ -1,15 +1,28 @@
+<div style="height: 100vh;" class="container valign-wrapper">
+<div class="row">
+        <div id="mentee-signup" class="col s6">
+          <div class="card blue lighten-1 z-depth-5">
+            <div class="card-content white-text">
+              <h1>Sign Up As a Mentee</h1>
+            </div>
+          </div>
+        </div>
 
-<div class="container">
+
+
+          <div id="mentor-signup" class="col s6">
+              <div class="card yellow darken-2 z-depth-5 half-opacity">
+                <div class="card-content white-text">
+                  <h1>Sign Up as Mentor</h1>
+
+              </div>
+            </div>
+          </div>
+          <button id="leggo" class="btn center">Let's Go</button>
+
+</div>
   <div class="row">
-  <div class="col s12">
-    <ul class="tabs">
-      <li class="tab col s6"><a class="active" id="mentee-signup" href="#mentee">Mentee Sign Up</a></li>
-      <li class="tab col s6" ><a href="#mentor" id="mentor-signup">Mentor Sign Up</a></li>
-    </ul>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4" style="position:absolute;height:50%; top:0;left:0;right:0;bottom:0; margin:auto;">
+    <div class="col-md-4 col-md-offset-4 none" id="signup" style="position:absolute;height:50%; top:0;left:0;right:0;bottom:0; margin:auto;">
       <div>
         <h3 id="signup-title">Mentee Sign Up</h3>
         <%= render "users/shared/sign_up" %>
@@ -17,7 +30,7 @@
     </div>
   </div>
 
-</div>
+
 
 
 

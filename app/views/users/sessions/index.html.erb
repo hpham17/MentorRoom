@@ -1,34 +1,11 @@
-
 <div class="container">
-
-  <!-- <nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <%= form_tag users_path, :method => "get", :id => "community_search" do %>
-            <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
-          <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
-          <% end %>
-        </div>
-      </form>
-    </div>
-  </nav> -->
-
-  <!-- <h2>Engineers:</h2>
-<% @engineers.each do |e| %>
-    <p><%= e.email %></p>
-<% end %>
-<h2>Business:</h2>
-<% @business.each do |e| %>
-  <p><%= e.email %></p>
-<% end %> -->
 
     <% @users.each do |u| %>
 
 
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
-    <%= image_tag('hubert.png', :class => 'profile-img') %>
+    <%= image_tag(u.picture, :class => 'profile-img') %>
     <h2 id="<%= u.name %>" class="mdl-card__title-text"><%= link_to "#{u.name}", user_path(u.id) %> </h2>
   </div>
   <div class="mdl-card__supporting-text">

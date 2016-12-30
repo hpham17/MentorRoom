@@ -1,11 +1,11 @@
 <div>
-      <nav style="background-color: #d2b66e">
+      <nav class="yellow darken-2">
 <% if current_user %>
         <div class="nav-wrapper">
 
                 <form style="display: inline-block;width: 50%;margin-left: 12%;">
                   <div class="input-field">
-                    <%= form_tag users_path, :method => "get", :id => "community_search" do %>
+                    <%= form_tag users_path, :method => "get", :id => "search" do %>
                       <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
                     <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
                     <% end %>

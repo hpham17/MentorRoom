@@ -60,7 +60,7 @@
                 <%= p.label :gradyear, 'Graduation Year' %>
               </div>
               <div class="input-field">
-                  <%= select_tag 'user[profile_attributes][degrees]', options_for_select(["High School Diploma", "Community College", "B.A.", "B.S.", "M.A.", "M.S.", "MBA", "Ph.D"], selected: p.object.degrees), multiple: true %>
+                  <%= select_tag 'user[profile_attributes][degrees]', options_for_select([["High School Diploma", "High School Diploma"], ["Community College", "Community College"], ["B.A.", "B.A."], ["B.S.", "B.S"], ["M.A.", "M.A."], ["M.S.", "M.S."], ["MBA", "MBA"], ["Ph.D", "Ph.D"]], selected: p.object.degrees), multiple: true, include_blank: 'Pick any' %>
                 <label>Degrees Completed</label>
               </div>
               <div class="input-field">

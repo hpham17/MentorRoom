@@ -15,11 +15,12 @@ mentor_list = [
 
 
 mentee_list.each do |name, email|
-  User.create(name: name, email: email, password: "hubert", role: "Mentee" )
+  @user = User.create(name: name, email: email, password: "hubert", role: "Mentee" )
 end
 
 mentor_list.each do |name, email|
-  User.create(name: name, email: email, password: "hubert", role: "Mentor", limit: 2 )
+  @user = User.create(name: name, email: email, password: "hubert", role: "Mentor", limit: 2 )
+  Profile.create(user_id: @user.id, role: 'Software Engineer', location: 'San Francisco', linkedin: 'http://www.linkedin.com/in/hpham95', company: 'Google', major: 'Computer Science', school: 'UC Berkeley')
 end
 
 User.create(name: "Dante Leon", email: "dante@gmail.com", password: "dantes", role: "Admin")

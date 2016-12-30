@@ -2,12 +2,28 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  app =
+    slideFade: (elem) ->
+      fade =
+        opacity: 0
+        transition: 'opacity 0.5s'
+      elem.css(fade).hide()
+      return
   $('#mentor-signup').click ->
+    $('#mentor-signup').children().toggleClass('half-opacity')
+    $('#mentee-signup').children().toggleClass('half-opacity')
     $('#signup-title').html "Mentor Sign Up";
     $('input#user_role').val('Mentor')
   $('#mentee-signup').click ->
+    $('#mentor-signup').children().toggleClass('half-opacity')
+    $('#mentee-signup').children().toggleClass('half-opacity')
     $('#signup-title').html "Mentee Sign Up";
     $('input#user_role').val('Mentee')
+  $('#leggo').click ->
+    app.slideFade($('#mentor-signup'));
+    app.slideFade($('#mentee-signup'));
+    app.slideFade($('#leggo'));
+    $('#signup').fadeIn('slow');
 
   $('.chips').material_chip();
   $('ul.tabs').tabs();

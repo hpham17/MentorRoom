@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:id, :name, :skill_list, :help_list, profile_attributes: [:user_id, :role, :bio, :linkedin, :location, :school, :degrees, :gradyear, :sports, :languages, :twitter, :website, :hobbies, :ethnicity, :clubs, :major, :company, :sector]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:id, :name, :skill_list, :help_list, profile_attributes: [:user_id, :role, :bio, :linkedin, :location, :school, {:degrees => []}, :gradyear, :sports, :languages, :twitter, :website, :hobbies, :ethnicity, :clubs, :major, :company, :sector]])
   end
 
   def after_sign_up_path_for(resource)

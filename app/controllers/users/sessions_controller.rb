@@ -2,8 +2,8 @@ class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!
 
   def index
-    @users = User.all.order(:id).where(:role => "Mentor")
-    @engineers = User.tagged_with(["Software Engineering", "cool"], :any => true)
+    decode_search
+    @engineers = User.tagged_with("#{params[:search]}")
     @business = User.tagged_with("Business")
     @sanfran = Profile.where(location: "San Francisco, CA")
     @mentorship = Mentorship.new
@@ -70,5 +70,13 @@ class Users::SessionsController < Devise::SessionsController
       mentees << [User.find(x.user_id), x.id]
     end
     mentees
+  end
+
+  def decode_search
+    if params[:search]
+      @users = User.where(:name => params[:search])
+    else
+      @users = User.all.order(:id).where(:role => "Mentor").includes(:skills)
+    end
   end
 end
