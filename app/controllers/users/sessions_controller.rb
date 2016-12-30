@@ -77,6 +77,7 @@ class Users::SessionsController < Devise::SessionsController
       @users = User.where(:name => params[:search])
     else
       @users = User.all.order(:id).where(:role => "Mentor").includes(:skills)
+      @users -= current_user.starred
     end
   end
 end

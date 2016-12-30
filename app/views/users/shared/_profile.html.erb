@@ -1,0 +1,35 @@
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <%= content_tag(:div, id: "star-" + user.id.to_s) do %>
+      <%= render 'stars/button', :user => user %>
+    <% end %>
+
+  <%= image_tag(user.picture, :class => 'profile-img') %>
+    <h2 id="<%= user.name %>" class="mdl-card__title-text"><%= link_to "#{user.name}", user_path(user.id) %>
+      <% if user.online %>
+        <i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
+      <% end %>
+    </h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Works @ Google <br>
+    <% user.skill_list.each do |s| %>
+    <div class="chip">
+    <%= s %>
+    </div>
+    <% end %>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+  <div class="mdl-button mdl-button--colored">
+    <% if current_user.mentors.include? user %>
+      <%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %>
+    <% elsif !current_user.requested_mentor?(user).empty? %>
+      Request Sent
+    <% elsif user.check_limit != "block" %>
+      <a class="item2" href="<%= user.id %>">Request Mentor</a>
+    <% else %>
+      Mentee Limit Reached! Try again next week.
+    <% end %>
+    </div>
+  </div>
+</div>
