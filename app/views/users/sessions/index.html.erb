@@ -6,7 +6,10 @@
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
     <%= image_tag(u.picture, :class => 'profile-img') %>
-    <h2 id="<%= u.name %>" class="mdl-card__title-text"><%= link_to "#{u.name}", user_path(u.id) %> </h2>
+    <h2 id="<%= u.name %>" class="mdl-card__title-text"><%= link_to "#{u.name}", user_path(u.id) %>
+      <% if u.online %><i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
+        <% end %>
+    </h2>
   </div>
   <div class="mdl-card__supporting-text">
     Works @ Google <br>
