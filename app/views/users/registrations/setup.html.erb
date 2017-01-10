@@ -124,11 +124,13 @@
     </div>
  </div>
 
-<!-- <script>
-  $(document).on 'keypress', 'form', (e) ->
-    code = e.keyCode or e.which
-    if code == 13
-      e.preventDefault()
-      return false
-    return
-</script> -->
+<script>
+  $(document).on('keypress', function(e) {
+    var code;
+    code = e.keyCode || e.which;
+    if (code === 13) {
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>

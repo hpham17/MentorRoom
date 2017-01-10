@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    if resource.is? :Mentor
+    if !resource.is?(:Admin)
       '/setup'
     else
       users_path

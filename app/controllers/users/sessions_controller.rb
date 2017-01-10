@@ -1,5 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!
+  before_action :check_admin, only: :admin
+  before_action :check_mentor, only: :mentor
 
   def index
     decode_search
@@ -15,6 +17,8 @@ class Users::SessionsController < Devise::SessionsController
   end
   def admin
     @users = User.all.order(:id)
+    @mentees = @users.where(role: 'Mentee')
+    @mentors = @users.where(role: 'Mentor')
   end
   def mentor
     @requests = Mentorship.where(mentor_id: current_user.id, accepted: false)
@@ -83,4 +87,17 @@ class Users::SessionsController < Devise::SessionsController
       @users -= current_user.starred
     end
   end
+  def check_admin
+    if !current_user.is?(:Admin)
+      flash[:error] = "You do not have permission to view."
+      redirect_to action: 'index'
+    end
+  end
+  def check_mentor
+    if current_user.is?(:Mentee)
+      flash[:error] = "You do not have permission to view."
+      redirect_to action: 'index'
+    end
+  end
+
 end

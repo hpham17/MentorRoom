@@ -1,5 +1,27 @@
 <div class="container">
   <h1>Hello, Admin!</h1>
+  <div class="row">
+    <div class="col s6 l3">
+      <div class="card">
+          <div class="card-content green white-text">
+              <p class="card-stats-title"><i class="mdi-social-group-add"></i> Mentees</p>
+              <h4 class="card-stats-number"><%= @mentees.count %></h4>
+
+          </div>
+
+      </div>
+    </div>
+    <div class="col s6 l3">
+      <div class="card">
+          <div class="card-content blue white-text">
+              <p class="card-stats-title"><i class="mdi-social-group-add"></i>Mentors</p>
+              <h4 class="card-stats-number"><%= @mentors.count %> </h4>
+
+          </div>
+
+      </div>
+  </div>
+  </div>
   <table class="table">
     <tr>
       <th>ID</th>
