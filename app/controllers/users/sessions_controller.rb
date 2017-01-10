@@ -74,7 +74,10 @@ class Users::SessionsController < Devise::SessionsController
 
   def decode_search
     if params[:search]
-      @users = User.where(:name => params[:search])
+      @users = User.tagged_with("#{params[:search]}")
+      if @users.empty?
+        @users = User.where(:name => params[:search])
+      end
     else
       @users = User.all.order(:id).where(:role => "Mentor").includes(:skills)
       @users -= current_user.starred

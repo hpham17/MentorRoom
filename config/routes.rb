@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :flash_sessions
   post '/star', to: 'stars#star'
   delete '/unstar', to: 'stars#unstar'
+  post '/upload', to: 'home#upload'
 
 
   # Serve websocket cable requests in-process

@@ -12,7 +12,7 @@ class FlashSessionsController < ApplicationController
   end
   def update
     @session = FlashSession.find(params[:id])
-    if @session.update_attributes(:agent_id => current_user.id)
+    if @session.update_attributes(:accepted => true)
       flash[:notice] = "Flash session claimed."
       FlashSessionJob.perform_later(current_user.id, @session.user_id)
       redirect_to @current_user

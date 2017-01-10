@@ -184,9 +184,8 @@ $ ->
       easing: 'easeInOutBack'
     return
 
-# $(document).on 'keypress', 'form', (e) ->
-#   code = e.keyCode or e.which
-#   if code == 13
-#     e.preventDefault()
-#     return false
-#   return
+  Dropzone.options.myZone = {
+    paramName: "file",
+    accept: (file, done) ->
+      done()  
+  };

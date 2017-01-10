@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dropzone
 //= require jquery-ui
 //= require google-instant-hangouts
 //= require moment

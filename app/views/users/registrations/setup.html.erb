@@ -15,6 +15,7 @@
   color: #fff;
 }
 </style>
+<link rel="stylesheet" href="/dropify.min.css" />
 
 <div class="container">
   <h3>Before we get started:</h3>
@@ -24,6 +25,7 @@
        <div class="col s12" id="progressbar">
          <a href="#!" class="breadcrumb active">First</a>
         <a href="#!" class="breadcrumb">Second</a>
+        <a href="#!" class="breadcrumb">Third</a>
         <a> </a>
        </div>
      </div>
@@ -40,11 +42,11 @@
                 <div class="fieldset">
                   <div class="input-field">
                     <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
-                    <%= p.label :bio, 'Brief Bio' %>
+                    <%= p.label :bio, 'Brief Bio*' %>
                   </div>
                   <div class="input-field">
                     <%= p.text_field :location %>
-                    <%= p.label :location %>
+                    <%= p.label :location, 'Location* (where do you work/live)' %>
                   </div>
                 <a class="waves-effect waves-teal btn-flat next active">Next</a>
                 </div>
@@ -52,15 +54,15 @@
                 <div class="fieldset">
                   <div class="input-field">
                     <%= p.text_field :major %>
-                    <%= p.label :major %>
+                    <%= p.label :major, 'Major*' %>
                   </div>
                   <div class="input-field">
                     <%= p.text_field :school %>
-                    <%= p.label :school %>
+                    <%= p.label :school, 'School*' %>
                   </div>
                   <div class="input-field">
-                    <%= p.select :gradyear, (Time.now.year).downto(Time.now.year - 40).to_a %>
-                    <%= p.label :gradyear, 'Graduation Year' %>
+                    <%= p.select :gradyear, (Time.now.year + 4).downto(Time.now.year - 40).to_a %>
+                    <%= p.label :gradyear, 'Graduation Year*' %>
                   </div>
                   <div class="input-field">
                       <%= select_tag 'user[profile_attributes][degrees]', options_for_select(["High School Diploma", "Community College", "B.A.", "B.S.", "M.A.", "M.S.", "MBA", "Ph.D"]), multiple: true, include_blank: "Select all that apply" %>
@@ -79,15 +81,17 @@
                 <div class="fieldset">
                   <div class="input-field">
                     <%= p.text_field :role %>
-                    <%= p.label :role, "Job Title" %>
+                    <%= p.label :role, "Job Title* (e.g. Student, Software Engineer)" %>
                   </div>
+                  <% if current_user.is? :Mentor %>
                   <div class="input-field">
                     <%= select_tag 'user[profile_attributes][sector]', options_for_select(["Private Industry", "Government Agency", "Military/Defense Contractor", "R&D", "Self-employed", "Non-profit", "Academic Institution", "Other"]), include_blank: "Pick one" %>
                     <label>Sector in which you work (or have most experience)</label>
                   </div>
+                  <% end %>
                   <div class="input-field">
                     <%= p.text_field :linkedin %>
-                    <%= p.label :linkedin, 'LinkedIn URL' %>
+                    <%= p.label :linkedin, 'LinkedIn URL*' %>
                   </div>
                   <div class="input-field">
                     <%= p.text_field :twitter %>
@@ -97,15 +101,34 @@
                     <%= p.text_field :website %>
                     <%= p.label :website, 'Personal Website URL (optional)' %>
                   </div>
+
                  <a class="waves-effect waves-teal btn-flat prev">Prev</a>
                  <% end %>
+                 <div class="input-field">
+                   <%= f.hidden_field :picture, :id => 'upload-pic' %>
+                 </div>
                  <button class="btn waves-effect waves-light" type="submit" name="commit" value="Update Profile">Submit<i class="material-icons right">send</i></button>
                 </div>
-
 
                 <% end %>
               </div>
             </div>
           </div>
+          <div class="col s12 m6">
+          <p>Please upload a profile picture whose file size is less than 8MB.</p>
+          <form action="/upload" class="dropify dropzone" style="width: 300px; height: 263px;"
+    id="myZone" encType="multipart/data">
+      <input type="hidden" name="authenticity_token" id="authenticity_token" value="INEWiIZB5mmVNDaqC+Unvzf0lz8UqIy3mD7Z38zXfiXGqdVOp7a/aS/9pAQFIkUHD1AaL8lUo77XXhr9vWLjgw==" />
+  </form>
+</div>
     </div>
  </div>
+
+<!-- <script>
+  $(document).on 'keypress', 'form', (e) ->
+    code = e.keyCode or e.which
+    if code == 13
+      e.preventDefault()
+      return false
+    return
+</script> -->
