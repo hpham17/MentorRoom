@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if !resource.is?(:Admin)
       '/setup'
     else
-      users_path
+      root_path
     end
   end
   def after_update_path_for(resource)

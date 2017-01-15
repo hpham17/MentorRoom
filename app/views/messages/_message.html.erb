@@ -1,1 +1,22 @@
-<p><strong><%=message.user.name%>:</strong> <%=message.content%></p>
+<% if message.user.name != current_user.name %>
+  <li>
+    <div class="message-data">
+      <span class="message-data-name"><%=message.user.name%></span>
+      <span class="message-data-time"></span>
+    </div>
+    <div class="message my-message">
+      <%=message.content%>
+    </div>
+  </li>
+<% else %>
+<li class="clearfix">
+  <div class="message-data right-align">
+    <span class="message-data-time"></span> &nbsp; &nbsp;
+    <span class="message-data-name"><%=message.user.name%></span>
+
+  </div>
+  <div class="message other-message float-right">
+    <%=message.content%>
+  </div>
+</li>
+<% end %>

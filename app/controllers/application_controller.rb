@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if user.is? :Mentee
-      users_path
+      root_path
     elsif user.is? :Mentor
       mentor_path
     else

@@ -139,3 +139,9 @@ html {
 .breadcrumb.active {
   color: yellow;
 }
+
+@media only screen and (min-width: 993px) {
+  .container {
+      width: 90%;
+  }
+}
