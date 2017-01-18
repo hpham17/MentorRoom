@@ -1,47 +1,40 @@
 <div class="container">
-  <div class="chat">
-      <div class="chat-header clearfix">
-        <%= image_tag(@chatroom.other_user(current_user.id).picture, class: 'img-icon circle')  %>
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+            <div class="chat">
+                <div class="chat-header clearfix">
+                  <%= image_tag("/uploads/" + @chatroom.other_user(current_user.id).picture, class: 'img-icon circle')  %>
 
-        <div class="chat-about">
-          <div class="chat-with">Chat with <%= @chatroom.other_user(current_user.id).name%></div>
-          <div class="chat-num-messages">Messages total: <%= @chatroom.messages.count %></div>
-        </div>
+                  <div class="chat-about">
+                    <div class="chat-with">Chat with <%= @chatroom.other_user(current_user.id, true)%></div>
+                    <div class="chat-num-messages">Messages total: <%= @chatroom.messages.count %></div>
+                  </div>
 
-      </div> <!-- end chat-header -->
+                </div> <!-- end chat-header -->
 
-      <div class="chat-history">
-        <ul id="messages">
+                <div class="chat-history">
+                  <ul id="messages" data-chatroom-id="<%= @chatroom.id %>" data-first-id="<%= current_user.id %>" data-second-id="<%= @chatroom.other_user(current_user.id).id %>">
 
-          <% if @chatroom.messages.any? %>
-              <%= render partial: 'messages/message', collection: @chatroom.messages.order('id ASC') %>
-          <%end%>
-
-
+                    <% if @chatroom.messages.any? %>
+                        <%= render partial: 'messages/message', collection: @chatroom.messages.includes(:user).order('id ASC') %>
+                    <%end%>
 
 
-        </ul>
 
-      </div> <!-- end chat-history -->
 
-      <div class="chat-message clearfix">
+                  </ul>
 
-        <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
-        <!-- <%= button_to "End Flash Session" %> -->
+                </div> <!-- end chat-history -->
 
-      </div> <!-- end chat-message -->
+                <div class="chat-message clearfix">
 
-    </div> <!-- end chat -->
+                  <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
+                  <!-- <%= button_to "End Flash Session" %> -->
 
-</div>
+                </div> <!-- end chat-message -->
 
-<script>
-  $(document).on('keypress', function(e) {
-    var code;
-    code = e.keyCode || e.which;
-    if (code === 13) {
-      e.preventDefault();
-      return false;
-    }
-  });
-</script>
+              </div> <!-- end chat -->
+
+      </div>
+    </div>
+  </div>

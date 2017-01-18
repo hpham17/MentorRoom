@@ -66,8 +66,9 @@ nav ul a {
 }
 
 .chat {
-  width: 490px;
-  float:left;
+  min-width: 450px;
+  // position: absolute;
+  // left: 0; right: 0;
   background: #F2F5F8;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;

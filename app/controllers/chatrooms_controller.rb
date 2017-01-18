@@ -4,19 +4,6 @@ class ChatroomsController < ApplicationController
     @chatrooms = current_user.chatrooms.uniq.reverse
   end
 
-  def new
-    show_or_new
-  end
-
-  def show_or_new
-    @chatroom = room_exist?
-    if @chatroom
-      redirect_to @chatroom
-    else
-      create
-    end
-  end
-
   def create
     @chatroom = Chatroom.new chatroom_params
     if @chatroom.save
@@ -40,22 +27,13 @@ class ChatroomsController < ApplicationController
 
 
   def show
-    @chatroom = Chatroom.find_by(slug: params[:slug])
+    @chatroom = Chatroom.includes(:messages).find_by(slug: params[:slug])
     @message = Message.new
   end
 
   private
     def chatroom_params
       {topic: current_user.id.to_s + "_to_" + params[:id].to_s }
-    end
-
-    def room_exist?
-      current_user.chatrooms.each do |c|
-        if c.users.include?(User.find(params[:id]))
-          return c
-        end
-      end
-      nil
     end
 
 end

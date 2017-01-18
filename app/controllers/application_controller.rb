@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :ensure_signup_complete
   helper_method :new_messages?
 
+
   def after_sign_in_path_for(user)
     if user.is? :Mentee
       root_path
