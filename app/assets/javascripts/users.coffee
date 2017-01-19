@@ -9,6 +9,7 @@ $ ->
         transition: 'opacity 0.5s'
       elem.css(fade).hide()
       return
+  $('.modal').modal();
   $('#mentor-signup').click ->
     $('#mentor-signup').children().toggleClass('half-opacity')
     $('#mentee-signup').children().toggleClass('half-opacity')
@@ -187,5 +188,5 @@ $ ->
   Dropzone.options.myZone = {
     paramName: "file",
     accept: (file, done) ->
-      done()  
+      done()
   };

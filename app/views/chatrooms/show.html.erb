@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col s12 m6 offset-m3">
+    <div class="col s12 m3">
+      <!-- Modal Trigger -->
+        <a class="waves-effect waves-light btn" href="#video-chat">Start Video Chat</a>
+
+        <!-- Modal Structure -->
+        <div id="video-chat" class="modal">
+            <iframe id="video" style="height: 100%;"></iframe>
+        </div>
+    </div>
+    <div class="col s12 m6">
             <div class="chat">
                 <div class="chat-header clearfix">
                   <!-- <%= image_tag("/uploads/" + @chatroom.other_user(current_user.id).picture, class: 'img-icon circle')  %> -->
@@ -38,3 +47,12 @@
       </div>
     </div>
   </div>
+
+  <script src="//developer.appear.in/scripts/appearin-sdk.0.0.4.min.js"></script>
+  <script>
+    var AppearIn = window.AppearIn || require('appearin-sdk');
+    var appearin = new AppearIn();
+    var roomName = "<%= @chatroom.topic %>"
+    var iframe = document.getElementById("video");
+    appearin.addRoomToIframe(iframe, roomName + "-mentorroom");  
+  </script>
