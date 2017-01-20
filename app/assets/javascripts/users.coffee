@@ -184,9 +184,3 @@ $ ->
         return
       easing: 'easeInOutBack'
     return
-
-  Dropzone.options.myZone = {
-    paramName: "file",
-    accept: (file, done) ->
-      done()
-  };
