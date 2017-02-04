@@ -34,7 +34,7 @@
    <div class="row">
      <div class="col s12 m6">
             <div class="card gray darken-1">
-              <div class="card-content white-text">
+              <div class="card-content black-text">
                 <span class="card-title black-text">Let's Build Your Profile</span>
                 <%= form_for @user, url: update_path do |f| %>
 
@@ -45,11 +45,13 @@
                     <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
                     <%= p.label :bio, 'Brief Bio*' %>
                   </div>
+
                   <div class="input-field">
                     <%= p.text_field :location %>
                     <%= p.label :location, 'Location* (where do you work/live)' %>
                   </div>
-                <a class="waves-effect waves-teal btn-flat next active">Next</a>
+
+                <a class="waves-effect waves-teal btn-flat black-text blue-grey lighten-5 next">Next</a>
                 </div>
 
                 <div class="fieldset">
@@ -103,7 +105,7 @@
                     <%= p.label :website, 'Personal Website URL (optional)' %>
                   </div>
 
-                 <a class="waves-effect waves-teal btn-flat prev">Prev</a>
+                 <a class="waves-effect waves-teal blue-grey lighten-5 btn-flat prev">Prev</a>
                  <% end %>
                  <div class="input-field">
                    <%= f.hidden_field :picture, :id => 'upload-pic' %>

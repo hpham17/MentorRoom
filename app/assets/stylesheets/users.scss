@@ -44,13 +44,19 @@ html {
   height: 300px;
   color: #fff;
   overflow: hidden;
-  background: #3f51b5;
+  background: #cfd8dc;
 }
 .profile-pic {
   height: 100%;
-  float: left;
+  /*float: left;*/
   width: 300px;
   overflow: hidden;
+
+  /* centering */
+  float: right;
+  position: relative;
+  left: -45%; /* or right 50% */
+  
 }
 .profile-image {
   height: 79%;
@@ -111,7 +117,7 @@ html {
 }
 
 .dropzone {
-    border: 2px dashed #0087F7 !important;
+  border: 2px dashed #0087F7 !important;
 }
 
 .dropzone .dz-preview {
