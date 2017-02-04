@@ -12,7 +12,7 @@
   border-color: transparent !important;
 }
 .active {
-  color: #fff;
+  color: white;
 }
 </style>
 <link rel="stylesheet" href="/dropify.min.css" />
@@ -21,7 +21,7 @@
   <h3>Before we get started:</h3>
 
   <nav>
-     <div class="nav-wrapper grey darken-1">
+     <div class="nav-wrapper black">
        <div class="col s12" id="progressbar">
          <a href="#!" class="breadcrumb active">First</a>
         <a href="#!" class="breadcrumb">Second</a>
@@ -30,11 +30,12 @@
        </div>
      </div>
    </nav>
+
    <div class="row">
      <div class="col s12 m6">
-            <div class="card blue darken-4">
+            <div class="card gray darken-1">
               <div class="card-content white-text">
-                <span class="card-title">Let's Build Your Profile</span>
+                <span class="card-title black-text">Let's Build Your Profile</span>
                 <%= form_for @user, url: update_path do |f| %>
 
                 <%= f.fields_for :profile do |p| %>
