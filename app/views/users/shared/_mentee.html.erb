@@ -1,20 +1,25 @@
-<div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s6"><a href="#about-tab">About Me</a></li>
-        <li class="tab col s6"><a href="#flash-tab">Schedule a Flash Session</a></li>
-      </ul>
-    </div>
-    <div id="about-tab" class="col s12">
-      <h4>Brief Bio:</h4>
-      <% if user.profile %>
-        <%= user.profile.bio %>
-      <% end %>
-    </div>
 
-    <div id="flash-tab" class="col s12">
-      <div class="row">
-        <div class="col s4">
+<div class="row">
+
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a href="#about-tab">About Me</a></li>
+      <li class="tab col s6"><a href="#flash-tab">Schedule a Flash Session</a></li>
+    </ul>
+  </div>
+
+
+
+  <div id="about-tab" class="col s12">
+    <h4>Brief Bio:</h4>
+    <% if user.profile %>
+    <%= user.profile.bio %>
+    <% end %>
+  </div>
+
+  <div id="flash-tab" class="col s12">
+    <div class="row">
+      <div class="col s4">
        <h2 class="header">Schedule a session</h2>
        <div class="card horizontal">
          <div class="card-image">
@@ -22,33 +27,33 @@
          </div>
          <div class="card-stacked">
            <div class="card-content">
-              <% if current_user.flash_sessions.empty? %>
-                 <%= form_for @session do |s| %>
-                 <div class='col-sm-12'>
-                     <div class="form-group">
-                       <div class='input-group date'>
-                       <label>On</label>
-                       <%= s.datetime_select :date %>
-                     </div>
-                     </div>
-                 </div>
-                 <%= s.label :description %>
-                 <%= s.text_field :description, :value => 'Describe your reason.' %>
-                 <%= s.hidden_field :user_id, :value => current_user.id %>
+            <% if current_user.flash_sessions.empty? %>
+            <%= form_for @session do |s| %>
+            <div class='col-sm-12'>
+             <div class="form-group">
+               <div class='input-group date'>
+                 <label>On</label>
+                 <%= s.datetime_select :date %>
                </div>
-               <div class="card-action">
-                 <%= s.submit 'Schedule', :class => 'btn' %>
-               </div>
-               <% end %>
-            <% else  %>
-              Your next session is
-              <%= current_user.flash_sessions.first.date %>
-            <% end %>
+             </div>
+           </div>
+           <%= s.label :description %>
+           <%= s.text_field :description, :value => 'Describe your reason.' %>
+           <%= s.hidden_field :user_id, :value => current_user.id %>
          </div>
+         <div class="card-action">
+           <%= s.submit 'Schedule', :class => 'btn' %>
+         </div>
+         <% end %>
+         <% else  %>
+         Your next session is
+         <%= current_user.flash_sessions.first.date %>
+         <% end %>
        </div>
-      </div>
-      </div>
+     </div>
+   </div>
+ </div>
 
-    </div>
+</div>
 
 </div>
