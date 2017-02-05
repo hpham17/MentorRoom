@@ -4,18 +4,31 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+/*ITZEL's additions*/
 
- div.transbox {
+
+div.transbox {
   /*margin: 30px;*/
-  height: 600px;
+  height: 80%;
   /*width: 50%;*/
   background-color: black;
   opacity: 0.6;
-  margin-top: 15%;
+  margin-top: 10%;
   padding: 50px;
   filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
+.big-btn {
+/*  width: 140px;
+  height: 90px;*/
+  padding: 25px 55px;
+  font-size:30px;
+  margin-left: 40px;
+}
+
+
+
+/*====================*/
 
 
 .heading-font {
