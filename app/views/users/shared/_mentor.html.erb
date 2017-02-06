@@ -1,19 +1,44 @@
-<div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#about-tab">About Me</a></li>
-        <li class="tab col s3"><a class="active" href="#calendar-tab">Availability</a></li>
-        <li class="tab col s3"><a href="#flash-tab">Schedule a Flash Session</a></li>
-      </ul>
+<!-- <div class="right container" >
+ <div class="row">
+
+  <div class="col s12 m4">
+   <div class="card small">
+    <div class="icon-block">
+      <h2 class="center brown-text"><i class="material-icons">work</i></h2>
+      <div class="card-content">
+        <h4 class="center">About Me</h4>
+
+        <h5 class="light"> 
+        <% if user.profile %>
+          <%= user.profile.bio %>
+        <% end %>
+        </h5>
+
+
+      </div>  
+     </div>
     </div>
-    <div id="about-tab" class="col s12">
-      <h4>Brief Bio:</h4>
-      <% if user.profile %>
-        <%= user.profile.bio %>
-      <% end %>
-      <div class="row">
-        <div class="col s12 m6">
-          <h3>Areas of Expertise:</h3>
+   </div>
+  </div>
+</div>
+
+ -->
+
+
+<div class="container" >
+ <div class="row">
+
+<!-- Areas of expertise box -->
+  <div class="col s6 m6">
+    <div class="card small">
+      <div class="icon-block">
+        <h2 class="center brown-text">
+        <i class="material-icons">person_pin</i>
+        </h2>
+
+        <div class="card-content">
+          <h4 class="center">Areas of Expertise:
+          <br></h4>
           <div class="skill-list">
             <% user.skill_list.each do |s| %>
             <div class="chip">
@@ -53,11 +78,24 @@
             </p>
           </form>
           <% end %>
-        </div>
-        </div>
 
-        <div class="col s12 m6">
-          <h3>How I Can Help:</h3>
+        </div>  
+       </div>
+      </div>
+    </div>
+  </div>
+
+<!-- How can I help box -->
+  <div class="col s6 m6">
+     <div class="card small">
+      <div class="icon-block">
+        <h2 class="center brown-text">
+        <i class="material-icons">person_pin</i>
+        </h2>
+
+        <div class="card-content">
+          <h4 class="center">How I Can Help: <br></h4>
+
           <div class="help-list">
             <% user.help_list.each do |s| %>
             <div class="chip">
@@ -80,10 +118,28 @@
               </p>
             </form>
           </div>
-            <% end %>
-        </div>
+          <% end %>
+
+        </div>  
+       </div>
       </div>
     </div>
+
+  </div>
+</div>
+
+<div class="center container">
+<div class="row">
+    <div class="col s12">
+      
+      <ul class="tabs">
+        <!-- <li class="tab col s3"><a href="#about-tab">About Me</a></li> -->
+        <li class="tab col s3"><a class="active" href="#calendar-tab">Availability</a></li>
+        <li class="tab col s3"><a href="#flash-tab">Schedule a Flash Session</a></li>
+      </ul>
+    </div>
+
+
     <div id="calendar-tab" class="col s12">
       <div class="row">
         <div class="col s12 m7">
@@ -124,6 +180,8 @@
       </div>
 
     </div>
+
+
     <div id="flash-tab" class="col s12">
       <div class="row">
         <div class="col s4">
@@ -164,3 +222,4 @@
 
     </div>
   </div>
+</div>

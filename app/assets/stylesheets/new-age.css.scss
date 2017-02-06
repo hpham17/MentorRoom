@@ -3,6 +3,21 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
+
+ div.transbox {
+  /*margin: 30px;*/
+  height: 600px;
+  /*width: 50%;*/
+  background-color: black;
+  opacity: 0.6;
+  margin-top: 15%;
+  padding: 50px;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+
+
 .heading-font {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
@@ -156,11 +171,13 @@ header {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background-image: image-url('bg-pattern.png'), #7b4397;
+  background-image: image-url('home-background');
+
+  /*background-image: image-url('bg-pattern.png'), #7b4397;*/
   /* fallback for old browsers */
-  background-image: image-url("bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  /*background-image: image-url("bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);*/
   /* Chrome 10-25, Safari 5.1-6 */
-  background-image: image-url("bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+  /*background-image: image-url("bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);*/
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
 }

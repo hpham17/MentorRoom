@@ -1,48 +1,50 @@
 <div>
-      <nav class="yellow darken-2">
-<% if current_user %>
-        <div class="nav-wrapper">
+  <nav class="grey darken-3">
+    <% if current_user %>
+    <div class="nav-wrapper">
 
-                <form style="display: inline-block;width: 50%;margin-left: 12%;">
-                  <div class="input-field">
-                    <%= form_tag users_path, :method => "get", :id => "search" do %>
-                      <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
-                    <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
-                    <% end %>
-                  </div>
-                </form>
+      <form style="display: inline-block;width: 50%;margin-left: 12%;">
+        <div class="input-field">
+          <%= form_tag users_path, :method => "get", :id => "search" do %>
+          <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
+          <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
+          <% end %>
+        </div>
+      </form>
 
 
-            <ul class="right">
-          <li class="dropdown">
-                <a data-toggle="dropdown" aria-expanded="false">
-                  <i id="notify-icon" class="material-icons">notifications</i></a>
-                                      <div class="dropdown-menu notify-dropdown pull-right">
-                                          <div class="list-group him-notification">
-                                              <div class="lg-header">
-                                                  Notification
-                                                  <a href="" id="clear-all">
-                                                      <i class="material-icons tooltipped" data-position="right" data-tooltip="Clear All">clear_all</i>
-                                                  </a>
-                                              </div>
-                                              <div class="lg-body">
-                                              <% if current_user.notification && current_user.notification.messages? %>
-                                                <% current_user.notification.messages.each do |message| %>
-                                                  <%= render partial: "/layouts/message", object: message %>
-                                                <% end %>
-                                              <% end %>
-                                            </div>
-                                          </div>
-                                      </div>
-                  </li>
-              </ul>
-          </div>
+      <ul class="right">
+        <li class="dropdown">
+          <a data-toggle="dropdown" aria-expanded="false">
+            <i id="notify-icon" class="material-icons">notifications</i></a>
+            <div class="dropdown-menu notify-dropdown pull-right">
+              <div class="list-group him-notification">
+                <div class="lg-header">
+                  Notification
+                  <a href="" id="clear-all">
+                    <i class="material-icons tooltipped" data-position="right" data-tooltip="Clear All">clear_all</i>
+                  </a>
+                </div>
+                <div class="lg-body">
+                  <% if current_user.notification && current_user.notification.messages? %>
+                  <% current_user.notification.messages.each do |message| %>
+                  <%= render partial: "/layouts/message", object: message %>
+                  <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-      </nav>
-      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="color: white;position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
-      <ul id="nav-mobile" class="side-nav">
-        <li class="logo"><a id="logo-container" class="brand-logo"><%= image_tag('mentorroom.png', width: '140', style: 'position: absolute;top: 5px;') %>
-            </a></li>
+    </nav>
+    
+    <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="color: white;position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li class="logo"><a id="logo-container" class="grey darken-3 brand-logo"><%= image_tag('mentorroom.png', width: '140', style: 'position: absolute; top: 5px;') %>
+      </a></li>
         <!-- <li class="search">
           <div class="search-wrapper card">
             <input id="search"><i class="material-icons">search</i>
@@ -52,9 +54,9 @@
 
         <%= render 'layouts/navbar_links' %>
       </ul>
-<% else %>
-    <a style="left:0;right:0;" id="logo-container" class="brand-logo center-align">
-      <%= image_tag('mentorroom.png', width: '140') %>
-    </a>
-<% end %>
-</div>
+      <% else %>
+      <a style="left:0;right:0;" id="logo-container" class="grey darken-3 brand-logo center-align">
+        <%= image_tag('mentorroom.png', width: '140') %>
+      </a>
+      <% end %>
+    </div>

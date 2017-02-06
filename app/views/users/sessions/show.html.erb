@@ -1,18 +1,115 @@
 <div class="profile">
   <div class="profile-pic">
     <%= image_tag("/uploads/#{@user.picture}", :class => "profile-image") %>
+  </div>
+</div>
 
+<!-- name bar -->
+<nav class="mr-color">
+  <div class="nav-wrapper">
+  <h4 class="brand-logo center"><%=@user.name %><br></h4>
+  </div>
+</nav>
+
+<!-- <div class="col s12 m7">
+   <div class="card horizontal">
+    <div class="icon-block">
+      <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+      <div class="card-content">
+        <h5 class="center"><?php echo $children[2]->title; ?></h5>
+
+        <p class="light"><?php custom_echo($children[2]->body, 200); ?></p>
+      </div>  
+     </div>
+    </div>
+   </div> -->
+
+  
+<% if @user.profile %>
+
+
+<div class="container" >
+ <div class="row">
+    <div class="col s12">
+     <div class="card small">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">person_pin</i></h2>
+        <div class="card-content">
+          <!-- <h4 class="center">Work</h4> -->
+
+          <h5 class="light"> 
+          About Me: <%= @user.profile.bio %><br>
+          </h5>
+
+        </div>  
+       </div>
+      </div>
+    </div>
+
+
+
+  <div class="col s4">
+     <div class="card small">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">work</i></h2>
+        <div class="card-content">
+          <!-- <h4 class="center">Work</h4> -->
+
+          <h5 class="light"> 
+          Role: <%= @user.profile.role %><br>
+          </h5>
+          
+          <h5 class="light">
+          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
+          </h5>
+
+        </div>  
+       </div>
+      </div>
+     </div>
+
+  <div class="col s4">
+    <div class="card small">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">mode_edit</i></h2>
+        <div class="card-content">
+          <!-- <h4 class="center">Education</h4> -->
+
+          <h5 class="light"> 
+          College: <%= @user.profile.school %><br>
+          </h5>
+          <h5 class="light"> 
+          Graduated: <%= @user.profile.gradyear %><br>
+          </h5>
+
+          
+        </div>  
+      </div>
+    </div>
   </div>
 
-<div class="profile-details">
-  <%= @user.name %><br>
-  <% if @user.profile %>
-    <%= @user.profile.role %><br>
-    <%= @user.profile.location %><br>
-    <%= @user.profile.school %><br>
-    Graduated: <%= @user.profile.gradyear %><br>
-    <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
-  <% end %>
+  <div class="col s4">
+    <div class="card small">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">location_on</i></h2>
+        <div class="card-content">
+          <!-- <h4 class="center">Hometown</h4> -->
+
+          <h5 class="light"> 
+          Hometown: <%= @user.profile.location %><br>
+          </h5>
+
+        </div>  
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <% end %>          
+
+
   <% if current_user.is? :Mentee && @user != current_user %>
     <% if current_user.mentors.include? @user %>
       <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
@@ -24,8 +121,6 @@
       Mentee Limit Reached! Try again next week.
     <% end %>
   <% end %>
-</div>
-
 </div>
 
 <% if @user.is? :Mentor %>
