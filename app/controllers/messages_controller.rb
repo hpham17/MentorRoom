@@ -1,19 +1,13 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  def create
-    message = Message.new(message_params)
-    message.user = current_user
-    if message.save
-      ActionCable.server.broadcast 'messages',
-        message: message.content,
-        user: message.user.name
-      head :ok
-    end
+
+  protected
+
+  def self.render_with_signed_in_user(user, *args)
+    ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
+    proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
+    renderer = self.renderer.new('warden' => proxy)
+    renderer.render(*args)
   end
 
-  private
-
-    def message_params
-      params.require(:message).permit(:content, :chatroom_id)
-    end
 end

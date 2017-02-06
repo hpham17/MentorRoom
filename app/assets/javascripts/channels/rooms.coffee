@@ -1,0 +1,36 @@
+$ ->
+  messages = $('#messages')
+  if messages.length > 0
+    messages_to_bottom = -> $('.chat-history').scrollTop($('.chat-history').prop("scrollHeight"))
+
+    messages_to_bottom()
+
+    App.global_chat = App.cable.subscriptions.create {
+        channel: "ChatroomsChannel"
+        first_id: messages.data('first-id')
+        second_id: messages.data('second-id')
+      },
+      connected: ->
+        # Called when the subscription is ready for use on the server
+
+      disconnected: ->
+        # Called when the subscription has been terminated by the server
+
+      received: (data) ->
+        messages.append data['message']
+        messages_to_bottom()
+
+      send_message: (message, chatroom_id, other_id) ->
+        @perform 'send_message', message: message, chatroom_id: chatroom_id, other_id: other_id
+
+
+    $(document).on 'keypress', 'form', (e) ->
+      code = e.keyCode or e.which
+      if code == 13
+        textarea = $(this).find('#message_content')
+        if $.trim(textarea.val()).length > 1
+          App.global_chat.send_message textarea.val(), messages.data('chatroom-id'), messages.data('second-id')
+          textarea.val('')
+        e.preventDefault()
+        return false
+      return

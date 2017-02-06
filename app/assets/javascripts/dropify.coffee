@@ -4,4 +4,5 @@ $ ->
     thumbnailHeight: 263,
     accept: (file, done) ->
       done()
+      $('#upload-pic').val = file.original_filename
   };
