@@ -4,21 +4,41 @@
       <%= render 'stars/button', :user => user %>
     <% end %>
 
-  <%= image_tag(user.picture, :class => 'profile-img') %>
-    <h2 id="<%= user.name %>" class="mdl-card__title-text"><%= link_to "#{user.name}", user_path(user.id) %>
-      <% if user.online %>
-        <i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
-      <% end %>
-    </h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Works @ Google <br>
-    <% user.skill_list.each do |s| %>
-    <div class="chip">
-    <%= s %>
+    <div class="card-image center">
+      <%= image_tag(user.picture, :class => 'profile-img') %> 
+      
+      <div class="center-align"> 
+        <h2 class="name-title" id="<%= user.name %>" ><%= link_to "#{user.name}", user_path(user.id)%>
+            <% if user.online %>
+              <i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
+            <% end %>
+        </h2> 
+      </div>
     </div>
-    <% end %>
+
   </div>
+
+  <div class="mdl-card__title mdl-card--expand mr-color" style="width: 100%; color: white;">
+
+ <!--    <%= user.role %>  works at 
+    <% if current_user.mentors.include? user %>
+        <% user.profile.role %>
+    <% end%> <br>
+ -->
+
+    <div> 
+      <%= user.role %> Works @ Google </br> <!-- NEED TO CHANGE THIS -->
+    </div>
+  </div>
+<!--     <% user.skill_list.each do |s| %>
+ -->    
+<!--  <div class="chip">
+ -->    
+<!--  <%= s %>
+ --><!--     </div>
+ -->    
+<!--  <% end %>
+ -->  
   <div class="mdl-card__actions mdl-card--border">
   <div class="mdl-button mdl-button--colored">
     <% if current_user.mentors.include? user %>

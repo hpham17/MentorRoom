@@ -43,7 +43,7 @@
     <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="color: white;position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
 
     <ul id="nav-mobile" class="side-nav">
-      <li class="logo"><a id="logo-container" class="grey darken-3 brand-logo"><%= image_tag('mentorroom.png', width: '140', style: 'position: absolute; top: 5px;') %>
+      <li class="logo"><a id="logo-container" class="grey darken-3 brand-logo"><%= image_tag('single-logo.png', width: '75', style: 'position: absolute; top: 5px;') %>
       </a></li>
         <!-- <li class="search">
           <div class="search-wrapper card">
@@ -55,7 +55,9 @@
         <%= render 'layouts/navbar_links' %>
       </ul>
       <% else %>
-      <a style="left:0;right:0;" id="logo-container" class="grey darken-3 brand-logo center-align">
+
+      <!-- This is where we center the logo int he navbar -->
+      <a style="left:0; margin-left: 30px;" id="logo-container" class="grey darken-3 brand-logo center-align">
         <%= image_tag('mentorroom.png', width: '140') %>
       </a>
       <% end %>

@@ -31,6 +31,17 @@
  *
  */
 
+
+/*ITZELS ADDITIONS */
+
+.black-font-color {
+  color:black !important;
+}
+
+/*====================*/
+
+
+
  /* GENERAL STYLE */
 
 body {
@@ -783,12 +794,13 @@ body {
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;
-  background: #46B6AC;
+  /*background: #31A8E2;*/
+  /*background-color: black;*/
 }
 .profile-img {
 	height: 90%;
-  width: 70%;
-  border-radius: 50%;
+  width: 40%;
+  border-radius: 67%;
 }
 a {
   text-decoration: none !important;
