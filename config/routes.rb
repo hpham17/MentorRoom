@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get '/user/:id' => 'users/sessions#show', as: 'user'
     get '/admin' => 'users/sessions#admin', as: 'admin'
     get '/mentor' => 'users/sessions#mentor', as: 'mentor'
+    post '/users/friend_request/:id' => 'users/sessions#friend_request', as: 'friend_request'
+    post '/users/accept_request/:id' => 'users/sessions#accept_request', as: 'accept_request'
     get '/setup' => 'users/registrations#setup'
     patch '/update' => 'users/registrations#update'
     post '/tag' => 'users/sessions#tag'

@@ -63,6 +63,20 @@ $ ->
     }
   );
 
+  $('.friend_request').click (e) ->
+    e.preventDefault()
+    _this = $(this)
+    $.post "/users/friend_request/#{$(this).data('id')}", (data) ->
+        _this.html "Friend Request Sent"
+      return
+
+  $('.accept_request').click (e) ->
+    e.preventDefault()
+    _this = $(this)
+    $.post "/users/accept_request/#{$(this).attr('id')}", (data) ->
+      _this.parent().parent().remove()
+      return
+
   $('.button-collapse').sideNav({
     menuWidth: 300,
     edge: 'left',

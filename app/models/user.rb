@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  username               :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  name                   :string
+#  role                   :string
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  remember_created_at    :datetime
+#  limit                  :integer
+#  picture                :string           default("blank.png")
+#  online                 :boolean
+#
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,12 +47,25 @@ class User < ApplicationRecord
   has_many :inverse_mentorships, -> { where accepted: true }, :class_name => "Mentorship", :foreign_key => "mentor_id"
   has_many :mentees, :through => :inverse_mentorships, :source => :user
   acts_as_taggable_on :skills, :help
+  has_friendship
   accepts_nested_attributes_for :profile
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   after_save { Notification.create! user_id: self.id unless self.notification}
 
   def is?(role)
     self.role == role.to_s
+  end
+
+  def isFriend?(user)
+    self.friends.include? user
+  end
+
+  def requests  
+    self.requested_friends
+  end
+
+  def requested?(user)
+    self.pending_friends.include? user
   end
 
   def check_limit

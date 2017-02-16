@@ -5,14 +5,16 @@
     <% end %>
 
     <div class="card-image center">
-      <%= image_tag(user.picture, :class => 'profile-img') %> 
-      
-      <div class="center-align"> 
+      <%= image_tag(user.picture, :class => 'profile-img') %>
+
+      <div class="center-align">
         <h2 class="name-title" id="<%= user.name %>" ><%= link_to "#{user.name}", user_path(user.id)%>
+          <div id="available-<%= user.name %>">
             <% if user.online %>
               <i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
             <% end %>
-        </h2> 
+          </div>
+        </h2>
       </div>
     </div>
 
@@ -20,36 +22,22 @@
 
   <div class="mdl-card__title mdl-card--expand mr-color" style="width: 100%; color: white;">
 
- <!--    <%= user.role %>  works at 
+ <!--    <%= user.role %>  works at
     <% if current_user.mentors.include? user %>
         <% user.profile.role %>
     <% end%> <br>
  -->
 
-    <div> 
-      <%= user.role %> Works @ Google </br> <!-- NEED TO CHANGE THIS -->
+    <div>
+       <%= user.profile ? "Works @ " + user.profile.company : user.role %>
     </div>
   </div>
-<!--     <% user.skill_list.each do |s| %>
- -->    
-<!--  <div class="chip">
- -->    
-<!--  <%= s %>
- --><!--     </div>
- -->    
-<!--  <% end %>
- -->  
-  <div class="mdl-card__actions mdl-card--border">
-  <div class="mdl-button mdl-button--colored">
-    <% if current_user.mentors.include? user %>
-      <%= link_to "Message", 'chatrooms/new?id=' + u.id.to_s %>
-    <% elsif !current_user.requested_mentor?(user).empty? %>
-      Request Sent
-    <% elsif user.check_limit != "block" %>
-      <a class="item2" href="<%= user.id %>">Request Mentor</a>
-    <% else %>
-      Mentee Limit Reached! Try again next week.
-    <% end %>
-    </div>
-  </div>
+
+  <% if user.isFriend?(current_user) %>
+    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s %>
+  <% elsif current_user.requested?(user) %>
+    <p> Friend Request Sent.</p>
+  <% else %>
+    <a href="users/friend_request/<%= user.id %>" data-id=<%= user.id %> class="friend_request">Add Friend</a>
+  <% end %>
 </div>

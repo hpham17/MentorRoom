@@ -67,6 +67,15 @@ class Users::SessionsController < Devise::SessionsController
     head :ok
   end
 
+  def friend_request
+    current_user.friend_request User.find(params[:id])
+    head :ok
+  end
+  def accept_request
+    current_user.accept_request User.find(params[:id])
+    head :ok
+  end
+
   private
   def extract_mentees(association)
     mentees = []

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id         :integer          not null, primary key
+#  start      :datetime
+#  end        :datetime
+#  title      :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Event < ApplicationRecord
   validates :start, :end, presence: true
   validates :start, :end, date: true

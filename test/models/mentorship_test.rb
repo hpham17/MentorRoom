@@ -8,6 +8,8 @@
 #  accepted   :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  body       :string
+#  temp       :boolean          default(FALSE)
 #
 
 require 'test_helper'

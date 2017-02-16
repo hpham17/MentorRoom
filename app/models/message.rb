@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id              :integer          not null, primary key
+#  content         :string
+#  user_id         :integer
+#  chatroom_id     :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  notification_id :integer
+#
+
 class Message < ApplicationRecord
   attr_accessor :current_user
   attr_accessor :other_user
