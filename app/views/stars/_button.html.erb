@@ -1,6 +1,8 @@
 <% if current_user.star?(user) %>
   <%= link_to unstar_path(starred_id: user.id), remote: true, method: :delete  do %>
-    <i style="color: yellow" class='fa fa-star'></i>
+  
+    <!-- star color is gold -->
+    <i style="color: #FFD700;" class='fa fa-star'></i>
 
   <% end %>
 <% else %>

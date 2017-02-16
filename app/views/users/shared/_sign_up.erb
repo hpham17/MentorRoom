@@ -4,10 +4,12 @@
     <%= f.text_field :name, autofocus: true, class: 'validate' %>
     <%= f.label :name %>
   </div>
+
   <div class="input-field">
-    <%= f.email_field :email  %>
+    <%= f.email_field :email %>
     <%= f.label :email %>
   </div>
+
   <div class="input-field">
     <%= f.password_field :password, autocomplete: "off" %>
     <%= f.label :password %>
@@ -21,5 +23,5 @@
   </div>
   <%= f.hidden_field :role, value: 'Mentee'%>
 
-    <%= f.submit "Sign up", class:'btn' %>
+    <%= f.submit "Sign up", class:'mr-color btn waves-effect waves-green' %>
 <% end %>
