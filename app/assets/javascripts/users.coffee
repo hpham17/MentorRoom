@@ -10,14 +10,15 @@ $ ->
       elem.css(fade).hide()
       return
   $('.modal').modal();
+  $('#add-friend').modal();
   $('#mentor-signup').click ->
-    $('#mentor-signup').children().toggleClass('half-opacity')
-    $('#mentee-signup').children().toggleClass('half-opacity')
+    $('#mentor-signup').children().removeClass('half-opacity')
+    $('#mentee-signup').children().addClass('half-opacity')
     $('#signup-title').html "Mentor Sign Up";
     $('input#user_role').val('Mentor')
   $('#mentee-signup').click ->
-    $('#mentor-signup').children().toggleClass('half-opacity')
-    $('#mentee-signup').children().toggleClass('half-opacity')
+    $('#mentor-signup').children().addClass('half-opacity')
+    $('#mentee-signup').children().removeClass('half-opacity')
     $('#signup-title').html "Mentee Sign Up";
     $('input#user_role').val('Mentee')
   $('#leggo').click ->
@@ -67,7 +68,7 @@ $ ->
     e.preventDefault()
     _this = $(this)
     $.post "/users/friend_request/#{$(this).data('id')}", (data) ->
-        _this.html "Friend Request Sent"
+        $("#target#{_this.data('id')}").html "Friend Request Sent"
       return
 
   $('.accept_request').click (e) ->

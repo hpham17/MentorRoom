@@ -12,7 +12,7 @@
     <div class="col s12 m6">
             <div class="chat">
                 <div class="chat-header clearfix">
-                  <!-- <%= image_tag("/uploads/" + @chatroom.other_user(current_user.id).picture, class: 'img-icon circle')  %> -->
+
 
                   <div class="chat-about">
                     <div class="chat-with">Chat with <%= @chatroom.other_user(current_user.id, true)%></div>
@@ -54,5 +54,5 @@
     var appearin = new AppearIn();
     var roomName = "<%= @chatroom.topic %>"
     var iframe = document.getElementById("video");
-    appearin.addRoomToIframe(iframe, roomName + "-mentorroom");  
+    appearin.addRoomToIframe(iframe, roomName + "-mentorroom");
   </script>

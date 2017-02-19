@@ -4,12 +4,13 @@
       <%= render 'stars/button', :user => user %>
     <% end %>
 
-    <div class="card-image center">
-      <%= image_tag(user.picture, :class => 'profile-img') %>
+    <div class="card-image center" style="margin-top:20px;">
+      <div class="user user-index" style="background-image:url(<%= "/uploads/" + user.picture %>)"></div>
+
 
       <div class="center-align">
         <h2 class="name-title" id="<%= user.name %>" ><%= link_to "#{user.name}", user_path(user.id)%>
-          <div id="available-<%= user.name %>">
+          <div id="available-<%= user.name %>" style="display:inline;">
             <% if user.online %>
               <i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
             <% end %>
@@ -32,12 +33,25 @@
        <%= user.profile ? "Works @ " + user.profile.company : user.role %>
     </div>
   </div>
-
+<% if current_user != user %>
   <% if user.isFriend?(current_user) %>
-    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s %>
+    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s, class: 'waves-effect waves-green btn-flat' %>
   <% elsif current_user.requested?(user) %>
-    <p> Friend Request Sent.</p>
+      <a class="waves-effect waves-light btn">Friend Request Sent</a>
   <% else %>
-    <a href="users/friend_request/<%= user.id %>" data-id=<%= user.id %> class="friend_request">Add Friend</a>
+
+    <a class="waves-effect waves-light btn" id="<%= "target" + user.id.to_s %>" href="#add-friend">Add Friend</a>
   <% end %>
+<% end %>
+</div>
+
+<div id="add-friend" class="modal">
+  <div class="modal-content">
+    <h4>Add <%= user.name %> as a friend?</h4>
+  </div>
+    <div class="modal-footer">
+      <a href="users/friend_request/<%= user.id %>" data-id=<%= user.id %> class="friend_request modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">No</a>
+    </div>
 </div>

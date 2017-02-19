@@ -8,14 +8,14 @@
       <div class="card-content">
         <h4 class="center">About Me</h4>
 
-        <h5 class="light"> 
+        <h5 class="light">
         <% if user.profile %>
           <%= user.profile.bio %>
         <% end %>
         </h5>
 
 
-      </div>  
+      </div>
      </div>
     </div>
    </div>
@@ -79,7 +79,7 @@
           </form>
           <% end %>
 
-        </div>  
+        </div>
        </div>
       </div>
     </div>
@@ -120,7 +120,7 @@
           </div>
           <% end %>
 
-        </div>  
+        </div>
        </div>
       </div>
     </div>
@@ -131,15 +131,15 @@
 <div class="center container">
 <div class="row">
     <div class="col s12">
-      
-      <ul class="tabs">
+
+      <!-- <ul class="tabs"> -->
         <!-- <li class="tab col s3"><a href="#about-tab">About Me</a></li> -->
-        <li class="tab col s3"><a class="active" href="#calendar-tab">Availability</a></li>
+        <!-- <li class="tab col s3"><a class="active" href="#calendar-tab">Availability</a></li>
         <li class="tab col s3"><a href="#flash-tab">Schedule a Flash Session</a></li>
-      </ul>
+      </ul> -->
     </div>
 
-
+  <% if current_user.isFriend?(user) || user == current_user %>
     <div id="calendar-tab" class="col s12">
       <div class="row">
         <div class="col s12 m7">
@@ -169,10 +169,6 @@
                 </div>
                 </div>
             </div>
-
-
-
-
             <%= e.submit %>
             <% end %>
           </div>
@@ -180,9 +176,9 @@
       </div>
 
     </div>
+<% end %>
 
-
-    <div id="flash-tab" class="col s12">
+    <!-- <div id="flash-tab" class="col s12">
       <div class="row">
         <div class="col s4">
        <h2 class="header">Schedule a session</h2>
@@ -218,7 +214,7 @@
          </div>
        </div>
       </div>
-      </div>
+      </div> -->
 
     </div>
   </div>

@@ -95,6 +95,10 @@ id="myZone" encType="multipart/data">
                     <%= p.text_field :role %>
                     <%= p.label :role, "Job Title* (e.g. Student, Software Engineer)" %>
                   </div>
+                  <div class="input-field">
+                    <%= p.text_field :company %>
+                    <%= p.label :company, "Company*" %>
+                  </div>
                   <% if current_user.is? :Mentor %>
                   <div class="input-field">
                     <%= select_tag 'user[profile_attributes][sector]', options_for_select(["Private Industry", "Government Agency", "Military/Defense Contractor", "R&D", "Self-employed", "Non-profit", "Academic Institution", "Other"]), include_blank: "Pick one" %>

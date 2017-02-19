@@ -1,10 +1,13 @@
 <div class="container">
-  <% current_user.starred.each do |u| %>
-    <%= render 'users/shared/profile', :user => u %>
+  <% if @users.empty? %>
+    <h4>No users match, please search again.</h4>
+  <% end %>
+  <% current_user.starred.each do |user| %>
+    <%= render 'users/shared/profile', :user => user %>
   <% end %>
 
-  <% @users.each do |u| %>
-    <%= render 'users/shared/profile', :user => u %>
+  <% @users.each do |user| %>
+    <%= render 'users/shared/profile', :user => user %>
   <% end %>
 
 
@@ -12,7 +15,7 @@
 
 
 
-<script>
+<!-- <script>
 id = 0;
 $(document).ready(function(){
   $('.item2').click(function(e){
@@ -23,4 +26,4 @@ $(document).ready(function(){
     $('#modal-2').modal({backdrop: false, keyboard: false});
   });
 });
-</script>
+</script> -->

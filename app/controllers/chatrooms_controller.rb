@@ -4,7 +4,35 @@ class ChatroomsController < ApplicationController
     @chatrooms = current_user.chatrooms.uniq.reverse
   end
 
+  def new
+    @chatroom = room_exist?
+    if @chatroom
+      redirect_to @chatroom
+    else
+      create_chatroom
+    end
+  end
+
   def create
+    create_chatroom
+  end
+
+
+  def show
+    @chatroom = Chatroom.includes(:messages).find_by(slug: params[:slug])
+    @message = Message.new
+  end
+
+  private
+  def room_exist?
+    Chatroom.find_by_topic current_user.id.to_s + "_to_" + params[:id].to_s
+  end
+
+  def chatroom_params
+    {topic: current_user.id.to_s + "_to_" + params[:id].to_s }
+  end
+
+  def create_chatroom
     @chatroom = Chatroom.new chatroom_params
     if @chatroom.save
       @message1 = Message.new user_id: current_user.id, content: " has joined the room.", chatroom_id: @chatroom.id
@@ -24,16 +52,5 @@ class ChatroomsController < ApplicationController
       end
     end
   end
-
-
-  def show
-    @chatroom = Chatroom.includes(:messages).find_by(slug: params[:slug])
-    @message = Message.new
-  end
-
-  private
-    def chatroom_params
-      {topic: current_user.id.to_s + "_to_" + params[:id].to_s }
-    end
 
 end

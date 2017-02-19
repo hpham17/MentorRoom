@@ -57,10 +57,14 @@ class User < ApplicationRecord
   end
 
   def isFriend?(user)
-    self.friends.include? user
+    self.friends_with? user
   end
 
-  def requests  
+  def decline_request(user)
+    self.decline_request user
+  end
+
+  def requests
     self.requested_friends
   end
 

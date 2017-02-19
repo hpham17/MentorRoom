@@ -10,6 +10,13 @@ class Users::SessionsController < Devise::SessionsController
     @sanfran = Profile.where(location: "San Francisco, CA")
     @mentorship = Mentorship.new
   end
+  def dashboard
+    if current_user.is? :Mentee
+      redirect_to action: 'index'
+    else
+      redirect_to action: 'mentor'
+    end
+  end
   def show
     @user = User.find(params[:id])
     @event = Event.new
@@ -75,6 +82,10 @@ class Users::SessionsController < Devise::SessionsController
     current_user.accept_request User.find(params[:id])
     head :ok
   end
+  def decline_request
+    current_user.decline_request User.find(params[:id])
+    head :ok
+  end
 
   private
   def extract_mentees(association)
@@ -86,7 +97,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def decode_search
-    if params[:search]
+    if params[:search] && !params[:search].empty?
       @users = User.tagged_with("#{params[:search]}")
       if @users.empty?
         @users = User.where(:name => params[:search])

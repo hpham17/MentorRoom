@@ -20,7 +20,15 @@ html {
 
 .name-title {
   font-size: 30px;
+  margin-bottom: 5px;
+  display: inline;
 }
+
+.card-image {
+  margin: 0 auto;
+}
+
+
 
 
 
@@ -108,18 +116,47 @@ html {
   /*float: left;*/
   width: 300px;
   overflow: hidden;
-
+  display: flex;
   /* centering */
   float: right;
   position: relative;
   left: -38%; /* or right 50% */
-  
+
 }
-.profile-image {
-  height: 79%;
-  width: 81%;
-  margin: 30px;
+.profile-img {
+	height: 90%;
+  width: 40%;
+  border-radius: 67%;
+}
+
+.user {
+  display: inline-block;
+  margin: auto;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: initial;
+  background-size: cover;
+}
+
+.user-navbar {
+  width: 180px;
+  height: 180px;
+}
+.user-index {
+  width: 200px;
+  height: 200px;
+}
+
+.profile-image {
+  height: auto;
+  width: 52%;
+  border-radius: 50%;
+}
+
+.name-title {
+  margin: 0;
 }
 
 
@@ -166,7 +203,7 @@ html {
 
 .half-opacity {
   opacity: .5;
-  
+
 }
 
 
@@ -212,4 +249,21 @@ html {
   .container {
       width: 90%;
   }
+}
+
+.modal .modal-footer {
+    border-radius: 0 0 2px 2px;
+    background-color: #fafafa;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%;
+}
+
+#add-friend {
+  height: 30%;
+  width: 30%;
+}
+.modal-content {
+  position: initial;
+  background-color: initial;
 }

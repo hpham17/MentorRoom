@@ -3,14 +3,17 @@
     <% if current_user %>
     <div class="nav-wrapper">
 
+      <% if current_page?(users_path) %>
       <form style="display: inline-block;width: 50%;margin-left: 12%;">
         <div class="input-field">
           <%= form_tag users_path, :method => "get", :id => "search" do %>
-          <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
-          <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
+            <%= text_field_tag :search, params[:search], class: 'autocomplete', id: 'search', autocomplete: 'off', placeholder: 'Search' %>
+            <label for="search" style="padding-left:12px; margin-right: 5px;"><i class="material-icons">search</i></label>
           <% end %>
         </div>
       </form>
+      <% end %>
+
 
 
       <ul class="right">
@@ -39,7 +42,7 @@
       </div>
 
     </nav>
-    
+
     <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="color: white;position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
 
     <ul id="nav-mobile" class="side-nav">

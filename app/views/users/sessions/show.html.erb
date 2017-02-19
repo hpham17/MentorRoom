@@ -1,6 +1,7 @@
+
 <div class="profile">
   <div class="profile-pic">
-    <%= image_tag("/uploads/#{@user.picture}", :class => "profile-image") %>
+    <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
   </div>
 </div>
 
@@ -19,12 +20,12 @@
         <h5 class="center"><?php echo $children[2]->title; ?></h5>
 
         <p class="light"><?php custom_echo($children[2]->body, 200); ?></p>
-      </div>  
+      </div>
      </div>
     </div>
    </div> -->
 
-  
+
 <% if @user.profile %>
 
 
@@ -37,11 +38,11 @@
         <div class="card-content">
           <!-- <h4 class="center">Work</h4> -->
 
-          <h5 class="light"> 
+          <h5 class="light">
           About Me: <%= @user.profile.bio %><br>
           </h5>
 
-        </div>  
+        </div>
        </div>
       </div>
     </div>
@@ -55,15 +56,15 @@
         <div class="card-content">
           <!-- <h4 class="center">Work</h4> -->
 
-          <h5 class="light"> 
+          <h5 class="light">
           Role: <%= @user.profile.role %><br>
           </h5>
-          
+
           <h5 class="light">
           <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
           </h5>
 
-        </div>  
+        </div>
        </div>
       </div>
      </div>
@@ -75,15 +76,15 @@
         <div class="card-content">
           <!-- <h4 class="center">Education</h4> -->
 
-          <h5 class="light"> 
+          <h5 class="light">
           College: <%= @user.profile.school %><br>
           </h5>
-          <h5 class="light"> 
+          <h5 class="light">
           Graduated: <%= @user.profile.gradyear %><br>
           </h5>
 
-          
-        </div>  
+
+        </div>
       </div>
     </div>
   </div>
@@ -95,11 +96,11 @@
         <div class="card-content">
           <!-- <h4 class="center">Hometown</h4> -->
 
-          <h5 class="light"> 
+          <h5 class="light">
           Hometown: <%= @user.profile.location %><br>
           </h5>
 
-        </div>  
+        </div>
        </div>
       </div>
     </div>
@@ -107,7 +108,7 @@
 </div>
 
 
- <% end %>          
+ <% end %>
 
 
   <% if current_user.is? :Mentee && @user != current_user %>
@@ -127,7 +128,5 @@
 
   <%= render 'users/shared/mentor', :user => @user %>
 
-<% else %>
-  <%= render 'users/shared/mentee', :user => @user %>
 
 <% end %>
