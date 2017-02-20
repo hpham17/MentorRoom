@@ -1,132 +1,267 @@
 
-<div class="profile">
-  <div class="profile-pic">
-    <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
-  </div>
-</div>
+<div class="grey lighten-5">
 
-<!-- name bar -->
-<nav class="mr-color">
-  <div class="nav-wrapper">
-  <h4 class="brand-logo center"><%=@user.name %><br></h4>
-  </div>
-</nav>
+    <% if @user.profile %>
 
-<!-- <div class="col s12 m7">
-   <div class="card horizontal">
-    <div class="icon-block">
-      <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-      <div class="card-content">
-        <h5 class="center"><?php echo $children[2]->title; ?></h5>
-
-        <p class="light"><?php custom_echo($children[2]->body, 200); ?></p>
-      </div>
-     </div>
-    </div>
-   </div> -->
-
-
-<% if @user.profile %>
-
-
-<div class="container" >
- <div class="row">
-    <div class="col s12">
-     <div class="card small">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">person_pin</i></h2>
-        <div class="card-content">
-          <!-- <h4 class="center">Work</h4> -->
-
-          <h5 class="light">
-          About Me: <%= @user.profile.bio %><br>
-          </h5>
-
+    <section class="section--center mdl-grid site-max-width">
+      <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
+        <div class="center-align">
+            <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
         </div>
-       </div>
       </div>
-    </div>
 
 
-
-  <div class="col s4">
-     <div class="card small">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">work</i></h2>
-        <div class="card-content">
-          <!-- <h4 class="center">Work</h4> -->
-
-          <h5 class="light">
-          Role: <%= @user.profile.role %><br>
-          </h5>
-
-          <h5 class="light">
-          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
-          </h5>
-
+      <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text"><%=@user.name %></h2>
         </div>
-       </div>
-      </div>
-     </div>
-
-  <div class="col s4">
-    <div class="card small">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">mode_edit</i></h2>
-        <div class="card-content">
-          <!-- <h4 class="center">Education</h4> -->
+        <div class="mdl-card__supporting-text">
+          About Me: <%= @user.profile.bio %>
+        </div>
+        <div class="mdl-card__actions  mdl-card--border">
+          <!-- <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" data-upgraded=",MaterialButton,MaterialRipple">Watch Intro<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a> -->
+          <!-- Role: <%= @user.profile.role %><br> -->
+              
 
           <h5 class="light">
-          College: <%= @user.profile.school %><br>
-          </h5>
-          <h5 class="light">
-          Graduated: <%= @user.profile.gradyear %><br>
-          </h5>
+          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> </h5>
+
 
 
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="col s4">
-    <div class="card small">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">location_on</i></h2>
-        <div class="card-content">
-          <!-- <h4 class="center">Hometown</h4> -->
 
-          <h5 class="light">
-          Hometown: <%= @user.profile.location %><br>
-          </h5>
+    <div id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DETAILS -->
+                    <div id="about-card" class="card" data-sr-id="49" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: box-shadow 0.25s ease 0s, -webkit-transform 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s, opacity 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s; transition: box-shadow 0.25s ease 0s, transform 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s, opacity 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s; ">
+                        <div class="card-content">
+                            <!-- ABOUT PARAGRAPH -->
+                            <p>
+                                Hello! I’m John Doe. Senior Web Developer with over 13 years of experience
+                                specializing in front end development. Experienced with all stages of the
+                                development cycle for dynamic web projects.Having an in-depth knowledge
+                                including advanced HTML5, CSS, CSS3, SASS, LESS, JSON, XML, Java, JavaScript,
+                                JQuery, Angular JS. Strong background in management and leadership.
+                            </p>
+                        </div>
 
+                        <!-- BUTTONS -->
+                        <div id="about-btn" class="card-action">
+                            <div class="about-btn">
+                                <!-- DOWNLOAD CV BUTTON -->
+                                <a href="#" class="btn waves-effect">Download CV</a>
+                                <!-- CONTACT BUTTON -->
+                                <a href="#contact" class="btn waves-effect">Contact Me</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-       </div>
+    </div>
+
+
+<!--     <ul class="hide-on-med-and-down">
+                        <li><a href="/">about me</a></li>
+                        <li><a href="/resume">resume</a></li>
+                        <li><a href="/contact">contact</a></li>
+                        <li><a href="/resources">resources</a></li>
+                    </ul>
+ -->
+
+
+    <!-- <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark mdl-js-ripple-effect--ignore-events" data-upgraded=",MaterialRipple">
+      <a href="#overview" class="mdl-layout__tab is-active">Overview<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+      <a href="#features" class="mdl-layout__tab">Features<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+      <a href="#features" class="mdl-layout__tab">Details<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+      <a href="#features" class="mdl-layout__tab">Technology<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+      <a href="#features" class="mdl-layout__tab">FAQ<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+      
+    </div> -->
+
+
+
+
+         <!--  <div class="left-align">
+              <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
+            </div>
+     -->
+
+
+
+    <!-- name bar -->
+    <!-- <nav class="mr-color">
+      <div class="nav-wrapper">
+        <h4 class="brand-logo center"><%=@user.name %><br></h4>
+      </div>
+    </nav> -->
+
+    <!-- <div class="col s12 m7">
+       <div class="card horizontal">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+          <div class="card-content">
+            <h5 class="center"><?php echo $children[2]->title; ?></h5>
+
+            <p class="light"><?php custom_echo($children[2]->body, 200); ?></p>
+          </div>
+         </div>
+        </div>
+       </div> -->
+
+    <!-- <div class="row">
+      <div class="col s12 m4">
+     -->
+      <!-- Profile About Details  -->
+     <!--  <ul id="profile-page-about-details" class="collection z-depth-1">
+
+        <li class="collection-item">
+          <div class="row">
+            <div class="col s5 grey-text darken-1"><i class="mdi-action-wallet-travel"></i> Project</div>
+            <div class="col s7 grey-text text-darken-4 right-align">ABC Name</div>
+          </div>
+        </li>
+
+        <li class="collection-item">
+          <div class="row">
+            <div class="col s5 grey-text darken-1"><i class="mdi-social-poll"></i> Skills</div>
+            <div class="col s7 grey-text text-darken-4 right-align">HTML, CSS</div>
+          </div>
+        </li>
+        <li class="collection-item">
+          <div class="row">
+            <div class="col s5 grey-text darken-1"><i class="mdi-social-domain"></i> Lives in</div>
+            <div class="col s7 grey-text text-darken-4 right-align">NY, USA</div>
+          </div>
+        </li>
+        <li class="collection-item">
+          <div class="row">
+            <div class="col s5 grey-text darken-1"><i class="mdi-social-cake"></i> Birth date</div>
+            <div class="col s7 grey-text text-darken-4 right-align">18th June, 1991</div>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </div> -->
+      <!--/ Profile About Details  -->
+
+
+
+
+    <div class="container" >
+     <div class="row">
+
+
+
+
+     <!--    <div class="col s12">
+         <div class="card small">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">person_pin</i></h2>
+            <div class="card-content"> -->
+              <!-- <h4 class="center">Work</h4> -->
+
+    <!--           <h5 class="light">
+              About Me: <%= @user.profile.bio %><br>
+              </h5>
+
+            </div>
+           </div>
+          </div>
+        </div>
+
+     -->
+
+      <div class="col s4">
+         <div class="card small">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">work</i></h2>
+            <div class="card-content">
+              <!-- <h4 class="center">Work</h4> -->
+
+              <h5 class="light">
+              Role: <%= @user.profile.role %><br>
+              </h5>
+
+              <h5 class="light">
+              <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
+              </h5>
+
+            </div>
+           </div>
+          </div>
+         </div>
+
+      <div class="col s4">
+        <div class="card small">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">mode_edit</i></h2>
+            <div class="card-content">
+              <!-- <h4 class="center">Education</h4> -->
+
+              <h5 class="light">
+              College: <%= @user.profile.school %><br>
+              </h5>
+              <h5 class="light">
+              Graduated: <%= @user.profile.gradyear %><br>
+              </h5>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s4">
+        <div class="card small">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">location_on</i></h2>
+            <div class="card-content">
+              <!-- <h4 class="center">Hometown</h4> -->
+
+              <h5 class="light">
+              Hometown: <%= @user.profile.location %><br>
+              </h5>
+
+            </div>
+           </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 
- <% end %>
+     <% end %>
 
 
-  <% if current_user.is? :Mentee && @user != current_user %>
-    <% if current_user.mentors.include? @user %>
-      <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
-    <% elsif !current_user.requested_mentor?(@user).empty? %>
-      Request Sent
-    <% elsif @user.check_limit != "block" %>
-      <a class="item2" href="<%= @user.id %>">Request Mentor</a>
-    <% else %>
-      Mentee Limit Reached! Try again next week.
+      <% if current_user.is? :Mentee && @user != current_user %>
+        <% if current_user.mentors.include? @user %>
+          <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
+        <% elsif !current_user.requested_mentor?(@user).empty? %>
+          Request Sent
+        <% elsif @user.check_limit != "block" %>
+          <a class="item2" href="<%= @user.id %>">Request Mentor</a>
+        <% else %>
+          Mentee Limit Reached! Try again next week.
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if @user.is? :Mentor %>
+
+      <%= render 'users/shared/mentor', :user => @user %>
+
+
     <% end %>
-  <% end %>
-</div>
-
-<% if @user.is? :Mentor %>
-
-  <%= render 'users/shared/mentor', :user => @user %>
 
 
-<% end %>
+
+
+
+
+

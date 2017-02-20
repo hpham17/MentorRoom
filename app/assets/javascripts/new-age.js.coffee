@@ -11,3 +11,4 @@ $ ->
   # Closes the Responsive Menu on Menu Item Click
   $('body').scrollspy({ target: '#mainNav', offset: 100 })
   return
+
