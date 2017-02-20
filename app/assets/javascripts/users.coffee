@@ -64,11 +64,16 @@ $ ->
     }
   );
 
+  $('.target').click ->
+    $('#modal-name').html $(this).data('name')
+    $('#modal-url').attr('href', "users/friend_request/#{$(this).data('id')}")
+
   $('.friend_request').click (e) ->
     e.preventDefault()
     _this = $(this)
-    $.post "/users/friend_request/#{$(this).data('id')}", (data) ->
-        $("#target#{_this.data('id')}").html "Friend Request Sent"
+    $.post "/users/friend_request/#{$(this).attr('href').match(/\d+/)[0]} %>", (data) ->
+        $("a[data-id='#{data.id}']").html "Friend Request Sent"
+
       return
 
   $('.accept_request').click (e) ->

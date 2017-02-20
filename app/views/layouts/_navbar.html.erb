@@ -30,7 +30,7 @@
                 </div>
                 <div class="lg-body">
                   <% if current_user.notification && current_user.notification.messages? %>
-                  <% current_user.notification.messages.each do |message| %>
+                  <% current_user.notification.messages.order(id: :desc).each do |message| %>
                   <%= render partial: "/layouts/message", object: message %>
                   <% end %>
                   <% end %>

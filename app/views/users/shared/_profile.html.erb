@@ -40,18 +40,7 @@
       <a class="waves-effect waves-light btn">Friend Request Sent</a>
   <% else %>
 
-    <a class="waves-effect waves-light btn" id="<%= "target" + user.id.to_s %>" href="#add-friend">Add Friend</a>
+    <a class="target waves-effect waves-light btn" data-name="<%= user.name %>" data-id="<%= user.id %>" href="#add-friend">Add Friend</a>
   <% end %>
 <% end %>
-</div>
-
-<div id="add-friend" class="modal">
-  <div class="modal-content">
-    <h4>Add <%= user.name %> as a friend?</h4>
-  </div>
-    <div class="modal-footer">
-      <a href="users/friend_request/<%= user.id %>" data-id=<%= user.id %> class="friend_request modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
-
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">No</a>
-    </div>
 </div>

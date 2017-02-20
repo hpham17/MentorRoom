@@ -76,7 +76,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def friend_request
     current_user.friend_request User.find(params[:id])
-    head :ok
+    render :json => {id: params[:id]}
   end
   def accept_request
     current_user.accept_request User.find(params[:id])
