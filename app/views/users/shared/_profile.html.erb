@@ -35,7 +35,7 @@
   </div>
 <% if current_user != user %>
   <% if user.isFriend?(current_user) %>
-    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s, class: 'waves-effect waves-green btn-flat' %>
+    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s, class: 'waves-effect waves-green btn' %>
   <% elsif current_user.requested?(user) %>
       <a class="waves-effect waves-light btn">Friend Request Sent</a>
   <% else %>
