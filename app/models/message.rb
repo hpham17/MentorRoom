@@ -17,7 +17,13 @@ class Message < ApplicationRecord
   belongs_to :chatroom, touch: true
   belongs_to :user
   belongs_to :notification
-  after_create_commit { MessageBroadcastJob.perform_now(self, self.current_user, self.other_user) }
+  after_create_commit :broadcast_message
+
+  def broadcast_message
+    if Message.count > 2
+      MessageBroadcastJob.perform_now(self, self.current_user, self.other_user)
+    end
+  end
 
   def timestamp
     created_at.strftime('%H:%M:%S %d %B %Y')

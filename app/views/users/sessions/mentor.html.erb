@@ -16,8 +16,9 @@
           <div class="card-content black-text">
               <p class="card-stats-title"><i class="mdi-social-group-add"></i> Friend Requests</p>
               <% current_user.requests.each do |r| %>
-                <div>
+                <div style="display:flex;">
                   <h4 class="card-stats-number"><%= link_to r.name, user_path(r.id) %></h4>
+
                   <%= button_to "Accept", accept_request_path(r.id), class: 'accept_request', :id => r.id %>
                   <%= button_to "Not now", decline_request_path(r.id), class: 'decline_request', :id => r.id %>
                 </div>
@@ -27,31 +28,44 @@
 
       </div>
   </div>
-  <!-- <div class="col s6 l3">
-    <div class="card medium blue-grey">
-        <div class="card-content  white-text">
-            <p class="card-stats-title"><i class="mdi-social-group-add"></i> Flash Session Requests</p>
-            <h4 class="card-stats-number">20</h4>
-
-        </div>
-
-    </div>
-</div> -->
 <div class="col s12 m6 l3">
   <div class="card medium blue-grey">
-      <div class="card-content black-text">
+      <div class="card-content white-text">
           <p class="card-stats-title"><i class="mdi-social-group-add"></i> Activity Feed</p>
           <br>
           <div>
             <ul>
-              <!-- <li style="list-style-type: circle;">You completed a Flash Session with Hubert Pham<br> 12-26-16</li> -->
-
+              <% current_user.activities.order(id: :desc)[0..3].each do |a| %>
+                <li style="list-style-type: circle;"><%= a.content %><br><%= a.created_at.localtime.strftime('%B %d, %Y %l:%M%p') %></li>
+              <% end %>
             </ul>
 
         </div>
 
   </div>
 </div>
+</div>
+
+<div class="col s6 l3">
+  <div class="card medium">
+      <div class="card-content black-text">
+          <i class="mdi-social-group-add"></i>Friend List
+          <ul>
+          <% current_user.friends.each do |f| %>
+            <li>
+              <% if current_user.picture %>
+                <div class="user user-friend-list" style="background-image:url(<%= "/uploads/" + current_user.picture %>)"></div>
+              <% end %>
+              <h4 class="card-stats-number friends-name"><%= f.name %></h4>
+
+            </li>
+          <% end %>
+        </ul>
+
+
+      </div>
+
+  </div>
 </div>
 
 

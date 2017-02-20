@@ -6,6 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
      @user = current_user
      @user.build_profile unless @user.profile
   end
+  def edit_picture
+    @user = current_user
+  end
+  def update_picture
+    current_user.update_attributes :picture => params[:user][:picture]
+    redirect_to current_user
+  end
   def setup
     @user = current_user
     @profile = current_user.build_profile
@@ -13,6 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     super
   end
+
 
   protected
 

@@ -57,6 +57,10 @@
                 <%= p.label :school %>
               </div>
               <div class="input-field">
+                <%= p.text_field :company %>
+                <%= p.label :company %>
+              </div>
+              <div class="input-field">
                 <%= p.select :gradyear, (Time.now.year).downto(Time.now.year - 40).to_a %>
                 <%= p.label :gradyear, 'Graduation Year' %>
               </div>

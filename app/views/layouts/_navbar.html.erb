@@ -17,6 +17,8 @@
 
 
       <ul class="right">
+        <li><a href="/users"><i class="white-icon material-icons">group</i></a></li>
+        <li><a href="/chatrooms"><i class="white-icon material-icons">question_answer</i></a></li>
         <li class="dropdown">
           <a data-toggle="dropdown" aria-expanded="false">
             <i id="notify-icon" class="material-icons">notifications</i></a>
@@ -29,10 +31,19 @@
                   </a>
                 </div>
                 <div class="lg-body">
-                  <% if current_user.notification && current_user.notification.messages? %>
-                  <% current_user.notification.messages.each do |message| %>
-                  <%= render partial: "/layouts/message", object: message %>
+                  <% current_user.requests.each do |r| %>
+                    <div>
+                      <h4 class="card-stats-number"><%= link_to r.name, user_path(r.id) %></h4>
+                      <div style="display:flex;">
+                        <%= button_to "Accept", accept_request_path(r.id), class: 'accept_request', :id => r.id %>
+                        <%= button_to "Not now", decline_request_path(r.id), class: 'decline_request', :id => r.id %>
+                      </div>
+                    </div>
                   <% end %>
+                  <% if current_user.notification && current_user.notification.messages? %>
+                    <% current_user.notification.messages.order(id: :desc).each do |message| %>
+                      <%= render partial: "/layouts/message", object: message %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -44,6 +55,8 @@
     </nav>
 
     <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full"><i style="color: white;position: absolute; top: 15px; left: 25px;" class="material-icons">menu</i></a></div>
+
+
 
     <ul id="nav-mobile" class="side-nav">
       <li class="logo"><a id="logo-container" class="grey darken-3 brand-logo"><%= image_tag('single-logo.png', width: '75', style: 'position: absolute; top: 5px;') %>

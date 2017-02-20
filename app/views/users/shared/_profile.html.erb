@@ -22,6 +22,7 @@
   </div>
 
   <div class="mdl-card__title mdl-card--expand mr-color" style="width: 100%; color: white;">
+
 <!-- 
     <%= user.role %>  works at
     <% if current_user.mentors.include? user %>
@@ -36,29 +37,19 @@
     </div> THIS FIXES THE nil string bug  -->
 
     <div>
-       <%= user.profile ?  "Works @ " + user.profile.company : user.role %>
+        <%= user.profile ?  "Works @ " + user.profile.company : user.role %>
     </div>
+
 
   </div>
 <% if current_user != user %>
   <% if user.isFriend?(current_user) %>
-    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s, class: 'waves-effect waves-green btn-flat' %>
+    <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s, class: 'waves-effect waves-green btn' %>
   <% elsif current_user.requested?(user) %>
       <a class="waves-effect waves-light btn">Friend Request Sent</a>
   <% else %>
 
-    <a class="waves-effect waves-light btn" id="<%= "target" + user.id.to_s %>" href="#add-friend">Add Friend</a>
+    <a class="target waves-effect waves-light btn" data-name="<%= user.name %>" data-id="<%= user.id %>" href="#add-friend">Add Friend</a>
   <% end %>
 <% end %>
-</div>
-
-<div id="add-friend" class="modal">
-  <div class="modal-content">
-    <h4>Add <%= user.name %> as a friend?</h4>
-  </div>
-    <div class="modal-footer">
-      <a href="users/friend_request/<%= user.id %>" data-id=<%= user.id %> class="friend_request modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
-
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">No</a>
-    </div>
 </div>

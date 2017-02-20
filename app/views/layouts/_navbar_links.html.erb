@@ -4,17 +4,14 @@
     <% if current_user.picture %>
       <li class="grey darken-3 center"><div class="user user-navbar" style="background-image:url(<%= "/uploads/" + current_user.picture %>)"></div></li>
     <% end %>
+    <%= link_to "Home", root_path %>
     <%= link_to "Profile", user_path(current_user) %>
     <% if current_user.is? :Mentee %>
       <li><%= link_to "Mentors", users_path, method: :get %></li>
     <% elsif current_user.is? :Mentor %>
       <li><%= link_to "All Users", users_path, method: :get %></li>
     <% end %>
-      <li style="position:relative;"><%= link_to "Messages", chatrooms_path %>
-        <% if new_messages? %>
-          <span class="button_badge"><%= new_messages? %></span>
-        <% end %>
-      </li>
+      <li style="position:relative;"><%= link_to "Messages", chatrooms_path %></li>
       <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       <li><%= link_to("Settings", edit_user_registration_path) %></li>
 

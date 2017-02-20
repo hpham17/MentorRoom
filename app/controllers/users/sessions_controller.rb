@@ -75,11 +75,15 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def friend_request
-    current_user.friend_request User.find(params[:id])
-    head :ok
+    @target = User.find(params[:id])
+    current_user.friend_request @target
+    render :json => {id: params[:id]}
   end
   def accept_request
-    current_user.accept_request User.find(params[:id])
+    @target = User.find(params[:id])
+    current_user.accept_request @target
+    Activity.create user_id: @target.id, content: "You became friends with #{current_user.name}"
+    Activity.create user_id: current_user.id, content: "You became friends with #{@target.name}"
     head :ok
   end
   def decline_request
@@ -105,6 +109,7 @@ class Users::SessionsController < Devise::SessionsController
     else
       @users = User.all.order(:id).where(:role => "Mentor").includes(:skills)
       @users -= current_user.starred
+      @users -= [current_user]
     end
   end
   def check_admin

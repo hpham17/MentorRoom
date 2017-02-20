@@ -1,9 +1,4 @@
 <%= content_tag :a, href: "/chatrooms/#{message.chatroom.topic}", class: "list-group-item media notifications", data: {message_id: message.id} do %>
-        <div class="pull-left">
-          <% if message.user.picture %>
-          <%= image_tag(message.user.picture, class: 'img-icon') %>
-          <% end %>
-        </div>
         <div class="media-body">
             <div class="lgi-heading"><%= message.user.name %></div>
             <small class="lgi-text"><%= message.content %></small>

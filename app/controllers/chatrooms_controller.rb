@@ -37,8 +37,7 @@ class ChatroomsController < ApplicationController
     if @chatroom.save
       @message1 = Message.new user_id: current_user.id, content: " has joined the room.", chatroom_id: @chatroom.id
       @message2 = Message.new user_id: params[:id], content: " has joined the room.", chatroom_id: @chatroom.id
-      @chatroom.messages << @message1
-      @chatroom.messages << @message2
+      @chatroom.messages << [@message1, @message2]
       @chatroom.save
       respond_to do |format|
         format.html { redirect_to @chatroom }

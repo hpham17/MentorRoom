@@ -1,4 +1,22 @@
 
+
+<div class="profile">
+  <div class="profile-pic">
+    <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
+
+  </div>
+  <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
+</div>
+
+<!-- name bar -->
+<nav class="mr-color">
+  <div class="nav-wrapper">
+  <h4 class="brand-logo center"><%=@user.name %><br></h4>
+  </div>
+</nav>
+
+
+
 <div class="grey lighten-5">
 
     <% if @user.profile %>
@@ -30,7 +48,7 @@
         <div class="mdl-card__actions  mdl-card--border">
           <!-- <a href="#" class="mdl-button mdl-buttocolored mdl-js-button mdl-js-ripple-effect mdl-button--accent" data-upgraded=",MaterialButton,MaterialRipple">Watch Intro<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a> -->
           <!-- Role: <%= @user.profile.role %><br> -->
-              
+
 
           <h5 class="light">
           <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> </h5>
@@ -42,6 +60,7 @@
     </section>
 
 
+<<<<<<< HEAD
     <div id="about" class="section">
         <div class="container">
             <div class="row">
@@ -160,11 +179,8 @@
 
 
 
-
     <div class="container" >
      <div class="row">
-
-
 
 
      <!--    <div class="col s12">
@@ -186,6 +202,7 @@
      -->
 
   <!--     <div class="col s4">
+      <div class="col s4">
          <div class="card small">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">work</i></h2>
@@ -264,10 +281,3 @@
 
 
     <% end %>
-
-
-
-
-
-
-

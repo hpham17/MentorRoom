@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_one :notification
   has_many :flash_sessions
   has_many :stars
+  has_many :activities
   has_many :starred, through: :stars
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
@@ -58,10 +59,6 @@ class User < ApplicationRecord
 
   def isFriend?(user)
     self.friends_with? user
-  end
-
-  def decline_request(user)
-    self.decline_request user
   end
 
   def requests

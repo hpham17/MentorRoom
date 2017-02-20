@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :ensure_signup_complete
   helper_method :new_messages?
 
@@ -19,6 +20,14 @@ class ApplicationController < ActionController::Base
   def new_messages?
     count = current_user.notification ? current_user.notification.count : 0
     count > 0 ? count : false
+  end
+
+
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation])
   end
 
   def ensure_signup_complete
