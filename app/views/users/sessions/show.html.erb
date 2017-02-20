@@ -2,7 +2,9 @@
 <div class="profile">
   <div class="profile-pic">
     <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
+
   </div>
+  <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
 </div>
 
 <!-- name bar -->

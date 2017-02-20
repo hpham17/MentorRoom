@@ -109,6 +109,7 @@ class Users::SessionsController < Devise::SessionsController
     else
       @users = User.all.order(:id).where(:role => "Mentor").includes(:skills)
       @users -= current_user.starred
+      @users -= [current_user]
     end
   end
   def check_admin

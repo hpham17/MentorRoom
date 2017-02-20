@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     post '/users/decline_request/:id' => 'users/sessions#decline_request', as: 'decline_request'
     post '/users/accept_request/:id' => 'users/sessions#accept_request', as: 'accept_request'
     get '/setup' => 'users/registrations#setup'
+    get '/edit_picture' => 'users/registrations#edit_picture', as: 'edit_picture'
+    patch '/user/:id' => 'users/registrations#update_picture'
     patch '/update' => 'users/registrations#update'
     post '/tag' => 'users/sessions#tag'
     delete '/tag' => 'users/sessions#destroy_tag'
