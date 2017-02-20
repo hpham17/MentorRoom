@@ -38,10 +38,10 @@ class ApplicationController < ActionController::Base
     # email hasn't been verified yet
     if current_user && (!current_user.email_verified? || current_user.role.nil? )
       redirect_to finish_signup_path(current_user)
-    end
-    if current_user && !current_user.profile
+    elsif current_user && !current_user.profile
       redirect_to setup_path
     end
+
   end
 
 end
