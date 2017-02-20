@@ -29,7 +29,20 @@ html {
 }
 
 
-
+.forgot-password-box {
+  /*min-height:400px;*/
+  padding:11px 88px;
+  /*background-color: black;*/
+  background-color:#fff;
+  border-radius:8px;
+  position:relative;
+  /*text-align:center;*/
+  width:540px;
+  margin:auto;
+  min-height:100px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.45);
+  margin-top:70px;
+}
 
 
 .login-card {
