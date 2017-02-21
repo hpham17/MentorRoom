@@ -1,22 +1,4 @@
 
-
-<div class="profile">
-  <div class="profile-pic">
-    <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
-
-  </div>
-  <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
-</div>
-
-<!-- name bar -->
-<nav class="mr-color">
-  <div class="nav-wrapper">
-  <h4 class="brand-logo center"><%=@user.name %><br></h4>
-  </div>
-</nav>
-
-
-
 <div class="grey lighten-5">
 
     <% if @user.profile %>
@@ -25,6 +7,7 @@
       <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
         <div class="center-align">
             <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
+
         </div>
       </div>
 
@@ -53,6 +36,8 @@
           <h5 class="light">
           <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> </h5>
 
+          <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
+
 
 
         </div>
@@ -60,7 +45,6 @@
     </section>
 
 
-<<<<<<< HEAD
     <div id="about" class="section">
         <div class="container">
             <div class="row">
