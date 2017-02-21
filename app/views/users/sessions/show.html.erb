@@ -22,12 +22,7 @@
     <% if @user.profile %>
 
     <section class="section--center mdl-grid site-max-width">
-      <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
-        <div class="center-align">
-            <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
-        </div>
-      </div>
-
+      
 
       <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
         <div class="mdl-card__title">
@@ -40,9 +35,6 @@
           <!-- <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" data-upgraded=",MaterialButton,MaterialRipple">Watch Intro<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a> -->
           <!-- Role: <%= @user.profile.role %><br> -->
 
-
-          <h5 class="light">
-          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> </h5>
 
 
 
