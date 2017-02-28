@@ -135,9 +135,6 @@ class User < ApplicationRecord
           email: auth.info.email ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        if auth.provider == "linkedin"
-          user.build_profile(linkedin: auth.info.urls.public_profile, location: auth.info.location, role: auth.info.description)
-        end
         #user.skip_confirmation!
         user.save!
       end
