@@ -1,251 +1,246 @@
-<!-- <div class="right container" >
- <div class="row">
 
-  <div class="col s12 m4">
-   <div class="card small">
-    <div class="icon-block">
-      <h2 class="center brown-text"><i class="material-icons">work</i></h2>
-      <div class="card-content">
-        <h4 class="center">About Me</h4>
-
-        <h5 class="light">
-        <% if user.profile %>
-          <%= user.profile.bio %>
-        <% end %>
-        </h5>
+<div class="grey lighten-5">
 
 
+ <section class="container section--center mdl-grid site-max-width">
+      <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
       </div>
-     </div>
-    </div>
-   </div>
-  </div>
-</div>
-
- -->
-
-
-<div class="container" >
- <div class="row valign-wrapper">
-
-<!-- Areas of expertise box -->
-  <div class="col s6 m6">
-    <div class="card-panel">
-      <div class="icon-block">
-        <h2 class="center brown-text">
-        <i class="material-icons">person_pin</i>
-        </h2>
-
-        <div class="card-content">
-          <h4 class="center">Areas of Expertise:
-          <br></h4>
-          <div class="skill-list">
-            <% user.skill_list.each do |s| %>
-            <div class="chip">
-              <%= s %>
-              <i class='close material-icons'>close</i>
-            </div>
-            <% end %>
-          </div>
-
-          <% if user == current_user %>
-          <a class="dropdown-button btn" data-activates="pick-skill">Add skill</a>
-          <div id="pick-skill" class="dropdown-content">
-          <form action="#">
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Academia/Research" value="Academia/Research" />
-              <label for="Academia/Research">Academia/Research</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Accounting" value="Accounting" />
-              <label for="Accounting">Accounting</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Architecture" value="Architecture" />
-              <label for="Architecture">Architecture</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Art" value="Art" />
-              <label for="Art">Art</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Biotechnology" value="Biotechnology" />
-              <label for="Biotechnology">Biotechnology</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="bd" value="Business Development" />
-              <label for="bd">Business Development</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="data" value="Data Analytics" />
-              <label for="data">Data Analytics</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="design" value="Design" />
-              <label for="design">Design</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="education" value="Education" />
-              <label for="education">Education</label>
-            </p>
-
-            <p class="checkbox-skill">
-              <input type="checkbox" id="es" value="Environmental Science" />
-              <label for="es">Environmental Science</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="finance" value="Finance" />
-              <label for="finance">Finance</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="govern" value="Government" />
-              <label for="govern">Government</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="hosp" value="Hospitality" />
-              <label for="hosp">Hospitality</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="hr" value="Human Resources" />
-              <label for="hr">Human Resources</label>
-            </p>
-
-            <p class="checkbox-skill">
-              <input type="checkbox" id="invest" value="Investment Banking"/>
-              <label for="invest">Investment Banking</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Law" value="Law" />
-              <label for="Law">Law</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Marketing" value="Marketing" />
-              <label for="Marketing">Marketing</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="meche" value="Mechanical Engineering" />
-              <label for="meche">Mechanical Engineering</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="np" value="Non-Profit" />
-              <label for="np">Non-Profit</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Performing Arts" value="Performing Arts" />
-              <label for="Performing Arts">Performing Arts</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="Photography" value="Photography" />
-              <label for="Photography">Photography</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="politics" value="Politics" />
-              <label for="politics">Politics</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="pr" value="Public Relations" />
-              <label for="pr">Public Relations</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="pm" value="Product Management" />
-              <label for="pm">Product Management</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="sm" value="Social Media" />
-              <label for="sm">Social Media</label>
-            </p>
-            <p class="checkbox-skill">
-              <input type="checkbox" id="se" value="Software Engineering" />
-              <label for="se">Software Engineering</label>
-            </p>
-
-
-
-          </form>
-          <% end %>
-
+   
+      <!-- BOX NUMBER 1 -->
+      <div class="mdl-card mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">How Can I Help?</h2>
         </div>
-       </div>
-      </div>
-    </div>
-  </div>
 
-<!-- How can I help box -->
-  <div class="col s6 m6">
-     <div class="card ">
-      <div class="icon-block">
-        <h2 class="center brown-text">
-        <i class="material-icons">person_pin</i>
-        </h2>
 
-        <div class="card-content">
-          <h4 class="center">How I Can Help: <br></h4>
+      <!-- we have 26 areas of expertise -->
+        <div class="mdl-card__supporting-text row">
+          <form action="#" class="col s12">
+            <div class="row">
+              <div class="col s6">
+              <!-- five options -->
+                <p>
+                  <input type="checkbox" id="avsi" value="Academia vs Industry" />
+                  <label for="avsi">Academia vs Industry</label>
+                </p>
 
-          <div class="help-list">
-            <% user.help_list.each do |s| %>
-            <div class="chip">
-              <%= s %>
-              <i class='close material-icons'>close</i>
-            </div>
-            <% end %>
-          </div>
-          <% if user == current_user %>
-          <a class="dropdown-button btn" data-activates="pick-help">Add help</a>
-          <div id="pick-help" class="dropdown-content">
-            <form action="#">
-              <p class="checkbox-help">
-                <input type="checkbox" id="avsi" value="Academia vs Industry" />
-                <label for="avsi">Academia vs Industry</label>
-              </p>
-              <p class="checkbox-help">
-                <input type="checkbox" id="grad" value="Applying for grad school" />
-                <label for="grad">Applying for grad school</label>
-              </p>
-              <p class="checkbox-help">
-                <input type="checkbox" id="cit" value="Career / Industry Trends" />
-                <label for="cit">Career / Industry Trends</label>
-              </p>
-              <p class="checkbox-help">
-                <input type="checkbox" id="cp" value="Career Planning" />
-                <label for="cp">Career Planning</label>
-              </p>
-              <p class="checkbox-help">
-                <input type="checkbox" id="choosing" value="Choosing a major" />
-                <label for="choosing">Choosing a major</label>
-              </p>
-              <p class="checkbox-help">
+                <p>
+                  <input type="checkbox" id="grad" value="Applying for grad school" />
+                  <label for="grad">Applying for grad school</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="cit" value="Career / Industry Trends" />
+                  <label for="cit">Career / Industry Trends</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="cp" value="Career Planning" />
+                  <label for="cp">Career Planning</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="choosing" value="Choosing a major" />
+                  <label for="choosing">Choosing a major</label>
+                </p>
+              </div>
+
+
+            <div class="col s6">
+            <!-- five options -->
+              <p>
                 <input type="checkbox" id="intern" value="Getting an internship" />
                 <label for="intern">Getting an internship</label>
               </p>
-              <p class="checkbox-help">
+
+              <p>
                 <input type="checkbox" id="mi" value="Mock Interviews" />
                 <label for="mi">Mock Interviews</label>
               </p>
-              <p class="checkbox-help">
+
+              <p>
                 <input type="checkbox" id="navigating" value="Navigating the PhD" />
                 <label for="navigating">Navigating the PhD</label>
               </p>
-              <p class="checkbox-help">
+
+              <p>
                 <input type="checkbox" id="networking" value="Networking" />
                 <label for="networking">Networking</label>
               </p>
-              <p class="checkbox-help">
+
+              <p>
                 <input type="checkbox" id="resume" value="Resume building" />
                 <label for="resume">Resume building</label>
               </p>
 
-
-            </form>
-          </div>
-          <% end %>
-
+              </div>
+            </div>
+            
+          </form>
         </div>
-       </div>
       </div>
-    </div>
 
-  </div>
-</div>
+      <!-- BOX NUMBER 2 -->
+       <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
+      </div>
+
+      <div class="mdl-card mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Areas of Expertise</h2>
+        </div>
+
+
+      <!-- we have 26 areas of expertise -->
+        <div class="mdl-card__supporting-text row">
+          <form action="#" class="col s12">
+            <div class="row">
+              <div class="col s6">
+
+                <p>
+                  <input type="checkbox" id="Academia/Research" value="Academia/Research" />
+                  <label for="Academia/Research">Academia/Research</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Accounting" value="Accounting" />
+                  <label for="Accounting">Accounting</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Architecture" value="Architecture" />
+                  <label for="Architecture">Architecture</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Art" value="Art" />
+                  <label for="Art">Art</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Biotechnology" value="Biotechnology" />
+                  <label for="Biotechnology">Biotechnology</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="bd" value="Business Development" />
+                  <label for="bd">Business Development</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="data" value="Data Analytics" />
+                  <label for="data">Data Analytics</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="design" value="Design" />
+                  <label for="design">Design</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="education" value="Education" />
+                  <label for="education">Education</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="es" value="Environmental Science" />
+                  <label for="es">Environmental Science</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="finance" value="Finance" />
+                  <label for="finance">Finance</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="govern" value="Government" />
+                  <label for="govern">Government</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="hosp" value="Hospitality" />
+                  <label for="hosp">Hospitality</label>
+                </p>
+
+              </div>
+
+
+              <div class="col s6">
+                
+                <p>
+                  <input type="checkbox" id="hr" value="Human Resources" />
+                  <label for="hr">Human Resources</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="invest" value="Investment Banking"/>
+                  <label for="invest">Investment Banking</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Law" value="Law" />
+                  <label for="Law">Law</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Marketing" value="Marketing" />
+                  <label for="Marketing">Marketing</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="meche" value="Mechanical Engineering" />
+                  <label for="meche">Mechanical Engineering</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="np" value="Non-Profit" />
+                  <label for="np">Non-Profit</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Performing Arts" value="Performing Arts" />
+                  <label for="Performing Arts">Performing Arts</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="Photography" value="Photography" />
+                  <label for="Photography">Photography</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="politics" value="Politics" />
+                  <label for="politics">Politics</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="pr" value="Public Relations" />
+                  <label for="pr">Public Relations</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="pm" value="Product Management" />
+                  <label for="pm">Product Management</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="sm" value="Social Media" />
+                  <label for="sm">Social Media</label>
+                </p>
+
+                <p>
+                  <input type="checkbox" id="se" value="Software Engineering" />
+                  <label for="se">Software Engineering</label>
+                </p>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+</section>
+  
+
+<!-- OLD STUFF -->
+
 
 <div class="center container">
 <div class="row">
