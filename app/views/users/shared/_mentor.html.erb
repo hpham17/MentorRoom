@@ -256,17 +256,21 @@
   <% if current_user.isFriend?(user) || user == current_user %>
     <div id="calendar-tab" class="col s12">
       <div class="row">
-        <div class="col s12 m7">
-          <div id="calendar"></div>
-        </div>
         <% if user == current_user %>
-          <div class="col s12 m3">
+          <div class="col s12 m3 mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--black left-align">
             <h3>When are you available?</h3>
             <%= form_for @event do |e| %>
-            <%= e.label :title %>
-            <%= e.text_field :title, :value => 'Available' %>
+           
+            <div class='col-sm-12 '>
+                <div class="form-group">
+                  <div class='input-group'>
+                    <%= e.label :title %>
+                    <%= e.text_field :title, :value => 'Available' %>
+                  </div>
+                </div> 
+            </div>
 
-            <div class='col-sm-12'>
+            <div class='col-sm-12 '>
                 <div class="form-group">
                   <div class='input-group date'>
                   <label>From</label>
@@ -283,10 +287,23 @@
                 </div>
                 </div>
             </div>
-            <%= e.submit %>
+
+            <div class='col-sm-12'>
+                <div class="form-group">
+                  <%=e.submit  class:'mr-color  waves-effect waves-green' %>
+                </div>
+            </div>
+
             <% end %>
           </div>
         <% end %>
+
+        <div class="col s12 m8">
+          <div id="calendar" class="fc fc-ltr fc-unthemed"></div>
+        </div>
+
+        
+
       </div>
 
     </div>
