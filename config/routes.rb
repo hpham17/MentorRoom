@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     delete '/tag' => 'users/sessions#destroy_tag'
     post '/status' => 'users/sessions#status'
   end
-  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks', confirmations: 'users/confirmations' }
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   get '/direct_messages' => 'direct_messages#index'
   post '/direct_messages/:id' => 'direct_messages#create'

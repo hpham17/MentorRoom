@@ -28,5 +28,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   serialize :degrees
-  validates :role, :location, :linkedin, :bio, :school, :major, :gradyear, :company, presence: true
+  serialize :ethnicity
+  serialize :identity
+  validates :role, :major, :ethnicity, :location, :bio, :school, :aspirations, :major, :gradyear, :company, presence: true
 end

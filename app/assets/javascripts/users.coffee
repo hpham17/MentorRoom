@@ -59,6 +59,7 @@ $ ->
       outDuration: 225,
       constrain_width: false,
       gutter: 0,
+      hover: true,
       belowOrigin: false,
       alignment: 'left'
     }

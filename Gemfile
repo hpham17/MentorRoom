@@ -28,6 +28,7 @@ gem 'has_friendship'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'date_validator', '~> 0.9.0'
+gem 'client_side_validations'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

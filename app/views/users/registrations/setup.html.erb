@@ -45,14 +45,18 @@ id="myZone" encType="multipart/data">
             <div class="card gray darken-1">
               <div class="card-content black-text">
                 <span class="card-title black-text">Let's Build Your Profile</span>
-                <%= form_for @user, url: update_path do |f| %>
+                <%= form_for @user, url: update_path, validate: true do |f| %>
 
-                <%= f.fields_for :profile do |p| %>
+                <%= f.fields_for :profile, validate: true do |p| %>
 
                 <div class="fieldset">
                   <div class="input-field">
                     <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
-                    <%= p.label :bio, 'Brief Bio*' %>
+                    <%= p.label :bio, 'How would you describe yourself to your mentor or mentee?*' %>
+                  </div>
+                  <div class="input-field">
+                      <%= select_tag 'user[profile_attributes][ethnicity]', options_for_select(["American Indian", "Native Alaskan", "Native Hawaiian", "Asian", "Asian American", "Black", "African American", "Latinx", "Hispanic", "Middle Eastern", "Pacific Islander", "White", "Other"]), multiple: true, include_blank: "Select all that apply" %>
+                    <label>Race/Ethnicity*</label>
                   </div>
 
                   <div class="input-field">
@@ -67,6 +71,10 @@ id="myZone" encType="multipart/data">
                   <div class="input-field">
                     <%= p.text_field :major %>
                     <%= p.label :major, 'Major*' %>
+                  </div>
+                  <div class="input-field">
+                    <%= p.text_area :aspirations, class: 'materialize-textarea', length: 300 %>
+                    <%= p.label :aspirations, 'What are your future aspirations?*' %>
                   </div>
                   <div class="input-field">
                     <%= p.text_field :school %>
@@ -105,6 +113,10 @@ id="myZone" encType="multipart/data">
                     <label>Sector in which you work (or have most experience)</label>
                   </div>
                   <% end %>
+                  <div class="input-field">
+                      <%= select_tag 'user[profile_attributes][identity]', options_for_select(["LGBTQ", "Low-Income", "First generation U.S. citizen", "First generation college student", "Disability", "Immigrant", "Multilingual", "Single-parent household", "Other"]), multiple: true, include_blank: "Select all that apply" %>
+                    <label>What do you consider important aspects of your identity? (optional)</label>
+                  </div>
                   <div class="input-field">
                     <%= p.text_field :linkedin %>
                     <%= p.label :linkedin, 'LinkedIn URL*' %>
