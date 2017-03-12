@@ -27,8 +27,23 @@ div.transbox {
 }
 
 
+.image-section {
+  width: 600px;
+  height: 600px;
+}
 
 
+.team-section {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  overflow-y: hidden;
+  background-image: url('home-background');
+  background-repeat: no-repeat;
+
+  background-size: 100% 100%;
+
+}
 
 
 
