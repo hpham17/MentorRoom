@@ -33,7 +33,7 @@ class User < ApplicationRecord
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
   ROLES = %w[Admin Mentor Mentee].freeze
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :linkedin]
   has_one :profile
   has_many :messages
@@ -51,7 +51,7 @@ class User < ApplicationRecord
   has_friendship
   accepts_nested_attributes_for :profile
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  after_save { Notification.create! user_id: self.id unless self.notification}
+  after_save { Notification.create! user_id: self.id unless self.notification }
 
   def is?(role)
     self.role == role.to_s

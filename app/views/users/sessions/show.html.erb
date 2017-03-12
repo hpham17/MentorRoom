@@ -22,7 +22,7 @@
     <% if @user.profile %>
 
     <section class="section--center mdl-grid site-max-width">
-      
+
 
       <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
         <div class="mdl-card__title">
@@ -31,6 +31,21 @@
         <div class="mdl-card__supporting-text">
           About Me: <%= @user.profile.bio %>
         </div>
+        <% if @user.profile.ethnicity %>
+        <div class="mdl-card__supporting-text">
+          Ethnicity:
+          <% @user.profile.ethnicity.each do |e| %>
+            <%= e %> |
+          <% end %>
+        </div>
+        <% end %>
+        <% if @user.profile.identity %>
+        <div class="mdl-card__supporting-text">
+          I identify as: <% @user.profile.identity.each do |i| %>
+          <%= i %> |
+          <% end %>
+        </div>
+        <% end %>
         <div class="mdl-card__actions  mdl-card--border">
           <!-- <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" data-upgraded=",MaterialButton,MaterialRipple">Watch Intro<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a> -->
           <!-- Role: <%= @user.profile.role %><br> -->

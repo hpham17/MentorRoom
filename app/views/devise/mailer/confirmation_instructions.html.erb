@@ -1,5 +1,14 @@
-<p>Welcome <%= @email %>!</p>
+<h1>Validate Your Email Address</h1>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Hi <%= @email %>,
+
+You've successfully created your MentorRoom account. To activate it, you must validate your email address by clicking the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>
+If you're unable to click the above link, you can copy and paste the following URL into your web browser:
+<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+<br>
+Cheers,
+The MentorRoom Team</p>
