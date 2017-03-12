@@ -136,7 +136,11 @@ nav ul a {
     }
 
     .my-message {
-      background: green;
+      /* gray */
+      background: #bdbdbd;
+      color: black;
+      font-family: "Avenir-Book" !important;
+
       &:after {
         left: -2%;
         transform: rotate(270deg);
@@ -146,14 +150,18 @@ nav ul a {
         width: 0;
         position: absolute;
         pointer-events: none;
-        border-bottom-color: green;
+        border-bottom-color: #bdbdbd;
         border-width: 10px;
         margin-left: -10px;
+        color: black;
+
       }
     }
 
     .other-message {
-      background: blue;
+      /* mentorromo blue */
+      background: #31A8E2; 
+      font-family: "Avenir-Book" !important;
 
       &:after {
         left: 102%;
@@ -164,7 +172,7 @@ nav ul a {
         width: 0;
         position: absolute;
         pointer-events: none;
-        border-bottom-color: blue;
+        border-bottom-color: #31A8E2;
         border-width: 10px;
         margin-left: -10px;
       }

@@ -11,8 +11,8 @@ div.transbox {
   /*margin: 30px;*/
   height: 80%;
   /*width: 50%;*/
-  background-color: black;
-  opacity: 0.6;
+  /*background-color: black;
+  opacity: 0.6;*/
   margin-top: 10%;
   padding: 50px;
   filter: alpha(opacity=60); /* For IE8 and earlier */
@@ -189,14 +189,11 @@ header {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background-image: image-url('home-background');
+  background-image: url('home-background');
+  background-repeat: no-repeat;
 
-  /*background-image: image-url('bg-pattern.png'), #7b4397;*/
-  /* fallback for old browsers */
-  /*background-image: image-url("bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);*/
-  /* Chrome 10-25, Safari 5.1-6 */
-  /*background-image: image-url("bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);*/
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 100% 100%;
+
   color: white;
 }
 header .header-content {
