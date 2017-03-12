@@ -3,350 +3,332 @@
 
 
  <section class="container section--center mdl-grid site-max-width">
-      <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
+
+      <div class="mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
       </div>
+
    
       <!-- BOX NUMBER 1 -->
-      <div class="mdl-card mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
+      <div class="card small mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text">How Can I Help?</h2>
         </div>
 
+        <div class="col s6 m6">
+          <div class="card-content">
+            <div class="help-list">
+              <% user.help_list.each do |s| %>
+              <div class="chip">
+                <%= s %>
+                <i class='close material-icons'>close</i>
+              </div>
+              <% end %>
+            </div>
 
-      <!-- we have 26 areas of expertise -->
-        <div class="mdl-card__supporting-text row">
-          <form action="#" class="col s12">
-            <div class="row">
-              <div class="col s6">
-              <!-- five options -->
-                <p>
+            <% if user == current_user %>
+            <a class="dropdown-button btn"  data-activates="pick-help" style="width: 150px;">Add help</a>
+            <div id="pick-help" class="dropdown-content">
+              <form action="#">
+                <p class="checkbox-help">
                   <input type="checkbox" id="avsi" value="Academia vs Industry" />
                   <label for="avsi">Academia vs Industry</label>
                 </p>
-
-                <p>
+                <p class="checkbox-help">
                   <input type="checkbox" id="grad" value="Applying for grad school" />
                   <label for="grad">Applying for grad school</label>
                 </p>
-
-                <p>
+                <p class="checkbox-help">
                   <input type="checkbox" id="cit" value="Career / Industry Trends" />
                   <label for="cit">Career / Industry Trends</label>
                 </p>
-
-                <p>
+                <p class="checkbox-help">
                   <input type="checkbox" id="cp" value="Career Planning" />
                   <label for="cp">Career Planning</label>
                 </p>
-
-                <p>
+                <p class="checkbox-help">
                   <input type="checkbox" id="choosing" value="Choosing a major" />
                   <label for="choosing">Choosing a major</label>
                 </p>
-              </div>
+                <p class="checkbox-help">
+                  <input type="checkbox" id="intern" value="Getting an internship" />
+                  <label for="intern">Getting an internship</label>
+                </p>
+                <p class="checkbox-help">
+                  <input type="checkbox" id="mi" value="Mock Interviews" />
+                  <label for="mi">Mock Interviews</label>
+                </p>
+                <p class="checkbox-help">
+                  <input type="checkbox" id="navigating" value="Navigating the PhD" />
+                  <label for="navigating">Navigating the PhD</label>
+                </p>
+                <p class="checkbox-help">
+                  <input type="checkbox" id="networking" value="Networking" />
+                  <label for="networking">Networking</label>
+                </p>
+                <p class="checkbox-help">
+                  <input type="checkbox" id="resume" value="Resume building" />
+                  <label for="resume">Resume building</label>
+                </p>
 
 
-            <div class="col s6">
-            <!-- five options -->
-              <p>
-                <input type="checkbox" id="intern" value="Getting an internship" />
-                <label for="intern">Getting an internship</label>
-              </p>
-
-              <p>
-                <input type="checkbox" id="mi" value="Mock Interviews" />
-                <label for="mi">Mock Interviews</label>
-              </p>
-
-              <p>
-                <input type="checkbox" id="navigating" value="Navigating the PhD" />
-                <label for="navigating">Navigating the PhD</label>
-              </p>
-
-              <p>
-                <input type="checkbox" id="networking" value="Networking" />
-                <label for="networking">Networking</label>
-              </p>
-
-              <p>
-                <input type="checkbox" id="resume" value="Resume building" />
-                <label for="resume">Resume building</label>
-              </p>
-
-              </div>
+              </form>
+              <% end %>
             </div>
-            
-          </form>
+          </div>
         </div>
+    </div>
+
+    <div class="mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
+    </div>
+    
+    <!-- BOX NUMBER 2 -->
+    <div class="card small mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
+      <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Areas of Expertise</h2>
       </div>
 
-      <!-- BOX NUMBER 2 -->
-       <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--white">
-      </div>
-
-      <div class="mdl-card mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Areas of Expertise</h2>
-        </div>
-
-
-      <!-- we have 26 areas of expertise -->
-        <div class="mdl-card__supporting-text row">
-          <form action="#" class="col s12">
-            <div class="row">
-              <div class="col s6">
-
-                <p>
-                  <input type="checkbox" id="Academia/Research" value="Academia/Research" />
-                  <label for="Academia/Research">Academia/Research</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Accounting" value="Accounting" />
-                  <label for="Accounting">Accounting</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Architecture" value="Architecture" />
-                  <label for="Architecture">Architecture</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Art" value="Art" />
-                  <label for="Art">Art</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Biotechnology" value="Biotechnology" />
-                  <label for="Biotechnology">Biotechnology</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="bd" value="Business Development" />
-                  <label for="bd">Business Development</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="data" value="Data Analytics" />
-                  <label for="data">Data Analytics</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="design" value="Design" />
-                  <label for="design">Design</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="education" value="Education" />
-                  <label for="education">Education</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="es" value="Environmental Science" />
-                  <label for="es">Environmental Science</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="finance" value="Finance" />
-                  <label for="finance">Finance</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="govern" value="Government" />
-                  <label for="govern">Government</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="hosp" value="Hospitality" />
-                  <label for="hosp">Hospitality</label>
-                </p>
-
-              </div>
-
-
-              <div class="col s6">
-                
-                <p>
-                  <input type="checkbox" id="hr" value="Human Resources" />
-                  <label for="hr">Human Resources</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="invest" value="Investment Banking"/>
-                  <label for="invest">Investment Banking</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Law" value="Law" />
-                  <label for="Law">Law</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Marketing" value="Marketing" />
-                  <label for="Marketing">Marketing</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="meche" value="Mechanical Engineering" />
-                  <label for="meche">Mechanical Engineering</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="np" value="Non-Profit" />
-                  <label for="np">Non-Profit</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Performing Arts" value="Performing Arts" />
-                  <label for="Performing Arts">Performing Arts</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="Photography" value="Photography" />
-                  <label for="Photography">Photography</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="politics" value="Politics" />
-                  <label for="politics">Politics</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="pr" value="Public Relations" />
-                  <label for="pr">Public Relations</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="pm" value="Product Management" />
-                  <label for="pm">Product Management</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="sm" value="Social Media" />
-                  <label for="sm">Social Media</label>
-                </p>
-
-                <p>
-                  <input type="checkbox" id="se" value="Software Engineering" />
-                  <label for="se">Software Engineering</label>
-                </p>
-              </div>
+      <div class="col s6 m6">
+        <div class="card-content">
+          <div class="skill-list">
+            <% user.skill_list.each do |s| %>
+            <div class="chip">
+              <%= s %>
+              <i class='close material-icons'>close</i>
             </div>
-            
+            <% end %>
+          </div>
+
+          <% if user == current_user %>
+          <a class="dropdown-button btn" data-activates="pick-skill" style="width: 150px;">Add skill</a>
+          <div id="pick-skill" class="dropdown-content">
+          <form action="#">
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Academia/Research" value="Academia/Research" />
+              <label for="Academia/Research">Academia/ </br> Research</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Accounting" value="Accounting" />
+              <label for="Accounting">Accounting</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Architecture" value="Architecture" />
+              <label for="Architecture">Architecture</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Art" value="Art" />
+              <label for="Art">Art</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Biotechnology" value="Biotechnology" />
+              <label for="Biotechnology">Biotechnology</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="bd" value="Business Development" />
+              <label for="bd">Business Development</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="data" value="Data Analytics" />
+              <label for="data">Data Analytics</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="design" value="Design" />
+              <label for="design">Design</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="education" value="Education" />
+              <label for="education">Education</label>
+            </p>
+
+            <p class="checkbox-skill">
+              <input type="checkbox" id="es" value="Environmental Science" />
+              <label for="es">Environmental Science</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="finance" value="Finance" />
+              <label for="finance">Finance</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="govern" value="Government" />
+              <label for="govern">Government</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="hosp" value="Hospitality" />
+              <label for="hosp">Hospitality</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="hr" value="Human Resources" />
+              <label for="hr">Human Resources</label>
+            </p>
+
+            <p class="checkbox-skill">
+              <input type="checkbox" id="invest" value="Investment Banking"/>
+              <label for="invest">Investment Banking</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Law" value="Law" />
+              <label for="Law">Law</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Marketing" value="Marketing" />
+              <label for="Marketing">Marketing</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="meche" value="Mechanical Engineering" />
+              <label for="meche">Mechanical Engineering</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="np" value="Non-Profit" />
+              <label for="np">Non-Profit</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Performing Arts" value="Performing Arts" />
+              <label for="Performing Arts">Performing Arts</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="Photography" value="Photography" />
+              <label for="Photography">Photography</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="politics" value="Politics" />
+              <label for="politics">Politics</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="pr" value="Public Relations" />
+              <label for="pr">Public Relations</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="pm" value="Product Management" />
+              <label for="pm">Product Management</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="sm" value="Social Media" />
+              <label for="sm">Social Media</label>
+            </p>
+            <p class="checkbox-skill">
+              <input type="checkbox" id="se" value="Software Engineering" />
+              <label for="se">Software Engineering</label>
+            </p>
+
           </form>
+          <% end %>
         </div>
+       </div>
       </div>
-</section>
-  
+    </div>
+<!--   </section>
+</div> -->
+
+
 
 <!-- OLD STUFF -->
 
 
-<div class="center container">
-<div class="row">
-    <div class="col s12">
+  <!-- <div class="container"> -->
+    <div class="row">
+        <!-- <div class="col s12"> -->
 
-      <!-- <ul class="tabs"> -->
-        <!-- <li class="tab col s3"><a href="#about-tab">About Me</a></li> -->
-        <!-- <li class="tab col s3"><a class="active" href="#calendar-tab">Availability</a></li>
-        <li class="tab col s3"><a href="#flash-tab">Schedule a Flash Session</a></li>
-      </ul> -->
-    </div>
+          <!-- <ul class="tabs"> -->
+            <!-- <li class="tab col s3"><a href="#about-tab">About Me</a></li> -->
+            <!-- <li class="tab col s3"><a class="active" href="#calendar-tab">Availability</a></li>
+            <li class="tab col s3"><a href="#flash-tab">Schedule a Flash Session</a></li>
+          </ul> -->
+        <!-- </div> -->
 
-  <% if current_user.isFriend?(user) || user == current_user %>
-    <div id="calendar-tab" class="col s12">
-      <div class="row">
-        <% if user == current_user %>
-          <div class="col s12 m3 mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--black left-align">
-            <h3>When are you available?</h3>
-            <%= form_for @event do |e| %>
-           
-            <div class='col-sm-12 '>
-                <div class="form-group">
-                  <div class='input-group'>
-                    <%= e.label :title %>
-                    <%= e.text_field :title, :value => 'Available' %>
-                  </div>
-                </div> 
-            </div>
-
-            <div class='col-sm-12 '>
-                <div class="form-group">
-                  <div class='input-group date'>
-                  <label>From</label>
-                  <%= e.datetime_select :start %>
+      <% if current_user.isFriend?(user) || user == current_user %>
+        <div id="calendar-tab" class="col s12">
+          <div class="row">
+            <% if user == current_user %>
+              <div class="col s12 m3 mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--blue-100 mdl-color-text--black left-align">
+                <h3>When are you available?</h3>
+                <%= form_for @event do |e| %>
+               
+                <div class='col-sm-12 '>
+                    <div class="form-group">
+                      <div class='input-group'>
+                        <%= e.label :title %>
+                        <%= e.text_field :title, :value => 'Available' %>
+                      </div>
+                    </div> 
                 </div>
-                </div>
-            </div>
 
-            <div class='col-sm-12'>
-                <div class="form-group">
-                  <div class='input-group date'>
-                  <label>To</label>
-                  <%= e.datetime_select :end %>
+                <div class='col-sm-12 '>
+                    <div class="form-group">
+                      <div class='input-group date'>
+                      <label>From</label>
+                      <%= e.datetime_select :start %>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
 
-            <div class='col-sm-12'>
-                <div class="form-group">
-                  <%=e.submit  class:'mr-color  waves-effect waves-green' %>
+                <div class='col-sm-12'>
+                    <div class="form-group">
+                      <div class='input-group date'>
+                      <label>To</label>
+                      <%= e.datetime_select :end %>
+                    </div>
+                    </div>
                 </div>
-            </div>
 
+                <div class='col-sm-12'>
+                    <div class="form-group">
+                      <%=e.submit  class:'mr-color  waves-effect waves-green' %>
+                    </div>
+                </div>
+
+                <% end %>
+              </div>
             <% end %>
+
+            <div class="col s12 m8 ">
+              <div id="calendar" class="fc fc-ltr fc-unthemed"></div>
+            </div>
+
+            
+
           </div>
-        <% end %>
 
-        <div class="col s12 m8">
-          <div id="calendar" class="fc fc-ltr fc-unthemed"></div>
         </div>
+    <% end %>
 
-        
-
-      </div>
-
-    </div>
-<% end %>
-
-    <!-- <div id="flash-tab" class="col s12">
-      <div class="row">
-        <div class="col s4">
-       <h2 class="header">Schedule a session</h2>
-       <div class="card horizontal">
-         <div class="card-image">
-           <i class="material-icons">schedule</i>
-         </div>
-         <div class="card-stacked">
-           <div class="card-content">
-              <% if current_user.flash_sessions.empty? %>
-                 <%= form_for @session do |s| %>
-                 <div class='col-sm-12'>
-                     <div class="form-group">
-                       <div class='input-group date'>
-                       <label>On</label>
-                       <%= s.datetime_select :date %>
+        <!-- <div id="flash-tab" class="col s12">
+          <div class="row">
+            <div class="col s4">
+           <h2 class="header">Schedule a session</h2>
+           <div class="card horizontal">
+             <div class="card-image">
+               <i class="material-icons">schedule</i>
+             </div>
+             <div class="card-stacked">
+               <div class="card-content">
+                  <% if current_user.flash_sessions.empty? %>
+                     <%= form_for @session do |s| %>
+                     <div class='col-sm-12'>
+                         <div class="form-group">
+                           <div class='input-group date'>
+                           <label>On</label>
+                           <%= s.datetime_select :date %>
+                         </div>
+                         </div>
                      </div>
-                     </div>
-                 </div>
-                 <%= s.label :description %>
-                 <%= s.text_field :description, :value => 'Describe your reason.' %>
-                 <%= s.hidden_field :user_id, :value => current_user.id %>
-                 <%= s.hidden_field :agent_id, :value => user.id %>
-               </div>
-               <div class="card-action">
-                 <%= s.submit 'Schedule', :class => 'btn' %>
-               </div>
-               <% end %>
-            <% else  %>
-              Your next session is
-              <%= current_user.flash_sessions.first.date %>
-            <% end %>
-         </div>
-       </div>
-      </div>
-      </div> -->
+                     <%= s.label :description %>
+                     <%= s.text_field :description, :value => 'Describe your reason.' %>
+                     <%= s.hidden_field :user_id, :value => current_user.id %>
+                     <%= s.hidden_field :agent_id, :value => user.id %>
+                   </div>
+                   <div class="card-action">
+                     <%= s.submit 'Schedule', :class => 'btn' %>
+                   </div>
+                   <% end %>
+                <% else  %>
+                  Your next session is
+                  <%= current_user.flash_sessions.first.date %>
+                <% end %>
+             </div>
+           </div>
+          </div>
+          </div> -->
 
-    </div>
-  </div>
+        </div>
+    <!-- </div> -->
+  </section>
 </div>
