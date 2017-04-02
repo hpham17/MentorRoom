@@ -2,6 +2,7 @@ class Users::SessionsController < Devise::SessionsController
   before_action :authenticate_user!
   before_action :check_admin, only: :admin
   before_action :check_mentor, only: :mentor
+  before_action :set_s3_direct_post, only: [:show, :new, :edit, :create, :update]
 
   def index
     decode_search
@@ -18,9 +19,10 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:attachments).find(params[:id])
     @event = Event.new
     @session = FlashSession.new
+    @attachment = current_user.attachments.build
   end
   def admin
     @users = User.all.order(:id)
@@ -92,6 +94,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
+
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read', content_type: 'application/pdf')
+  end
+
   def extract_mentees(association)
     mentees = []
     association.each do |x|

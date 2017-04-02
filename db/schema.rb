@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305213138) do
+ActiveRecord::Schema.define(version: 20170401214641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20170305213138) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "user_id"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_attachments_on_user_id", using: :btree
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -181,6 +190,7 @@ ActiveRecord::Schema.define(version: 20170305213138) do
     t.boolean  "online"
   end
 
+  add_foreign_key "attachments", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"

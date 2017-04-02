@@ -15,7 +15,7 @@
   </div>
 </nav>
 
-
+<%= render 'users/shared/attachment' %>
 
 <div class="grey lighten-5">
 
@@ -81,6 +81,11 @@
               <h5 class="light">
               <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
               </h5>
+
+              <h5 class="light">
+                <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
+              </h5>
+
 
             </div>
            </div>

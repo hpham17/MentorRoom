@@ -41,6 +41,7 @@ class User < ApplicationRecord
   has_many :flash_sessions
   has_many :stars
   has_many :activities
+  has_many :attachments
   has_many :starred, through: :stars
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
