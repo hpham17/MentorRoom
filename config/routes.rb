@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post '/notifications/clear' => 'notifications#clear'
   resources :events
   resources :flash_sessions
+  resources :attachments, only: [:new, :create]
   post '/star', to: 'stars#star'
   delete '/unstar', to: 'stars#unstar'
   post '/upload', to: 'home#upload'

@@ -10,6 +10,8 @@ gem 'pg', '~> 0.18'
 gem 'puma'
 # Use SCSS for stylesheets
 gem 'sidekiq'
+gem 'figaro'
+gem 'aws-sdk', '~> 2'
 gem 'dropzonejs-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'materialize-sass'
@@ -36,7 +38,6 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'
-gem 'google-instant-hangouts'#,github: 'ankit8898/google-instant-hangouts'
 
 group :production do
   gem 'rails_12factor'

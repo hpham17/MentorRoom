@@ -15,7 +15,6 @@
 //= require dropzone
 //= require jquery-ui
 //= require rails.validations
-//= require google-instant-hangouts
 //= require moment
 //= require bootstrap/transition
 //= require bootstrap/collapse

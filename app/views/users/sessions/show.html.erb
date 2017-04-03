@@ -1,4 +1,25 @@
 
+<!-- <<<<<<< HEAD
+=======
+
+<div class="profile">
+  <div class="profile-pic">
+    <div class="user" style="background-image:url(<%= "/uploads/" + @user.picture %>)"></div>
+
+  </div>
+  <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
+</div> -->
+
+<!-- name bar -->
+<!-- <nav class="mr-color">
+  <div class="nav-wrapper">
+  <h4 class="brand-logo center"><%=@user.name %><br></h4>
+  </div>
+</nav>
+
+<%= render 'users/shared/attachment' %>
+
+>>>>>>> b2b2bdc5618f041cd17960a979055e3aad7063d0 -->
 <div class="grey lighten-5">
 
     <% if @user.profile %>
@@ -34,7 +55,19 @@
           <h5 class="light">
           <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> </h5>
 
+<!-- <<<<<<< HEAD -->
           <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
+<!-- ======= -->
+          <h5 class="light">
+            <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
+          </h5>
+
+
+            <!-- </div>
+           </div>
+          </div>
+         </div> -->
+<!-- >>>>>>> b2b2bdc5618f041cd17960a979055e3aad7063d0 -->
 
 
         </div>

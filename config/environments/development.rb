@@ -37,12 +37,12 @@ Rails.application.configure do
     :address        => 'smtp.gmail.com',
     :domain         => 'mail.google.com',
     :port           => 587,
-    :user_name      => "esentialmailer@gmail.com",
-    :password       => "ChaseSmith2016",
+    :user_name      => ENV['GMAIL_USERNAME'],
+    :password       => ENV['GMAIL_PASSWORD'],
     :authentication => :plain,
     :enable_starttls_auto => true
   }
-  
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

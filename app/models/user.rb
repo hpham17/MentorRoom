@@ -35,18 +35,19 @@ class User < ApplicationRecord
   ROLES = %w[Admin Mentor Mentee].freeze
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :linkedin]
-  has_one :profile
-  has_many :messages
-  has_one :notification
-  has_many :flash_sessions
-  has_many :stars
-  has_many :activities
+  has_one :profile, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_one :notification, dependent: :destroy
+  has_many :flash_sessions, dependent: :destroy
+  has_many :stars, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :attachments, dependent: :destroy
   has_many :starred, through: :stars
   has_many :chatrooms, through: :messages
   has_many :mentorships, -> { where accepted: true }
   has_many :mentors, through: :mentorships
   has_many :inverse_mentorships, -> { where accepted: true }, :class_name => "Mentorship", :foreign_key => "mentor_id"
-  has_many :mentees, :through => :inverse_mentorships, :source => :user
+  has_many :mentees, :through => :inverse_mentorships, :source => :user, dependent: :destroy
   acts_as_taggable_on :skills, :help
   has_friendship
   accepts_nested_attributes_for :profile

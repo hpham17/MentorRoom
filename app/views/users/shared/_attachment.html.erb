@@ -1,0 +1,7 @@
+<%= form_for(@attachment, html: { :multipart => true, class: 'directUpload', data: { 'form-data' => @s3_direct_post.fields, 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+    <div class="field">
+      <%= f.label :url, "Upload PDF Only" %><br>
+      <%= f.file_field :url %>
+    </div>
+    <%= f.submit %>
+<% end %>
