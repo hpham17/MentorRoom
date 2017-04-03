@@ -53,15 +53,45 @@
         <div class="mdl-card__actions  mdl-card--border">
               
           <h5 class="light">
-          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> </h5>
+          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> 
+          </h5>
 
+<!-- <<<<<<< HEAD -->
 <!-- <<<<<<< HEAD -->
           <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
 <!-- ======= -->
-          <h5 class="light">
+         <!--  <h5 class="light">
             <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
-          </h5>
+          </h5> -->
 
+          <% if current_user.attachments.count > 0 %>
+                <h5 class="light">
+                  <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
+                </h5>
+          <% end %>
+
+<!-- =======
+
+      <div class="col s4">
+         <div class="card small">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">work</i></h2>
+            <div class="card-content">
+
+              <h5 class="light">
+              Role: <%= @user.profile.role %><br>
+              </h5>
+
+              <h5 class="light">
+              <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
+              </h5>
+
+              <% if current_user.attachments.count > 0 %>
+                <h5 class="light">
+                  <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
+                </h5>
+              <% end %>
+>>>>>>> 2f690d615054d3f56f44e142267d345cc6ed3105 -->
 
             <!-- </div>
            </div>
