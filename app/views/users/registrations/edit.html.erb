@@ -40,61 +40,85 @@
 
         <div class="field">
           <%= f.fields_for :profile do |p| %>
-              <div class="input-field">
-                <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
-                <%= p.label :bio, 'Brief Bio' %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :location %>
-                <%= p.label :location %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :major %>
-                <%= p.label :major %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :school %>
-                <%= p.label :school %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :company %>
-                <%= p.label :company %>
-              </div>
-              <div class="input-field">
-                <%= p.select :gradyear, (Time.now.year).downto(Time.now.year - 40).to_a %>
-                <%= p.label :gradyear, 'Graduation Year' %>
-              </div>
-              <div class="input-field">
-                  <%= select_tag 'user[profile_attributes][degrees]', options_for_select([["High School Diploma", "High School Diploma"], ["Community College", "Community College"], ["B.A.", "B.A."], ["B.S.", "B.S"], ["M.A.", "M.A."], ["M.S.", "M.S."], ["MBA", "MBA"], ["Ph.D", "Ph.D"]], selected: p.object.degrees), multiple: true, include_blank: 'Pick any' %>
-                <label>Degrees Completed</label>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :clubs %>
-                <%= p.label :clubs, 'List all clubs/organizations (optional)' %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :role %>
-                <%= p.label :role, "Job Title" %>
-              </div>
-              <div class="input-field">
-                <%= p.select 'sector', options_for_select(["Private Industry", "Government Agency", "Military/Defense Contractor", "R&D", "Self-employed", "Non-profit", "Academic Institution", "Other"], selected: p.object.sector) %>
-                <label>Sector in which you work (or have most experience)</label>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :linkedin %>
-                <%= p.label :linkedin, 'LinkedIn URL' %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :twitter %>
-                <%= p.label :twitter, 'Twitter URL (optional)' %>
-              </div>
-              <div class="input-field">
-                <%= p.text_field :website %>
-                <%= p.label :website, 'Personal Website URL (optional)' %>
-              </div>
+
+            <div class="input-field">
+              <%= p.text_area :bio, class: 'materialize-textarea', length: 300 %>
+              <%= p.label :bio, 'How would you describe yourself to your mentor or mentee?*' %>
+            </div>
+            <div class="input-field">
+                <%= select_tag 'user[profile_attributes][ethnicity]', options_for_select(["American Indian", "Native Alaskan", "Native Hawaiian", "Asian", "Asian American", "Black", "African American", "Latinx", "Hispanic", "Middle Eastern", "Pacific Islander", "White", "Other"], selected: p.object.ethnicity), multiple: true, include_blank: "Select all that apply" %>
+              <label>Race/Ethnicity*</label>
+            </div>
+
+            <div class="input-field">
+              <%= p.text_field :location %>
+              <%= p.label :location, 'Location* (where do you work/live)' %>
+            </div>
 
 
-        </div>
+
+            <div class="input-field">
+              <%= p.text_field :major %>
+              <%= p.label :major, 'Major*' %>
+            </div>
+            <div class="input-field">
+              <%= p.text_area :aspirations, class: 'materialize-textarea', length: 300 %>
+              <%= p.label :aspirations, 'What are your future aspirations?*' %>
+            </div>
+            <div class="input-field">
+              <%= p.text_field :school %>
+              <%= p.label :school, 'School*' %>
+            </div>
+            <div class="input-field">
+              <%= p.select :gradyear, (Time.now.year + 4).downto(Time.now.year - 40).to_a %>
+              <%= p.label :gradyear, 'Graduation Year*' %>
+            </div>
+            <div class="input-field">
+                <%= select_tag 'user[profile_attributes][degrees]', options_for_select(["High School Diploma", "Community College", "B.A.", "B.S.", "M.A.", "M.S.", "MBA", "Ph.D"], selected: p.object.degrees), multiple: true, include_blank: "Select all that apply" %>
+              <label>Degrees Completed</label>
+            </div>
+            <div class="input-field">
+              <%= p.text_field :clubs %>
+              <%= p.label :clubs, 'List all clubs/organizations (optional)' %>
+            </div>
+
+
+
+
+
+            <div class="input-field">
+              <%= p.text_field :role %>
+              <%= p.label :role, "Job Title* (e.g. Student, Software Engineer)" %>
+            </div>
+            <div class="input-field">
+              <%= p.text_field :company %>
+              <%= p.label :company, "Company*" %>
+            </div>
+            <% if current_user.is? :Mentor %>
+            <div class="input-field">
+              <%= select_tag 'user[profile_attributes][sector]', options_for_select(["Private Industry", "Government Agency", "Military/Defense Contractor", "R&D", "Self-employed", "Non-profit", "Academic Institution", "Other"], selected: p.object.sector), include_blank: "Pick one" %>
+              <label>Sector in which you work (or have most experience)</label>
+            </div>
+            <% end %>
+            <div class="input-field">
+                <%= select_tag 'user[profile_attributes][identity]', options_for_select(["LGBTQ", "Low-Income", "First generation U.S. citizen", "First generation college student", "Disability", "Immigrant", "Multilingual", "Single-parent household", "Other"], selected: p.object.identity), multiple: true, include_blank: "Select all that apply" %>
+              <label>What do you consider important aspects of your identity? (optional)</label>
+            </div>
+            <div class="input-field">
+              <%= p.text_field :linkedin %>
+              <%= p.label :linkedin, 'LinkedIn URL*' %>
+            </div>
+            <div class="input-field">
+              <%= p.text_field :twitter %>
+              <%= p.label :twitter, 'Twitter URL (optional)' %>
+            </div>
+            <div class="input-field">
+              <%= p.text_field :website %>
+              <%= p.label :website, 'Personal Website URL (optional)' %>
+            </div>
+
+
+
     <% end %>
 
         <div class="actions">
