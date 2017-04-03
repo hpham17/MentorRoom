@@ -61,9 +61,7 @@
 <!-- <<<<<<< HEAD -->
           <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
 <!-- ======= -->
-         <!--  <h5 class="light">
-            <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
-          </h5> -->
+         
 
           <% if current_user.attachments.count > 0 %>
                 <h5 class="light">
@@ -140,40 +138,6 @@
 
 
 
-
-<!-- BUTTONS -->
-<!--  <div id="about-btn" class="card-action">
-    <div class="about-btn">
-      -->   <!-- DOWNLOAD CV BUTTON -->
-       <!--  <a href="#" class="btn waves-effect">Download CV</a> -->
-        <!-- CONTACT BUTTON -->
-     <!--    <a href="#contact" class="btn waves-effect">Contact Me</a>
-    </div>
-</div> -->
-
-
-
-<!-- 
-<div id="about" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    DETAILS
-                    <div id="about-card" class="card" data-sr-id="49" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: box-shadow 0.25s ease 0s, -webkit-transform 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s, opacity 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s; transition: box-shadow 0.25s ease 0s, transform 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s, opacity 1.4s cubic-bezier(0.6, 0.2, 0.1, 1) 0.5s; ">
-                        <div class="card-content">
-                            ABOUT PARAGRAPH
-                            <p>
-                              About Me: <%= @user.profile.bio %>
-
-                            </p>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 
 
