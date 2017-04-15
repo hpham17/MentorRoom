@@ -4,24 +4,25 @@
       <%= render 'stars/button', :user => user %>
     <% end %>
 
+
     <div class="card-image center" style="margin-top:20px;">
       <div class="user user-index" style="background-image:url(<%= "/uploads/" + user.picture %>)"></div>
+      <!-- <h2 class="name-title" id="<%= user.name %>" ><%= link_to "#{user.name}", user_path(user.id)%> </h2>
+ -->
 
-
-      <div class="center-align">
-        <h2 class="name-title" id="<%= user.name %>" ><%= link_to "#{user.name}", user_path(user.id)%>
-          <div id="available-<%= user.name %>" style="display:inline;">
+      <!-- <div class="center-align"> -->
+        <h2 class="name-title" id="<%= user.name %>" ><%= link_to "#{user.name}", user_path(user.id)%></h2>
+          <div id="available-<%= user.name %>" style="display:inline;"> <br>
             <% if user.online %>
               <i style="color:green" class="fa fa-circle" aria-hidden="true"></i></td>
             <% end %>
           </div>
-        </h2>
+        <!-- </div> -->
       </div>
     </div>
+  <br> <br>
 
-  </div>
-
-  <div class="mdl-card__title mdl-card--expand mr-color" style="width: 100%; color: white;">
+  <div class="mdl-card__title mdl-card--expand light-blue black-text" style="width: 100%;">
 
 <!-- 
     <%= user.role %>  works at
@@ -37,6 +38,8 @@
     </div> 
 
   </div>
+
+
 <% if current_user != user %>
   <% if user.isFriend?(current_user) %>
     <%= link_to "Message", "chatrooms/new?id=" + user.id.to_s, class: 'waves-effect waves-green btn' %>
