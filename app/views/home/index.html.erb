@@ -18,48 +18,108 @@
 
  <!-- Mentors at your fingertips — Search & Connect with Professionals -->
 
-<section class="mr-font  grey lighten-2 center-align">
-  <div class="container">
-       <h2 class="section-heading">What is MentorRoom?</h2>
-       <h4 class="section-subheading " >MentorRoom lets you easily find, connect, and engage with mentors via our web platform that is personalized for your needs. Find and explore interesting people to connect with, from tech industry professionals and innovators, to diverse community champions and leaders, and inspiring, talented students.
-       </h4>
+<section class="white-text mr-purple ">
+  <div class="container center-align">
+       <h2 class="thin flow-text section-subheading " >MentorRoom lets you easily find, connect, and engage with mentors via our web platform that is personalized for your needs. Find and explore interesting people to connect with, from tech industry professionals and innovators, to diverse community champions and leaders, and inspiring, talented students.
+      </h2>
+<!-- 
+       <iframe width="360" height="500" src="<%= "//www.youtube.com/embed/FNakfk2RRkc" %>"></iframe> -->
 
-      <div class="video-container">
-       <!--  <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe> -->
-       <iframe width="560" height="315" src="//www.youtube.com/embed/FNakfk2RRkc" frameborder="0" allowfullscreen></iframe>
+
+  </div>
+</section> 
+
+
+
+<section class="mr-font">
+
+  <div class="row">
+      <h2 class="section-heading center-align">What We Offer</h2>
+      
+      <div class="col s4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="large material-icons">contact_phone
+</i></h2>
+            <div class="card-content">
+              <h5 class="center">Connections to High Quality Mentors</h5>
+            </div>  
+           </div>
       </div>
-        
 
+      <div class="col s4">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="large material-icons">schedule</i></h2>
+            <div class="card-content">
+              <h5 class="center">Real Time Advice And Support</h5>
+            </div>  
+           </div>
+      </div>
+
+      <div class="col s4 ">
+          <div class="icon-block">
+            <h2 class="center blue-text"><i class="large material-icons">message</i></h2>
+            <div class="card-content">
+              <h5 class="center">Communication Via Messaging And Video Calls</h5>
+            </div>  
+           </div>
+      </div>
   </div>
+
+
 </section> 
+ <!-- <div class="col s12 m7">
+             <div class="card horizontal">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                <div class="card-content">
+                  <h5 class="center">Connections to High Quality</h5>
+                </div>  
+               </div>
+              </div>
+</div>
+ -->
+<section class="mr-font mr-darkblue">
+
+    <div class="row">
+        <h2 class="section-heading center-align white-text "><b>Our Impact</b></h2>
+      <!--   <h4 class="section-subheading text-muted center-align white-text">Our one-to-one matches are truly making an impact in student’s lives.<br></h4> -->
+      <div class="container">
+      <!-- <img class="materialboxed" width="650" src="images/sample-1.jpg"> -->
+        <%= image_tag('cohort2', :class => 'center-align col s8 image-section img-responsive') %>
+      
+        <div class="col s4 white-text">
+            <div class="icon-block">
+              <h2 class="center"><b class="large">80%</b></h2>
+              <div class="card-content">
+                <h5 class="center">Of students in our cohort were first-generation college students</h5>
+              </div>  
+             </div>
+        </div>
+
+        <div class="col s4 white-text">
+            <div class="icon-block">
+              <h2 class="center"><b class="large">96%</b></h2>
+              <div class="card-content">
+                <h5 class="center">Of students and mentors stated that they grew personally and professionally because of mentorship</h5>
+              </div>  
+             </div>
+        </div>
+
+        <div class="col s4 white-text">
+            <div class="icon-block">
+              <h2 class="center"><b class="large">450+</b></h2>
+              <div class="card-content">
+                <h5 class="center">Hours of mentorship accomplished in three months</h5>
+              </div>  
+             </div>
+        </div>
+      </div>
+    </div>
 
 
-<section class="mr-font light-blue darken-4 white-text">
-  <div class="container">
-       <h2 class="section-heading center-align">What We Offer</h2>
-       <h5>
-          <li class="left-align ">Connections to High Quality Mentors </li><br>
-          <li class="left-align">Real Time Advice And Support</li><br>
-          <li class="left-align">Communication Via Messaging And Video Calls</li>
-        </h5>
-  </div>
-</section> 
+       
+ 
 
-<section class="mr-font mr-color">
-  <div class="container">
-       <h2 class="section-heading center-align white-text ">Our Impact</h2>
-       <h4 class="section-subheading text-muted left-align white-text">Our one-to-one matches are truly making an impact in student’s lives.<br></h4>
-       <h5>
-          <li class="left-align white-text"> 80% of the students in our cohort were first-generation college students </li><br>
-          <li class="left-align white-text"> 96% of the students and mentors stated that they grew personally and professionally because of mentorship </li><br>
-          <li class="left-align white-text">450+ of mentorship accomplished in three months.</li><br>
-        </h5>
-
-        <!-- <img class="materialboxed" width="650" src="images/sample-1.jpg"> -->
-        <%= image_tag('cohort', :class => 'left-align col-sm-6 image-section img-responsive') %>
-        <%= image_tag('cohort2', :class => 'right-align col-sm-6 image-section img-responsive') %>
-
-  </div>
 </section> 
 
 
@@ -75,7 +135,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="team-member">
-                    <img src="search.png" class="img-responsive img-circle" alt="">
+                    <%= image_tag 'itzel.png', :alt => 'itzel_pic', :class => "mg-responsive img-circle" %>
                     <h4>Itzel Martinez</h4>
                     <p class="text-muted">Co-Founder and Engineer</p>
                     <ul class="list-inline social-buttons">
@@ -89,9 +149,13 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="team-member">
-                    <img src= "blank.png" class="img-responsive img-circle" alt="">
-                    <h4>Dante Alvarado-Leon</h4>
+                <div class="team-member"> 
+                    <%= image_tag 'dante.png', :alt => 'dante_pic', :class => "mg-responsive img-circle" %>
+<!--                     <img src= "/cohort.png" class="img-responsive img-circle" alt="">
+ -->                    <h4>Dante Alvarado-Leon</h4>
+
+                   
+
                     <p class="text-muted">Co-Founder</p>
                     <ul class="list-inline social-buttons">
                         <li><a href="#"><i class="fa fa-twitter"></i></a>
@@ -129,10 +193,10 @@
     </div>
 </section>
 
-
+<!-- 
 <section id="contact" class="contact indigo lighten-2">
  <div class="white-text container">
-     <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+     <h2>Chec</h2>
       <ul class="list-inline list-social">
          <li class="social-twitter">
              <a href="https://twitter.com/Mentorroom"><i class="fa fa-twitter"></i></a>
@@ -140,32 +204,46 @@
          <li class="social-facebook">
              <a href="https://www.facebook.com/MentorRoom/"><i class="fa fa-facebook"></i></a>
          </li>
-         <!-- <li class="social-google-plus">
-             <a href="#"><i class="fa circle fa-linkedin"></i></a>
-         </li> -->
+        
       </ul>
  </div>
-</section>
+</section> -->
 
 <footer>
    <div class="container">
-       <p>&copy; MentorRoom 2017</p>
-       <!-- <ul class="list-inline"> -->
-          <!--  <li>
-               <a href="#">Privacy</a>
-           </li>
-           <li>
-               <a href="#">Terms</a>
-           </li>
-           <li>
-               <a href="#">FAQ</a>
-           </li> -->
+       <h4>&copy; MentorRoom 2017</h4>
+       <ul class="list-inline">
+          <li>
+            <h4>Follow Us Here!</h4>
+          </li>
 
-           <!-- <li>
-               <a href="#">Report Bugs</a>
-           </li> -->
+          <ul class="list-inline list-social">
+             <li class="social-twitter">
+                 <a href="https://twitter.com/Mentorroom"><i class="large fa fa-twitter"></i></a>
+             </li>
+             <li class="social-facebook">
+                 <a href="https://www.facebook.com/MentorRoom/"><i class="large fa fa-facebook"></i></a>
+             </li>
+             <!-- <li class="social-google-plus">
+                 <a href="#"><i class="fa circle fa-linkedin"></i></a>
+             </li> -->
+          </ul>
 
-       <!-- </ul> -->
+        <!--  <li>
+             <a href="#">Privacy</a>
+         </li>
+         <li>
+             <a href="#">Terms</a>
+         </li>
+         <li>
+             <a href="#">FAQ</a>
+         </li>
+
+         <li>
+             <a href="#">Report Bugs</a>
+         </li> -->
+
+       </ul>
    </div>
 </footer>
 
