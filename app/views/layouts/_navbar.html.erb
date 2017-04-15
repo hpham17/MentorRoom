@@ -74,7 +74,8 @@
 
       <!-- This is where we center the logo int he navbar -->
       <a style="left:0; margin-left: 30px;" id="logo-container" class="brand-logo center-align">
-        <%= image_tag('mentorroom.png', width: '140') %>
+        <%= link_to image_tag('mentorroom.png', width: '140'), root_path %> 
+        <!-- added the mentorRoom logo to go back to homepage -->
       </a>
       <% end %>
     </div>
