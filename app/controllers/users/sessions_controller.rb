@@ -111,12 +111,13 @@ class Users::SessionsController < Devise::SessionsController
     if params[:search] && !params[:search].empty?
       @users = User.tagged_with("#{params[:search]}")
       if @users.empty?
-        @users = User.where(:name => params[:search])
+        @users = User.search(params[:search])
       end
     else
-      @users = User.all.order(:id).where(:role => "Mentor").includes(:skills)
-      @users -= current_user.starred
-      @users -= [current_user]
+      @user = User.includes(:skills).all.order(:id)
+      @starred = current_user.starred
+      @mentees = @user.where(role: 'Mentee') - @starred
+      @mentors = @user.where(role: 'Mentor') - @starred
     end
   end
   def check_admin

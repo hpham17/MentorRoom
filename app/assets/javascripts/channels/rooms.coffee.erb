@@ -7,6 +7,7 @@ $ ->
 
     App.global_chat = App.cable.subscriptions.create {
         channel: "ChatroomsChannel"
+        chatroom_id: messages.data('chatroom-id')
         first_id: messages.data('first-id')
         second_id: messages.data('second-id')
       },
@@ -16,6 +17,9 @@ $ ->
       disconnected: ->
         # Called when the subscription has been terminated by the server
 
+      set_chatroom: (id) ->
+        this.chatroom_id = id
+
       received: (data) ->
         messages.append data['message']
         messages_to_bottom()
@@ -24,11 +28,13 @@ $ ->
         @perform 'send_message', message: message, chatroom_id: chatroom_id, other_id: other_id
 
 
+
     $(document).on 'keypress', 'form', (e) ->
       code = e.keyCode or e.which
       if code == 13
         textarea = $(this).find('#message_content')
-        if $.trim(textarea.val()).length > 1
+        if $.trim(textarea.val()).length > 0
+          App.global_chat.set_chatroom messages.data('chatroom-id')
           App.global_chat.send_message textarea.val(), messages.data('chatroom-id'), messages.data('second-id')
           textarea.val('')
         e.preventDefault()

@@ -1,0 +1,8 @@
+
+<h1> Please choose a name for your program's MentorRoom! </h1>
+
+<%= form_for @org do |o| %>
+  <%= o.text_field :name %>
+  <%= o.text_field :size %>
+  <%= o.submit %>
+<% end %>

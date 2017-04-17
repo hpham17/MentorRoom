@@ -1,0 +1,109 @@
+<style>
+  #front_page {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .chat-history {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 493px !important;
+  }
+</style>
+
+<body id="front_page">
+<div class="row" style="display: flex; overflow-x:hidden; overflow-y:hidden">
+  <div class="col s12 m4" style="margin-left: 20px">
+      <h2 class="header"><%= @org.name %></h2>
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-action">
+            <span class="card-title">Announcements</span>
+          </div>
+          <% @announcements.each do |a| %>
+          <div class="card-action">
+            <a><%= a.title %></a>
+            <%= a.body %>
+          </div>
+            <br>
+          <% end %>
+        </div>
+      </div>
+      <h3>Members: <%= @users.count %> </h3>
+      <h3>Online now: <%= @online.count %> </h3>
+      <% @online.each do |o| %>
+          <li><%= o.name %></li>
+      <% end %>
+      <h3></h3>
+      <!-- Modal Trigger -->
+        <a class="waves-effect waves-light" href="#modal">Invite a member + </a>
+
+  </div>
+
+  <div class="col s12 m8">
+    <div class="chat">
+        <div class="chat-header clearfix">
+
+
+          <div class="chat-about">
+            <!-- <div class="chat-with">Chat with <%= @chatroom.other_user(current_user.id, true)%></div> -->
+            <div class="chat-num-messages">Messages total: <%= @chatroom.messages.count %></div>
+          </div>
+
+        </div> <!-- end chat-header -->
+
+        <div class="chat-history">
+          <ul id="messages" data-chatroom-id="<%= @chatroom.id %>" data-second-id="<%= current_user.id %>">
+
+            <% if @chatroom.messages.any? %>
+                <%= render partial: 'messages/message', collection: @chatroom.messages.includes(:user).order('id ASC') %>
+            <%end%>
+
+
+
+
+          </ul>
+
+        </div> <!-- end chat-history -->
+
+        <div class="chat-message clearfix">
+
+          <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
+          <!-- <%= button_to "End Flash Session" %> -->
+
+        </div> <!-- end chat-message -->
+
+      </div> <!-- end chat -->
+  </div>
+</div>
+
+
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Invite a member!</h4>
+      <%= form_for @invite do |f| %>
+    <%= f.hidden_field :organization_id, :value => @org.id %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.submit 'Send', class: 'btn' %>
+  <% end %>
+    </div>
+
+  </div>
+
+</body>
+
+
+
+<script>
+  $(document).on('keypress', function(e) {
+    var code;
+    code = e.keyCode || e.which;
+    if (code === 13) {
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>

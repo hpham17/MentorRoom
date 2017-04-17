@@ -30,20 +30,20 @@ $ ->
   $('.chips').material_chip();
   $('ul.tabs').tabs();
 
-  $.get '/events', {}, (data) ->
-    $('#calendar').fullCalendar
-      header:
-        left: 'prev,next today'
-        center: 'title'
-        right: 'month,agendaWeek,agendaDay,listWeek'
-      navLinks: true
-      editable: true
-      eventLimit: true
-      events: data
-      eventClick: (calEvent) ->
-        $toastContent = $("<span>#{calEvent.title}<br>#{calEvent.start.toString()}</span>");
-        Materialize.toast($toastContent, 5000, 'rounded');
-        return
+  # $.get '/events', {}, (data) ->
+  #   $('#calendar').fullCalendar
+  #     header:
+  #       left: 'prev,next today'
+  #       center: 'title'
+  #       right: 'month,agendaWeek,agendaDay,listWeek'
+  #     navLinks: true
+  #     editable: true
+  #     eventLimit: true
+  #     events: data
+  #     eventClick: (calEvent) ->
+  #       $toastContent = $("<span>#{calEvent.title}<br>#{calEvent.start.toString()}</span>");
+  #       Materialize.toast($toastContent, 5000, 'rounded');
+  #       return
 
   $('.timepicker').pickatime({
     autoclose: true,

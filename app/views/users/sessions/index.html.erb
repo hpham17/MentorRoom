@@ -1,15 +1,46 @@
 <div class="container">
+
+<% if @users %>
   <% if @users.empty? %>
     <h4>No users match, please search again.</h4>
+  <% else %>
+      <% @users.each do |user| %>
+        <%= render 'users/shared/profile', :user => user %>
+      <% end %>
   <% end %>
-  <% current_user.starred.each do |user| %>
-    <%= render 'users/shared/profile', :user => user %>
-  <% end %>
+<% else %>
 
-  <% @users.each do |user| %>
-    <%= render 'users/shared/profile', :user => user %>
-  <% end %>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">star</i>Starred</div>
+              <div class="collapsible-body" style="display: inline-block">
+                <% current_user.starred.each do |user| %>
+                  <%= render 'users/shared/profile', :user => user %>
+                <% end %>
+              </div>
+            </li>
 
+         <li>
+           <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Mentors</div>
+           <div class="collapsible-body" style="display: inline-block">
+             <% @mentors.each do |user| %>
+               <%= render 'users/shared/profile', :user => user %>
+             <% end %>
+           </div>
+         </li>
+         <li>
+           <div class="collapsible-header active"><i class="material-icons">assignment_ind</i>Mentees</div>
+           <div class="collapsible-body" style="display: inline-block">
+             <% @mentees.each do |user| %>
+               <%= render 'users/shared/profile', :user => user %>
+             <% end %>
+           </div>
+         </li>
+
+        </ul>
+
+
+<% end %>
 
 </div>
 

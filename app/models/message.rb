@@ -21,7 +21,7 @@ class Message < ApplicationRecord
 
   def broadcast_message
     if Message.count > 2
-      MessageBroadcastJob.perform_now(self, self.current_user, self.other_user)
+      MessageBroadcastJob.perform_now(self, self.chatroom_id, self.current_user, self.other_user)
     end
   end
 
