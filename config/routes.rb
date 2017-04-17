@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   authenticated :user do
     devise_scope :user do
-      root to: "users/sessions#dashboard"
+      root "organizations#show"
     end
   end
   root "home#index"
@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   post '/direct_messages/:id' => 'direct_messages#create'
   resources :mentorships, only: [:create, :update]
   resources :chatrooms, param: :slug
+  resources :organizations
   resources :messages
+  resources :invites
   post '/notifications/clear' => 'notifications#clear'
   resources :events
   resources :flash_sessions

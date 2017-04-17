@@ -22,6 +22,10 @@
     <%= f.label :password_confirmation %><br />
   </div>
   <%= f.hidden_field :role, value: 'Mentee'%>
+  
+  <% if @token != nil %>
+    <%= hidden_field_tag :invite_token, @token %>
+  <% end %>
 
     <%= f.submit "Sign up", class:'mr-color btn waves-effect waves-green' %>
 <% end %>

@@ -42,12 +42,16 @@ class User < ApplicationRecord
   has_many :stars, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :attachments, dependent: :destroy
-  has_many :starred, through: :stars
-  has_many :chatrooms, through: :messages
-  has_many :mentorships, -> { where accepted: true }
-  has_many :mentors, through: :mentorships
+  has_many :starred, through: :stars, dependent: :destroy
+  has_many :chatrooms, through: :messages, dependent: :destroy
+  has_many :mentorships, -> { where accepted: true }, dependent: :destroy
+  has_many :mentors, through: :mentorships, dependent: :destroy
   has_many :inverse_mentorships, -> { where accepted: true }, :class_name => "Mentorship", :foreign_key => "mentor_id"
   has_many :mentees, :through => :inverse_mentorships, :source => :user, dependent: :destroy
+  has_many :organizations, :class_name => "Organization", :foreign_key => :creator_id, dependent: :nullify
+  has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
+  has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
+  belongs_to :organization
   acts_as_taggable_on :skills, :help
   has_friendship
   accepts_nested_attributes_for :profile
@@ -68,6 +72,12 @@ class User < ApplicationRecord
 
   def requested?(user)
     self.pending_friends.include? user
+  end
+
+  def self.search(search)
+    wildcard_search = "%#{search}%"
+
+    where("name ILIKE :search", search: wildcard_search)
   end
 
   def check_limit

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  size: 1
+  invite_link: MyString
+  trial: false
+  about: MyString
+  renewal_date: MyString
+
+two:
+  name: MyString
+  size: 1
+  invite_link: MyString
+  trial: false
+  about: MyString
+  renewal_date: MyString

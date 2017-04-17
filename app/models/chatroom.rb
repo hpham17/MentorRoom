@@ -12,13 +12,14 @@
 class Chatroom < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :users, -> { distinct }, through: :messages
+  belongs_to :organization
   validates :topic, presence: true, uniqueness: true
   before_validation :sanitize, :slugify
-  after_touch do |chatroom|
-    if messages.count >= 2
-      create_notification chatroom
-    end
-  end
+  # after_touch do |chatroom|
+  #   if messages.count >= 2
+  #     create_notification chatroom
+  #   end
+  # end
 
   def create_notification(chatroom)
     last_message = chatroom.messages.last

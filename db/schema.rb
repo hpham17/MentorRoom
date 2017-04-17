@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401214641) do
+ActiveRecord::Schema.define(version: 20170416233856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20170401214641) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "attachments", force: :cascade do |t|
@@ -33,9 +41,10 @@ ActiveRecord::Schema.define(version: 20170401214641) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string   "topic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "slug"
+    t.integer  "organization_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -77,6 +86,16 @@ ActiveRecord::Schema.define(version: 20170401214641) do
     t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.string   "email"
+    t.string   "token"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "mentorships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "mentor_id"
@@ -104,6 +123,19 @@ ActiveRecord::Schema.define(version: 20170401214641) do
     t.integer  "count",      default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "size"
+    t.string   "invite_link"
+    t.boolean  "trial"
+    t.string   "about"
+    t.string   "renewal_date"
+    t.integer  "creator_id"
+    t.string   "logo"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -188,6 +220,7 @@ ActiveRecord::Schema.define(version: 20170401214641) do
     t.integer  "limit"
     t.string   "picture",                default: "blank.png"
     t.boolean  "online"
+    t.integer  "organization_id"
   end
 
   add_foreign_key "attachments", "users"
