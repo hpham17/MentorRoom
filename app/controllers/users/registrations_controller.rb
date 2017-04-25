@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     if @token != nil
        org_id = Invite.find_by_token(@token).organization_id #find the org attached to the invite
-       resource.organization_id = org_id #add this user to the org as a member
+       OrganizationUser.create!(:organization_id => org_id, :user_id => resource.id) #add this user to the org as a member
     end
     resource.save
     yield resource if block_given?

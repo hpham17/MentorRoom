@@ -2,7 +2,14 @@
 <h1> Please choose a name for your program's MentorRoom! </h1>
 
 <%= form_for @org do |o| %>
-  <%= o.text_field :name %>
-  <%= o.text_field :size %>
+    <div class="input-field">
+      <%= o.text_field :name, autofocus: true, class: 'validate' %>
+      <%= o.label :name %>
+    </div>
+    <div class="input-field">
+      <%= o.text_field :size, autofocus: true, class: 'validate' %>
+      <%= o.label :size %>
+    </div>
+    <%= o.hidden_field :creator_id, value: current_user.id %>
   <%= o.submit %>
 <% end %>

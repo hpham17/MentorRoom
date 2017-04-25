@@ -11,6 +11,13 @@
   }
 </style>
 
+<% if @orgs %>
+  <% @orgs.each do |org| %>
+    <%= org.name %>
+  <% end %>
+
+<% else %>
+
 <body id="front_page">
 <div class="row" style="display: flex; overflow-x:hidden; overflow-y:hidden">
   <div class="col s12 m4" style="margin-left: 20px">
@@ -94,6 +101,8 @@
   </div>
 
 </body>
+
+<% end %>
 
 
 

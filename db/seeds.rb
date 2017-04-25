@@ -24,3 +24,5 @@ mentor_list.each do |name, email|
 end
 
 User.create(name: "Dante Leon", email: "dante@gmail.com", password: "dantes", role: "Admin")
+
+Organization.create(name: "MentorRoom", private: false, trial: false, creator_id: 1)

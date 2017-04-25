@@ -34,7 +34,7 @@ class User < ApplicationRecord
   TEMP_EMAIL_REGEX = /\Achange@me/
   ROLES = %w[Admin Mentor Mentee].freeze
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :linkedin]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :linkedin]
   has_one :profile, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :notification, dependent: :destroy
@@ -46,12 +46,13 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :messages, dependent: :destroy
   has_many :mentorships, -> { where accepted: true }, dependent: :destroy
   has_many :mentors, through: :mentorships, dependent: :destroy
-  has_many :inverse_mentorships, -> { where accepted: true }, :class_name => "Mentorship", :foreign_key => "mentor_id"
-  has_many :mentees, :through => :inverse_mentorships, :source => :user, dependent: :destroy
-  has_many :organizations, :class_name => "Organization", :foreign_key => :creator_id, dependent: :nullify
-  has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
-  has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
-  belongs_to :organization
+  has_many :inverse_mentorships, -> { where accepted: true }, class_name: 'Mentorship', foreign_key: 'mentor_id'
+  has_many :mentees, through: :inverse_mentorships, source: :user, dependent: :destroy
+  has_many :invitations, class_name: 'Invite', foreign_key: 'recipient_id'
+  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
+  has_one :organization, foreign_key: 'creator_id'
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
   acts_as_taggable_on :skills, :help
   has_friendship
   accepts_nested_attributes_for :profile

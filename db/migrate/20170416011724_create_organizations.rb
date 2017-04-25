@@ -9,6 +9,7 @@ class CreateOrganizations < ActiveRecord::Migration[5.0]
       t.string :renewal_date
       t.integer :creator_id
       t.string :logo
+      t.boolean :private
 
       t.timestamps
     end
