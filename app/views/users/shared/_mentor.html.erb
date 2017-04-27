@@ -1,13 +1,9 @@
-
 <div class="grey lighten-5">
-
-
  <section class="container section--center mdl-grid site-max-width">
-
       <div class=" mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone   mdl-color-text--white">
       </div>
 
-   
+
       <!-- BOX NUMBER 1 -->
       <div class="card small mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
         <div class="mdl-card__title">
@@ -80,7 +76,7 @@
 
     <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone   mdl-color-text--white">
     </div>
-    
+
     <!-- BOX NUMBER 2 -->
     <div class="card small mdl-shadow--2dp  mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
       <div class="mdl-card__title">
@@ -234,21 +230,21 @@
           </ul> -->
         <!-- </div> -->
 
-      <% if current_user.isFriend?(user) || user == current_user %>
+      <% if user == current_user %>
         <div id="calendar-tab" class="col s12">
           <div class="row">
             <% if user == current_user %>
               <div class="col s12 m3 mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone   mdl-color-text--black left-align">
                 <h3>When are you available?</h3>
                 <%= form_for @event do |e| %>
-               
+
                 <div class='col-sm-12 '>
                     <div class="form-group">
                       <div class='input-group'>
                         <%= e.label :title %>
                         <%= e.text_field :title, :value => 'Available' %>
                       </div>
-                    </div> 
+                    </div>
                 </div>
 
                 <div class='col-sm-12 '>
@@ -283,7 +279,7 @@
               <div id="calendar" class="fc fc-ltr fc-unthemed"></div>
             </div>
 
-            
+
 
           </div>
 

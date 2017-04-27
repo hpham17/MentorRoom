@@ -41,7 +41,16 @@
       <% @online.each do |o| %>
           <li><%= o.name %></li>
       <% end %>
-      <h3></h3>
+      <h3>Member Requests:</h3>
+
+      <% @requests.each do |r| %>
+        <%= r.name %>
+        <%= button_to "Accept", accept_member_request_path(id: @org.id, user_id: r.id), class: 'btn'%>
+        <%= button_to "Decline", root_path, class: "btn", id: @org.id %>
+      <% end %>
+
+
+      <br>
       <!-- Modal Trigger -->
         <a class="waves-effect waves-light" href="#modal">Invite a member + </a>
 

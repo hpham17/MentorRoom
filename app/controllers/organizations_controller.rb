@@ -15,9 +15,13 @@ class OrganizationsController < ApplicationController
       @message = Message.new message_params
       @online = @users.where(online: true)
       @invite = Invite.new
+      @requests = @org.member_requests.map { |mem| User.find(mem.user_id) }
     else
       if !current_user.organizations.empty?
         @orgs = current_user.organizations
+        if @orgs.count == 1
+          redirect_to action: 'show', id: @orgs.first.id
+        end
       else
         redirect_to action: 'index'
       end
@@ -35,6 +39,11 @@ class OrganizationsController < ApplicationController
       flash[:error] = "Error, please try again."
       redirect_to :back
     end
+  end
+  def accept_request
+    org = Organization.find(params[:id])
+    org.accept_user(params[:user_id])
+    redirect_to root_path
   end
 
   private

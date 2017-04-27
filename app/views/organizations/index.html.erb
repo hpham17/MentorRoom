@@ -1,5 +1,27 @@
+<div style="margin-left: 20px;">
 <h1>All Public Organization</h1>
 <h3>Feel free to request to join any.</h3>
+<div class="row">
 <% @orgs.each do |org| %>
-  <%= org.name %>
+        <div class="col s12 m3">
+          <div class="card teal lighten-1">
+            <div class="card-content white-text">
+              <span class="card-title"><%= org.name %></span>
+              <p><%= org.about %></p>
+            </div>
+            <div class="card-action white">
+              <% if org.user_belongs_to_org? current_user.id %>
+                <%= link_to organization_path org.id, "Show" %>
+              <% else %>
+                <% if org.not_requested? current_user.id %>
+                  <a class="member-request" href="#" data-id="<%= current_user.id %>" data-organization-id="<%= org.id %>">Request to Join</a>
+                <% else %>
+                  PENDING
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
   <% end %>
+  </div>
+</div>

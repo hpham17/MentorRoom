@@ -9,7 +9,7 @@
 
         </div>
       </div>
-   
+
       <!-- BOX NUMBER 1 -->
 
       <div class="mdl-shadow--2dp  mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone ">
@@ -21,41 +21,41 @@
           <h6 class="light">
             Role: <%= @user.profile.role %><br>
             Hometown: <%= @user.profile.location %><br>
-            <%= @user.profile.school %>  
-            <%= @user.profile.gradyear %><br>
+            School: <%= @user.profile.school %><br>
+            Graduation Year: <%= @user.profile.gradyear %><br>
           </h6>
 
         </div>
 
 
         <div class="mdl-card__actions  mdl-card--border">
-              
+
           <h5 class="light">
-          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br> 
+          <%= link_to "Linkedin Profile", @user.profile.linkedin, target: "_blank" %><br>
           </h5>
 
           <%= link_to "Change Profile Picture", edit_picture_path, id: 'edit-picture' %>
-         
+
 
           <% if current_user.attachments.count > 0 %>
                 <h5 class="light">
                   <%= link_to 'Resume', current_user.attachments.order(:created_at).last.url, target: "_blank" %>
                 </h5>
+          <% else %>
+            <%= render 'users/shared/attachment' %>
           <% end %>
 
         </div>
-
-
       </div>
 
-    
+
 
     </section>
 
 
      <% end %>
 
-      <% if current_user.is? :Mentee && @user != current_user %>
+      <!-- <% if current_user.is? :Mentee && @user != current_user %>
         <% if current_user.mentors.include? @user %>
           <%= link_to "Message", 'chatrooms/new?id=' + @user.id.to_s %>
         <% elsif !current_user.requested_mentor?(@user).empty? %>
@@ -65,19 +65,12 @@
         <% else %>
           Mentee Limit Reached! Try again next week.
         <% end %>
-      <% end %>
+      <% end %> -->
     </div>
 
-    <% if @user.is? :Mentor %>
-
-      <%= render 'users/shared/mentor', :user => @user %>
-
-
+    <% if @user.is? :Mentee %>
+      <%= render 'users/shared/mentee', :user => @user %>
     <% end %>
-
-
-
-
-
-
-
+    <% if @user.is? :Mentor %>
+      <%= render 'users/shared/mentor', :user => @user %>
+    <% end %>

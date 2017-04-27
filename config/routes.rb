@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   resources :organizations
   resources :messages
   resources :invites
+  post '/member_requests' => 'member_requests#create'
+  post 'accept_member_request' => 'organizations#accept_request'
   post '/notifications/clear' => 'notifications#clear'
   resources :events
   resources :flash_sessions

@@ -53,6 +53,7 @@ class User < ApplicationRecord
   has_one :organization, foreign_key: 'creator_id'
   has_many :organization_users
   has_many :organizations, through: :organization_users
+  has_many :member_requests
   acts_as_taggable_on :skills, :help
   has_friendship
   accepts_nested_attributes_for :profile
