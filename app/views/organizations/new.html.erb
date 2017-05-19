@@ -1,15 +1,24 @@
 
-<h1> Please choose a name for your program's MentorRoom! </h1>
+<h1>Create your very own MentorRoom! </h1>
 
-<%= form_for @org do |o| %>
+
+
+
+<%= form_for(@org, html: { :multipart => true, class: 'logoUpload', data: { 'form-data' => @s3_direct_post.fields, 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |o| %>
+
+    <input type="file">
+
     <div class="input-field">
       <%= o.text_field :name, autofocus: true, class: 'validate' %>
       <%= o.label :name %>
     </div>
     <div class="input-field">
-      <%= o.text_field :size, autofocus: true, class: 'validate' %>
-      <%= o.label :size %>
+      <%= select_tag 'organization[size]', options_for_select(["0-20", "20-50", "50-100", "100+"]), include_blank: "Pick one" %>
+      <label>MentorRoom Size</label>
     </div>
+
+
+      <%= o.hidden_field :logo %>
     <%= o.hidden_field :creator_id, value: current_user.id %>
   <%= o.submit %>
 <% end %>

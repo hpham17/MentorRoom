@@ -3,27 +3,28 @@ class InvitesController < ApplicationController
     @invite = Invite.new
   end
   def create
-    @invite = Invite.new(invite_params)
-    @invite.sender_id = current_user.id
-    if @invite.save
+    emails = params[:invite][:email].split(', ')
+    emails.each do |email|
+      @invite = Invite.new(invite_params)
+      @invite.sender_id = current_user.id
+      if @invite.save
 
-      #if the user already exists
-      if @invite.recipient != nil
+        #if the user already exists
+        if @invite.recipient != nil
 
-         #send a notification email
-         InviteMailer.existing_user_invite(@invite).deliver
+           #send a notification email
+           InviteMailer.existing_user_invite(@invite).deliver
 
-         #Add the user to the user group
-         OrganizationUser.create(:organization_id => @invite.organization_id, :user_id => @invite.recipient.id)
+           #Add the user to the user group
+           OrganizationUser.create(:organization_id => @invite.organization_id, :user_id => @invite.recipient.id)
 
-      else
-         InviteMailer.new_user_invite(@invite, @invite.organization.name, new_user_registration_path(:invite_token => @invite.token)).deliver_later
+        else
+           InviteMailer.new_user_invite(@invite, @invite.organization.name, new_user_registration_path(:invite_token => @invite.token)).deliver_later
+        end
       end
-      redirect_to root_path
-    else
-      flash[:error] = "Error."
-      redirect_to :back
     end
+    flash[:notice] = "Invitations sent."
+    redirect_to organization_path(@invite.organization_id)
   end
 
   def invite_params

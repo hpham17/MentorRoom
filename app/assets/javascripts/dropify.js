@@ -10,3 +10,16 @@ $(function() {
     }
   };
 });
+
+$(function() {
+  return Dropzone.options.logoZone = {
+    thumbnailWidth: 150,
+    thumbnailHeight: 170,
+    maxFilesize: 8,
+    addRemoveLinks: true,
+    accept: function(file, done) {
+      done();
+      return $('#organization_logo').val(file.name);
+    }
+  };
+});

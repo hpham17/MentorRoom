@@ -22,6 +22,9 @@
 <div class="row" style="display: flex; overflow-x:hidden; overflow-y:hidden">
   <div class="col s12 m4" style="margin-left: 20px">
       <h2 class="header"><%= @org.name %></h2>
+      <% if @org.logo %>
+        <%= image_tag(@org.logo, height: 200) %>
+      <% end %>
       <div class="card horizontal">
         <div class="card-stacked">
           <div class="card-action">
@@ -53,6 +56,7 @@
       <br>
       <!-- Modal Trigger -->
         <a class="waves-effect waves-light" href="#modal">Invite a member + </a>
+        <button class="toggle-push-element"></button>
 
   </div>
 
@@ -98,11 +102,11 @@
   <!-- Modal Structure -->
   <div id="modal" class="modal bottom-sheet">
     <div class="modal-content">
-      <h4>Invite a member!</h4>
+      <h4>Invite member(s) separated by a comma! (ex. "bob@gmail.com, sally@gmail.com")</h4>
       <%= form_for @invite do |f| %>
     <%= f.hidden_field :organization_id, :value => @org.id %>
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.text_field :email %>
     <%= f.submit 'Send', class: 'btn' %>
   <% end %>
     </div>

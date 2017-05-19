@@ -18,12 +18,20 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :notification
   after_create_commit :broadcast_message
+  after_create_commit :push_notification
+
 
   def broadcast_message
     if Message.count > 2
       MessageBroadcastJob.perform_now(self, self.chatroom_id, self.current_user, self.other_user)
     end
   end
+
+  def push_notification
+    PushNotificationJob.perform_now(self, self.chatroom_id, self.current_user, self.other_user)
+  end
+
+  def
 
   def timestamp
     created_at.strftime('%H:%M:%S %d %B %Y')

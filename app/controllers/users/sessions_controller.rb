@@ -132,5 +132,4 @@ class Users::SessionsController < Devise::SessionsController
       redirect_to action: 'index'
     end
   end
-
 end

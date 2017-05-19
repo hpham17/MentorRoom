@@ -22,6 +22,11 @@ Rails.application.routes.draw do
     delete '/tag' => 'users/sessions#destroy_tag'
     post '/status' => 'users/sessions#status'
   end
+
+  scope :api, module: 'api' do
+    resources :subscriptions, only: [:create, :destroy]
+  end
+
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', omniauth_callbacks: 'omniauth_callbacks', confirmations: 'users/confirmations' }
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   get '/direct_messages' => 'direct_messages#index'
@@ -40,6 +45,7 @@ Rails.application.routes.draw do
   post '/star', to: 'stars#star'
   delete '/unstar', to: 'stars#unstar'
   post '/upload', to: 'home#upload'
+  post '/upload_logo', to: 'organizations#upload'
 
 
   # Serve websocket cable requests in-process

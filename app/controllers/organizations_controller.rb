@@ -1,5 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_variables
+
   def index
     @orgs = Organization.all
   end
@@ -40,6 +42,13 @@ class OrganizationsController < ApplicationController
       redirect_to :back
     end
   end
+  def upload
+    uploaded_io = params[:file]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    render json: params[:file].original_filename
+  end
   def accept_request
     org = Organization.find(params[:id])
     org.accept_user(params[:user_id])
@@ -48,9 +57,13 @@ class OrganizationsController < ApplicationController
 
   private
     def organization_params
-      params.require(:organization).permit(:name, :size, :invite_link, :trial, :about, :renewal_date, :creator_id)
+      params.require(:organization).permit(:name, :size, :invite_link, :trial, :about, :renewal_date, :creator_id, :logo)
     end
     def message_params
       { :chatroom_id => @org.chatroom.id, :user_id => current_user.id }
+    end
+    def set_variables
+      @organizations = current_user.organizations
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read', content_type: 'application/pdf')
     end
 end

@@ -11,7 +11,7 @@
             </div>
             <div class="card-action white">
               <% if org.user_belongs_to_org? current_user.id %>
-                <%= link_to organization_path org.id, "Show" %>
+                <%= link_to "Show", organization_path(org.id) %>
               <% else %>
                 <% if org.not_requested? current_user.id %>
                   <a class="member-request" href="#" data-id="<%= current_user.id %>" data-organization-id="<%= org.id %>">Request to Join</a>

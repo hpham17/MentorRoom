@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rossta/serviceworker-rails.git
+  revision: 7225d9c115672fbac03bc6cc2598a068112459e3
+  branch: master
+  specs:
+    serviceworker-rails (0.5.5)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -105,6 +113,7 @@ GEM
       rails (>= 4.0.0, < 5.1.0)
       stateful_enum
     hashie (3.4.6)
+    hkdf (0.3.0)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -274,6 +283,9 @@ GEM
       activemodel (>= 5.0)
       debug_inspector
       railties (>= 5.0)
+    webpush (0.3.1)
+      hkdf (~> 0.2)
+      jwt
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -315,6 +327,7 @@ DEPENDENCIES
   redis (~> 3.0)
   rspec-rails
   sass-rails (~> 5.0)
+  serviceworker-rails!
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -322,6 +335,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (~> 3.0)
+  webpush
 
 RUBY VERSION
    ruby 2.3.1p112

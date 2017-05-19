@@ -7,9 +7,11 @@ class ApplicationController < ActionController::Base
   helper_method :new_messages?
 
 
+  PushNotificationError = Class.new(StandardError)
+
   def after_sign_in_path_for(user)
     if user.is? :Mentee
-      users_path
+      organizations_path
     elsif user.is? :Mentor
       mentor_path
     else

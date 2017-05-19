@@ -50,3 +50,38 @@ $(function() {
     });
   });
 });
+
+$(function() {
+  $('.logoUpload').find("input:file").each(function(i, elem) {
+    var fileInput    = $(elem);
+    var form         = $(fileInput.parents('form:first'));
+    var submitButton = form.find('input[type="submit"]');
+    fileInput.fileupload({
+      fileInput:       fileInput,
+      url:             form.data('url'),
+      type:            'POST',
+      autoUpload:       true,
+      formData:         form.data('form-data'),
+      paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
+      dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
+      replaceFileInput: false,
+      start: function (e, data) {
+        submitButton.prop('disabled', true);
+      },
+      done: function(e, data) {
+        submitButton.prop('disabled', false);
+
+        // extract key and generate URL from response
+        var key   = $(data.jqXHR.responseXML).find("Key").text();
+        var url   = 'https://' + form.data('host') + '/' + key;
+
+        // update file value
+        $("#organization_logo").val(url);
+
+      },
+      fail: function(e, data) {
+        submitButton.prop('disabled', false);
+      }
+    });
+  });
+});

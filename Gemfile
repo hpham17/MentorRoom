@@ -11,8 +11,8 @@ gem 'puma'
 # Use SCSS for stylesheets
 gem 'sidekiq'
 gem 'figaro'
-gem 'aws-sdk', '~> 2'
-gem 'dropzonejs-rails'
+gem 'aws-sdk', '~> 2' # file upload to S3
+gem 'dropzonejs-rails' # drag and drop image upload
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'materialize-sass'
 gem 'font-awesome-rails'
@@ -38,6 +38,8 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'
+gem 'webpush' # webpush, Encryption Utilities for Web Push protocol
+gem "serviceworker-rails", github: "rossta/serviceworker-rails", branch: "master"
 
 group :production do
   gem 'rails_12factor'
