@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       root "organizations#show"
     end
   end
+  
   root "home#index"
 
   devise_scope :user do

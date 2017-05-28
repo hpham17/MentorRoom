@@ -4,6 +4,9 @@
     <title>MentorRoom</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+
+    <!-- Custom CSS -->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
@@ -15,10 +18,13 @@
     <%= favicon_link_tag 'favicon.ico' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
+
+
+  
   <body>
   <%= render partial: 'layouts/flash' %>
   <%= render partial: 'layouts/navbar' %>
 
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>

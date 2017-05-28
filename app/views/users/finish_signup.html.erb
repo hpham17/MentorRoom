@@ -3,13 +3,17 @@
 <div id="add-email" class="container">
   <h1>Account Setup</h1>
   <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
+
     <% if @show_errors && current_user.errors.any? %>
+      
       <div id="error_explanation">
         <% current_user.errors.full_messages.each do |msg| %>
           <%= msg %><br>
         <% end %>
       </div>
     <% end %>
+
+
     <div class="form-group">
       <div class="controls">
           <%= f.label :name %>

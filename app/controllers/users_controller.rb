@@ -38,6 +38,7 @@ class UsersController < ApplicationController
         redirect_to @user, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
+        render 'users/finish_signup'
       end
     end
   end
